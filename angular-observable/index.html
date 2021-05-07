@@ -1,0 +1,336 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><style data-href="/styles.b8221ec0ff064b96422d.css">code[class*=language-],pre[class*=language-]{color:#f8f8f2;background:none;text-shadow:0 1px rgba(0,0,0,.3);font-family:Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;font-size:1em;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:1em;margin:.5em 0;overflow:auto;border-radius:.3em}:not(pre)>code[class*=language-],pre[class*=language-]{background:#272822}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal}.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#708090}.token.punctuation{color:#f8f8f2}.token.namespace{opacity:.7}.token.constant,.token.deleted,.token.property,.token.symbol,.token.tag{color:#f92672}.token.boolean,.token.number{color:#ae81ff}.token.attr-name,.token.builtin,.token.char,.token.inserted,.token.selector,.token.string{color:#a6e22e}.language-css .token.string,.style .token.string,.token.entity,.token.operator,.token.url,.token.variable{color:#f8f8f2}.token.atrule,.token.attr-value,.token.class-name,.token.function{color:#e6db74}.token.keyword{color:#66d9ef}.token.important,.token.regex{color:#fd971f}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}</style><meta name="generator" content="Gatsby 2.21.0"/><title data-react-helmet="true">Angular Observable - DevTimes</title><meta data-react-helmet="true" name="description" content="옵저버블은 ES7 릴리스에 포함될 비동기 데이터를 관리하기위한 새로운 표준이다. Angular는 이벤트 시스템과 HTTP 서비스에서 옵저버블을 광범위하게 사용한다."/><meta data-react-helmet="true" name="og:title" content="Angular Observable - DevTimes"/><meta data-react-helmet="true" name="og:type" content="website"/><meta data-react-helmet="true" name="og:description" content="옵저버블은 ES7 릴리스에 포함될 비동기 데이터를 관리하기위한 새로운 표준이다. Angular는 이벤트 시스템과 HTTP 서비스에서 옵저버블을 광범위하게 사용한다."/><meta data-react-helmet="true" name="og:url" content="https://devtimes.com/angular-observable"/><meta data-react-helmet="true" name="twitter:label1" content="Written by"/><meta data-react-helmet="true" name="twitter:data1" content="winuss"/><meta data-react-helmet="true" name="twitter:card" content="summary"/><meta data-react-helmet="true" name="twitter:creator" content="winuss"/><meta data-react-helmet="true" name="twitter:title" content="Angular Observable - DevTimes"/><meta data-react-helmet="true" name="twitter:description" content="옵저버블은 ES7 릴리스에 포함될 비동기 데이터를 관리하기위한 새로운 표준이다. Angular는 이벤트 시스템과 HTTP 서비스에서 옵저버블을 광범위하게 사용한다."/><meta data-react-helmet="true" name="keywords" content="angular, python, machine learning, deep learning, game, Web, Angular"/><meta data-react-helmet="true" name="article:published_time" content="2019-02-17T00:00:00.000Z"/><meta data-react-helmet="true" name="article:modified_time" content="2019-02-17T00:00:00.000Z"/><meta data-react-helmet="true" name="twitter:label2" content="Filed under"/><meta data-react-helmet="true" name="twitter:data2" content="Web"/><meta data-react-helmet="true" name="og:image" content="https://devtimes.com//static/731325f50192e1fc7a16d5abe73096e4/90823/observable.png"/><meta data-react-helmet="true" name="twitter:image" content="https://devtimes.com//static/731325f50192e1fc7a16d5abe73096e4/90823/observable.png"/><script data-react-helmet="true" type="application/ld+json">
+        {
+          "@context": "https://schema.org/",
+          "@type": "Article",
+          "author": {
+            "@type": "Person",
+            "name": "winuss"
+          },
+          "keywords": "Web, Angular",
+          "headline": "Angular Observable - DevTimes",
+          "url": "https://devtimes.com/angular-observable",
+          "datePublished": "2019-02-17T00:00:00.000Z",
+          "dateModified": "2019-02-17T00:00:00.000Z",
+          "image": {
+            "@type": "ImageObject",
+            "url": "https://devtimes.com//static/731325f50192e1fc7a16d5abe73096e4/90823/observable.png",
+            "width": "1000",
+            "height": "520"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "DevTimes"
+          },
+          "description": "옵저버블은 ES7 릴리스에 포함될 비동기 데이터를 관리하기위한 새로운 표준이다. Angular는 이벤트 시스템과 HTTP 서비스에서 옵저버블을 광범위하게 사용한다.",
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://devtimes.com"
+          }
+        }
+      </script><style data-styled="gOVsKi fbNACK dqKNZj JgKdn jnMIuM hqRQjv gWKWdg jMoVC fiqFtq llrxFq imSJbr cVQZot iRWYuq bOhMpF eMHMJv fymZCI bdTsjL eHCGZv ixYMGE gDLYpk hKDtNq guoPGM hyzxOc kAaKev ewrmMm dWgKtp kWRivk rrUdK gmpFBk cCbMYU kStElJ frcJlw cNysWr htFYTF hdhrBK kcCrhV cKJeHJ evGsdC dkniVZ eysmNL" data-styled-version="4.4.1">
+/* sc-component-id: sc-global-2451124928 */
+html{box-sizing:border-box;background-color:#fafafa;} body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;line-height:1.9em;} *{box-sizing:border-box;} h1,h2,h3,h4,h5,h6{outline:none;} a{color:#000;-webkit-text-decoration:none;text-decoration:none;} .gatsby-highlight{font-size:0.85em;background-color:#282a36;border-radius:0.2em;padding:1em 1.4em;overflow:auto;width:100%;border:0.1em solid #c6c6c8;margin-bottom:6px;} div[data-language='text'].gatsby-highlight{background-color:#f0f0f0;border:0.03em solid #c6c6c8;margin-left:2px;margin-right:2px;width:calc(100% - 4px);} .gatsby-highlight pre.language-text code.language-text{color:#000;text-shadow:none;} .gatsby-highlight pre[class*='language-']{background-color:transparent;margin:0;padding:0;overflow:initial;float:left;min-width:100%;} .gatsby-highlight-code-line{background-color:#353631;display:block;margin-right:-1em;margin-left:-1em;padding-right:1em;padding-left:0.75em;} .remark-sticky-table{border-radius:2px;margin:32px 0px;} .remark-sticky-table-table{border-collapse:collapse;box-sizing:border-box;border:1px solid #bcbcbc;width:auto;} .remark-sticky-table-th{background-color:#f7f7f7;font-weight:600;text-align:left;border-bottom:1px solid #b8bcc9;} .remark-sticky-table-tbody:nth-child(odd){background-color:#fafafa;} .remark-sticky-table-th,.remark-sticky-table-td{padding:4px 12px;} table.dataframe{border-collapse:collapse;font-size:0.75em;margin-bottom:8px;margin-left:2px;margin-right:2px;line-height:2em;display:block;overflow-x:auto;white-space:nowrap;border:1px solid transparent;} table.dataframe > tbody{text-align:right;} .dataframe td,.dataframe th{border:1px solid #bcbcbc;padding:0px 12px;} .dataframe tr:nth-child(even){background-color:#f2f2f2;} .dataframe tr:hover{background-color:#d6d9e0;} .dataframe th{background-color:#f7f7f7;padding:0px 12px;}
+/* sc-component-id: style__NavContainer-sc-1nu4t1g-0 */
+.gOVsKi{z-index:1000;background-color:#20232a;position:-webkit-sticky;position:sticky;top:0;box-shadow:0 0 3px rgba(0,0,0,.03),0 3px 46px rgba(0,0,0,.07);}
+/* sc-component-id: style__Nav-sc-1nu4t1g-1 */
+.fbNACK{width:1260px;margin-left:auto;margin-right:auto;max-width:100%;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;position:relative;} @media (max-width:1300px){.fbNACK{padding:0 20px;}}
+/* sc-component-id: style__NavWrapper-sc-1nu4t1g-2 */
+.jnMIuM{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;width:100%;height:70px;white-space:nowrap;} @media (max-width:576px){.jnMIuM{width:90%;}}
+/* sc-component-id: style__NavMenu-sc-1nu4t1g-3 */
+.hqRQjv{-webkit-align-self:center;-ms-flex-item-align:center;align-self:center;list-style-type:none;margin:0;padding:0;} @media (max-width:576px){.hqRQjv{width:80%;overflow-x:auto;overflow-y:hidden;-webkit-mask-image:linear-gradient(to right,transparent,#000 25px,#000 90%,transparent);mask-image:linear-gradient(to right,transparent,#000 25px,#000 90%,transparent);}}.gWKWdg{-webkit-align-self:center;-ms-flex-item-align:center;align-self:center;list-style-type:none;margin:0;padding:0;}
+/* sc-component-id: style__NavMenuItem-sc-1nu4t1g-4 */
+.jMoVC{cursor:pointer;display:inline-block;border:0;background:transparent;outline:none;-webkit-text-decoration:none;text-decoration:none;}
+/* sc-component-id: style__NavLink-sc-1nu4t1g-5 */
+.fiqFtq{color:#fff;opacity:.8;padding:16px;-webkit-transition:opacity .5s;transition:opacity .5s;} .fiqFtq:hover{opacity:1;}
+/* sc-component-id: style__SearchContainer-sc-1nu4t1g-6 */
+.llrxFq{-webkit-align-self:center;-ms-flex-item-align:center;align-self:center;position:relative;}
+/* sc-component-id: style__ToggleSearchButton-sc-1nu4t1g-7 */
+.imSJbr{cursor:pointer;color:#fff;opacity:.8;background:none;outline:none;border:0;-webkit-transition:opacity .5s;transition:opacity .5s;} .imSJbr:hover{opacity:1;}
+/* sc-component-id: logo__LogoImage-nd9ri7-0 */
+.JgKdn{max-height:30px;width:30px;margin-right:45px;} @media (max-width:576px){.JgKdn{margin-right:15px;}}
+/* sc-component-id: logo__HomeLink-nd9ri7-1 */
+.dqKNZj{-webkit-align-self:center;-ms-flex-item-align:center;align-self:center;height:30px;}
+/* sc-component-id: style__StyledFooter-sc-1xdlo4d-0 */
+.hdhrBK{max-width:100%;padding:10px 0;z-index:700;position:relative;font-size:.9em;margin-top:50px;}
+/* sc-component-id: style__FooterContainer-sc-1xdlo4d-1 */
+.kcCrhV{width:1260px;margin-left:auto;margin-right:auto;max-width:100%;text-align:right;line-height:1.1em;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;} @media (max-width:1300px){.kcCrhV{padding:0 20px;}}
+/* sc-component-id: style__Copyright-sc-1xdlo4d-2 */
+.dkniVZ{margin:0;}
+/* sc-component-id: style__DesignBy-sc-1xdlo4d-3 */
+.eysmNL{margin:0;opacity:.8;font-size:.8em;} .eysmNL a{font-weight:bold;-webkit-text-decoration:none;text-decoration:none;color:#000;} .eysmNL a:hover{-webkit-text-decoration:underline;text-decoration:underline;}
+/* sc-component-id: style__StyledNav-sc-1xdlo4d-4 */
+.cKJeHJ ul{list-style-type:none;margin:0;padding:0;} .cKJeHJ li{display:inline-block;margin-right:25px;} .cKJeHJ li:last-child{margin-right:0;}
+/* sc-component-id: style__FooterMenuItem-sc-1xdlo4d-5 */
+.evGsdC{color:#000;-webkit-text-decoration:none;text-decoration:none;}
+/* sc-component-id: toc__StyledNav-dzz3d3-0 */
+.kAaKev .toc-list{list-style-type:none;margin:0;padding:0 0 0 0;border-left:2.5px solid #dcdee4;} .kAaKev .toc-list .toc-list{padding-top:10px;} .kAaKev .toc-list-item{line-height:1.2em;padding-bottom:10px;} .kAaKev .toc-list-item:last-child{padding-bottom:0;} .kAaKev .toc-link{color:#808080;-webkit-text-decoration:none;text-decoration:none;font-size:0.9em;font-weight:550;padding-left:8px;} .kAaKev .is-active-link{margin-left:-2.5px;padding-left:8px;border-left:2.5px solid #13acee;color:#099bcc;}
+/* sc-component-id: reading-progress__ReadingProgressBar-i1hf8v-0 */
+.cVQZot{position:-webkit-sticky;position:sticky;height:5px;top:70px;background-color:#ff8000;z-index:500;}
+/* sc-component-id: social-channel-list__StyledSocialChannels-z1p8fq-0 */
+.cNysWr{list-style-type:none;margin:0;padding:0;}
+/* sc-component-id: social-channel-list__StyledSocialChannel-z1p8fq-1 */
+.htFYTF{display:inline-block;margin:0 10px;font-size:1.6em;opacity:.7;-webkit-transition:opacity .5s;transition:opacity .5s;} .htFYTF:hover{opacity:1;}
+/* sc-component-id: avatar__StyledAvatar-sc-1papyes-0 */
+.cCbMYU{max-width:70px;border-radius:100%;}
+/* sc-component-id: bio__StyledBio-j3ch0c-0 */
+.gmpFBk{margin:auto;text-align:center;width:100%;}
+/* sc-component-id: bio__AuthorDescription-j3ch0c-1 */
+.frcJlw{margin:10px 0 13px;} .frcJlw a{color:#000;-webkit-text-decoration:underline;text-decoration:underline;}
+/* sc-component-id: bio__AuthorName-j3ch0c-2 */
+.kStElJ{margin:10px;}
+/* sc-component-id: post__PostContainer-z0x2sj-0 */
+.iRWYuq{width:1260px;margin-left:auto;margin-right:auto;max-width:100%;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;padding:0 !important;} @media (max-width:1300px){.iRWYuq{padding:0 20px;}}
+/* sc-component-id: post__LeftSidebar-z0x2sj-1 */
+.guoPGM{min-width:300px;max-width:300px;-webkit-transition:opacity .5s,z-index .5s;transition:opacity .5s,z-index .5s;font-size:0.9em;margin-left:20px;} @media (max-width:1300px){.guoPGM{position:fixed;opacity:0;z-index:-1;background-color:#fff;width:100% !important;padding:0 20px;margin-top:-5px;height:calc(100vh - 70px);}}
+/* sc-component-id: post__PostContent-z0x2sj-2 */
+.bOhMpF{margin-top:-5px;border-right:1px #e5eff5 solid;border-left:1px #e5eff5 solid;background-color:#fff;box-shadow:0 0 3px rgba(0,0,0,.03),0 3px 46px rgba(0,0,0,.1);z-index:10;width:1035px;max-width:100%;} .bOhMpF li > a,.bOhMpF p > a{color:#a4cbb8;border-bottom:2px #a4cbb8 solid;} .bOhMpF pre{margin:30px 0;} .bOhMpF blockquote{border-left:4px #a4cbb8 solid;background-color:#fafafa;margin:30px 0;padding:5px 20px;border-radius:.3em;} .bOhMpF h3::before,.bOhMpF h4::before,.bOhMpF h5::before,.bOhMpF h6::before{display:block;content:" ";height:90px;margin-top:-90px;visibility:hidden;} .bOhMpF h2{border-top:1px solid #ececec;margin-top:44px;padding-top:40px;line-height:1.2;} .bOhMpF code[class*="language-text"]{padding:2px;font-size:0.9em;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;} .bOhMpF p > .language-text{background-color:#f2e6e9;padding:0 4px 2px 4px;font-weight:600;color:#c7254e;text-align:center;} .bOhMpF p > img{max-width:100%;border-radius:.3em;margin:30px 0;} .bOhMpF hr{border-top:1px solid #ececec;border-bottom:0;margin-top:44px;margin-bottom:40px;} .bOhMpF .gatsby-resp-image-link{margin:30px 0;max-width:100%;} .bOhMpF .gatsby-resp-image-link .gatsby-resp-image-image{border-radius:.3em;}
+/* sc-component-id: post__TocWrapper-z0x2sj-3 */
+.hyzxOc{position:-webkit-sticky;position:sticky;top:70px;padding:40px 30px 40px 0;}
+/* sc-component-id: post__PostHeader-z0x2sj-4 */
+.eMHMJv{padding:40px;} @media (max-width:576px){.eMHMJv{padding:20px;}}
+/* sc-component-id: post__FeaturedImage-z0x2sj-5 */
+.eHCGZv{border-radius:0;} @media (max-width:1300px){.eHCGZv{margin-left:-1px;margin-right:-1px;}}
+/* sc-component-id: post__StyledPost-z0x2sj-6 */
+.ixYMGE{padding:40px;} @media (max-width:576px){.ixYMGE{padding:20px;}}
+/* sc-component-id: post__PostMeta-z0x2sj-7 */
+.fymZCI{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;opacity:.8;font-size:.9em;}
+/* sc-component-id: post__PostTitle-z0x2sj-8 */
+.bdTsjL{margin:0;padding:0;}
+/* sc-component-id: post__PostFooter-z0x2sj-9 */
+.gDLYpk{background-color:#fafafa;font-size:.8em;color:#666;padding:40px;line-height:1em;} .gDLYpk p{margin:5px 0;}
+/* sc-component-id: post__FooterTagLink-z0x2sj-10 */
+.hKDtNq{color:#000 !important;-webkit-text-decoration:none;text-decoration:none;border-bottom:0 !important;}
+/* sc-component-id: post__PostAddition-z0x2sj-11 */
+.dWgKtp{background-color:#fff;border-top:1px #e5eff5 solid;border-bottom:1px #e5eff5 solid;z-index:700;position:relative;padding:40px;}
+/* sc-component-id: post__PostAdditionContent-z0x2sj-12 */
+.kWRivk{width:1260px;margin-left:auto;margin-right:auto;max-width:100%;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;} @media (max-width:1300px){.kWRivk{padding:0 20px;}}
+/* sc-component-id: post__BioWrapper-z0x2sj-13 */
+.rrUdK{width:50%;margin:auto;} @media (max-width:576px){.rrUdK{width:100%;}}
+/* sc-component-id: post__ToggleTocButton-z0x2sj-14 */
+.ewrmMm{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;position:fixed;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;right:20px;bottom:20px;border-radius:100%;box-shadow:0 0 3px rgba(0,0,0,.03),0 3px 46px rgba(0,0,0,.1);border:0;z-index:5000;width:50px;height:50px;background-color:#20232a;color:#fff;outline:none;} @media (min-width:1300px){.ewrmMm{display:none;}}</style><link rel="sitemap" type="application/xml" href="/sitemap.xml"/><link rel="icon" href="/favicon-32x32.png?v=53395c7476cdf4ad211173db66a6affd"/><link rel="manifest" href="/manifest.webmanifest"/><meta name="theme-color" content="#a4cbb8"/><link rel="apple-touch-icon" sizes="48x48" href="/icons/icon-48x48.png?v=53395c7476cdf4ad211173db66a6affd"/><link rel="apple-touch-icon" sizes="72x72" href="/icons/icon-72x72.png?v=53395c7476cdf4ad211173db66a6affd"/><link rel="apple-touch-icon" sizes="96x96" href="/icons/icon-96x96.png?v=53395c7476cdf4ad211173db66a6affd"/><link rel="apple-touch-icon" sizes="144x144" href="/icons/icon-144x144.png?v=53395c7476cdf4ad211173db66a6affd"/><link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192x192.png?v=53395c7476cdf4ad211173db66a6affd"/><link rel="apple-touch-icon" sizes="256x256" href="/icons/icon-256x256.png?v=53395c7476cdf4ad211173db66a6affd"/><link rel="apple-touch-icon" sizes="384x384" href="/icons/icon-384x384.png?v=53395c7476cdf4ad211173db66a6affd"/><link rel="apple-touch-icon" sizes="512x512" href="/icons/icon-512x512.png?v=53395c7476cdf4ad211173db66a6affd"/><link rel="preconnect dns-prefetch" href="https://www.google-analytics.com"/><style type="text/css">
+    .anchor.before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: translateX(-100%);
+      padding-right: 4px;
+    }
+    .anchor.after {
+      display: inline-block;
+      padding-left: 4px;
+    }
+    h1 .anchor svg,
+    h2 .anchor svg,
+    h3 .anchor svg,
+    h4 .anchor svg,
+    h5 .anchor svg,
+    h6 .anchor svg {
+      visibility: hidden;
+    }
+    h1:hover .anchor svg,
+    h2:hover .anchor svg,
+    h3:hover .anchor svg,
+    h4:hover .anchor svg,
+    h5:hover .anchor svg,
+    h6:hover .anchor svg,
+    h1 .anchor:focus svg,
+    h2 .anchor:focus svg,
+    h3 .anchor:focus svg,
+    h4 .anchor:focus svg,
+    h5 .anchor:focus svg,
+    h6 .anchor:focus svg {
+      visibility: visible;
+    }
+  </style><script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+      var hash = window.decodeURI(location.hash.replace('#', ''))
+      if (hash !== '') {
+        var element = document.getElementById(hash)
+        if (element) {
+          var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+          var clientTop = document.documentElement.clientTop || document.body.clientTop || 0
+          var offset = element.getBoundingClientRect().top + scrollTop - clientTop
+          // Wait for the browser to finish rendering before scrolling.
+          setTimeout((function() {
+            window.scrollTo(0, offset - 0)
+          }), 0)
+        }
+      }
+    })
+  </script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="/rss.xml"/><link as="script" rel="preload" href="/webpack-runtime-54fc4c4fe4b49e1e33de.js"/><link as="script" rel="preload" href="/framework-737c3e16d462c41141c7.js"/><link as="script" rel="preload" href="/app-a8b2574222d925c54afd.js"/><link as="script" rel="preload" href="/styles-85581d4dae49207538a9.js"/><link as="script" rel="preload" href="/1bfc9850-693458f4bfc03c5b78c9.js"/><link as="script" rel="preload" href="/6c18e55fdd71cb6af87612710cbe2c0cb61bdd56-92ca3db2def247415ce0.js"/><link as="script" rel="preload" href="/component---src-templates-post-tsx-8a7ad919cf47b755089e.js"/><link as="fetch" rel="preload" href="/page-data/angular-observable/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div class="style__NavContainer-sc-1nu4t1g-0 gOVsKi"><div class="common__Container-sc-1wbwqlx-0 style__Nav-sc-1nu4t1g-1 fbNACK"><a class="logo__HomeLink-nd9ri7-1 dqKNZj" href="/"><div class="logo__LogoImage-nd9ri7-0 JgKdn gatsby-image-wrapper" style="position:relative;overflow:hidden;display:inline-block;width:30px;height:30px"><img aria-hidden="true" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsSAAALEgHS3X78AAAC1UlEQVQ4y4WVTUubQRCAo6bQQEvxH+SSQw4SCOI5kGsiQtNCCTQeepD+BgVbDzlqsRSFBGKgBJpDTzlEbfUaFTVQSyAQ7QdYvIgt0eT9mOnMZme7BqELk9ndd/bZmdnZTQAAAtxYk4zq/j2SJyQVklMSBxFd0t9IPpA8o/F9bTtKfcUQrToyIIM09b+i1TzPU2I3smuTehoIGMbIXbDX1hr2yCXt83otvjUv4DcWVP1ImK+0jU99j0RBKpUKzM/Pw+LiIqytrYHrujDgKBtPQ9/e8pImUhaMBX3fVwsTiQS7ryQcDuPNzY0A1Y94S3pWYEEaf9GTsiMQUO2QSqUMcGJiAnu93mBn3xeorPlJ6hG7+VhPuJoF2kO1MJ1OG2AsFjNASaG1ljTOMfD9XcBBChE7nQ4eHh7i0dERtlotddqO42C/32cBGrOhlMAnDrlj5Q+GSgOHW7vdxsnJSYzH4xiJRLBYLKqc6oj+sIeO5M1KtoGxoXjFrdlsmhSwLC0tKUN9+qoG3X8OAUgRszBsGHh8fHwLyOU0DPxhe4j/aWdnZzgzM4PT09OYTCaxWq3aIXcZ+FFuxuXlJWxtbcHOzg7W63U8Pz/Hk5MT3NzcxO3tbdzf38erqyskG/W9VqsBHZo5FPLpMx/KrAAZxKU5NjamwimVSpjNZk14fBB7e3t2yEA5ROscXrKHDyn+U57Y3d312DAUCvEThOVyGXO5nAFMTU3hwcEBf8dgMKhs8vm8r3P4i4Dj6rZcX18/50kKy+VdZfdCoQCZTMYAo9EoNhoNsG0WFhaUd8SYk6s3oi/2Oy7WlZUVlx4Bb3l5mQsZaBOgPqyurgIfwMXFBWxsbHA6/PX1dYfzTK1sHgfzQmio/XzpZMPQVfMkZ7qVZb04F6D7aaDdbjdH+fhu3xauMRa535IzE6bNsP4CRsRb6j+g/gvSddK/LXiXS4NPk4bjw+u4rv8C5lC4pDZ5rvwAAAAASUVORK5CYII=" alt="DevTimes" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:1;transition-delay:500ms"/><noscript><picture><source srcset="/static/c9a164741da1db2837cd1e6d841a84fb/91664/main-logo.png 1x,
+/static/c9a164741da1db2837cd1e6d841a84fb/ad39b/main-logo.png 1.5x,
+/static/c9a164741da1db2837cd1e6d841a84fb/183c2/main-logo.png 2x" /><img loading="lazy" width="30" height="30" srcset="/static/c9a164741da1db2837cd1e6d841a84fb/91664/main-logo.png 1x,
+/static/c9a164741da1db2837cd1e6d841a84fb/ad39b/main-logo.png 1.5x,
+/static/c9a164741da1db2837cd1e6d841a84fb/183c2/main-logo.png 2x" src="/static/c9a164741da1db2837cd1e6d841a84fb/91664/main-logo.png" alt="DevTimes" style="position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center"/></picture></noscript></div></a><div class="style__NavWrapper-sc-1nu4t1g-2 jnMIuM"><ul class="style__NavMenu-sc-1nu4t1g-3 hqRQjv"><li class="style__NavMenuItem-sc-1nu4t1g-4 jMoVC"><a class="style__NavLink-sc-1nu4t1g-5 fiqFtq" href="/tag/web">Web</a></li><li class="style__NavMenuItem-sc-1nu4t1g-4 jMoVC"><a class="style__NavLink-sc-1nu4t1g-5 fiqFtq" href="/tag/python">Python</a></li><li class="style__NavMenuItem-sc-1nu4t1g-4 jMoVC"><a class="style__NavLink-sc-1nu4t1g-5 fiqFtq" href="/tag/ml-dl">ML-DL</a></li><li class="style__NavMenuItem-sc-1nu4t1g-4 jMoVC"><a class="style__NavLink-sc-1nu4t1g-5 fiqFtq" href="/tag/datalake">DataLake</a></li><li class="style__NavMenuItem-sc-1nu4t1g-4 jMoVC"><a class="style__NavLink-sc-1nu4t1g-5 fiqFtq" href="/tag/statistics">Statistics</a></li><li class="style__NavMenuItem-sc-1nu4t1g-4 jMoVC"><a class="style__NavLink-sc-1nu4t1g-5 fiqFtq" href="/tag/tip">Tips</a></li><li class="style__NavMenuItem-sc-1nu4t1g-4 jMoVC"><a class="style__NavLink-sc-1nu4t1g-5 fiqFtq" href="/page">About</a></li></ul><div class="style__SearchContainer-sc-1nu4t1g-6 llrxFq"><ul class="style__NavMenu-sc-1nu4t1g-3 gWKWdg"><li class="style__NavMenuItem-sc-1nu4t1g-4 jMoVC"><button role="button" aria-label="Toggle search" class="style__ToggleSearchButton-sc-1nu4t1g-7 imSJbr"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"></path></svg></button></li></ul></div></div></div></div><main><div style="width:0%" color="#ff8000" class="reading-progress__ReadingProgressBar-i1hf8v-0 cVQZot"></div><div class="common__Container-sc-1wbwqlx-0 post__PostContainer-z0x2sj-0 iRWYuq"><div class="post__PostContent-z0x2sj-2 bOhMpF"><article class="post"><header class="post__PostHeader-z0x2sj-4 eMHMJv"><section class="post__PostMeta-z0x2sj-7 fymZCI"><a href="/tag/web">Web</a><time dateTime="2019-02-17T00:00:00.000Z">17 February, 2019</time></section><h1 class="post__PostTitle-z0x2sj-8 bdTsjL">Angular Observable</h1></header><div class="post__FeaturedImage-z0x2sj-5 eHCGZv gatsby-image-wrapper" style="position:relative;overflow:hidden"><div aria-hidden="true" style="width:100%;padding-bottom:61.5%"></div><img aria-hidden="true" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAABcSAAAXEgFnn9JSAAABbklEQVQoz2NgQABGRkYGUyBtAMRiQGzKxMygDaRZGMgBPlUqIIpfxUJIMW2ZXrptoqwukM8ja8DLTJaBDZfNwRobLlrUzvjr8L/hksVyEP/4/yBGsgysPmnGBKIrDpv51100e115zLQAxLdJlgR5GWQZSJ4UwzkZvI+CaC+gAb9BQcgFDFRxIEMAiEG0BCgISHZpULAph0fvQjab+hn+QK4iFAtCXcgGxbCIYgVidiiGu54LiIVAtvNyMQl62KsL/P//n8HD20GSi4NZHSiuBcSgGBMFYmWoBaDYlwdiSSAWhqYKDpiB3CBBXi4WASxeYufhZOYHxT7UFdzgsIEEAx+UjRv8OO6t9PWw6/a3e1yOvNnjcujLYQ8bsmL46FwLcJi82uWS/P+p////V73+/38Y8P/9PpcJIPErKyxJS9yrO03AdFOmtuC1VXZld9Y7Nt5Y61BzcqGdNEj82ip78tIiNJCNgVgBGgGCpBoAABYfUrdUz8YiAAAAAElFTkSuQmCC" alt="" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:1;transition-delay:500ms"/><noscript><picture><source srcset="/static/731325f50192e1fc7a16d5abe73096e4/dc47e/observable.png 200w,
+/static/731325f50192e1fc7a16d5abe73096e4/9f2d5/observable.png 400w,
+/static/731325f50192e1fc7a16d5abe73096e4/90823/observable.png 800w,
+/static/731325f50192e1fc7a16d5abe73096e4/e4535/observable.png 1035w" sizes="(max-width: 800px) 100vw, 800px" /><img loading="lazy" sizes="(max-width: 800px) 100vw, 800px" srcset="/static/731325f50192e1fc7a16d5abe73096e4/dc47e/observable.png 200w,
+/static/731325f50192e1fc7a16d5abe73096e4/9f2d5/observable.png 400w,
+/static/731325f50192e1fc7a16d5abe73096e4/90823/observable.png 800w,
+/static/731325f50192e1fc7a16d5abe73096e4/e4535/observable.png 1035w" src="/static/731325f50192e1fc7a16d5abe73096e4/90823/observable.png" alt="" style="position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center"/></picture></noscript></div><section class="post__StyledPost-z0x2sj-6 ixYMGE post"><p>옵저버블은 ES7 릴리스에 포함될 비동기 데이터를 관리하기위한 새로운 표준이다. Angular는 이벤트 시스템과 HTTP 서비스에서 옵저버블을 광범위하게 사용한다.</p>
+<h3 id="observables" style="position:relative;"><a href="#observables" aria-label="observables permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Observables</h3>
+<p>옵저버블은 시간이 지남에 따라 여러값을 가질 수 있는 지연 콜렉션이다.</p>
+<p><strong>1. Observables는 lazy하다.</strong></p>
+<p>지연 옵저버블을 뉴스 레터로 생각할 수 있다. 각 구독자(subscriber)마다 새로운 뉴스 레터가 만들어진다. 그 뉴스레터들은 구독자들에게만 보내고 다른 사람에게는 보내지 않는다.</p>
+<p><strong>2. Observables는 시간이 지남에 따라 여러 값을 가질 수 있다.</strong></p>
+<p>뉴스 레터 구독을 계속 열어두면, 매번 새로운 뉴스 레터를 받게된다. 발신자(sender)는 받은 시간을 결정하지만 받은 편지함에 곧바로 올 때까지 기다려야한다.</p>
+<p>옵저버블과 프로미스간의 다른 중요한 차이점이 있는데, promise은 항상 오직 하나의 값만을 반환한다는 점이다. 또 하나는 옵저버블의 구독을 취소 할 수 있다는 점이다. 뉴스 레터를 더 이상 원하지 않으면 구독을 취소하면된다. 반면 프로미스는 취소 할 수 없다. 프라미스가 당신에게 건네지면, 그 프라미스의 resolve가 이미 진행되고 있으며, 일반적으로 프라미스의 resolve가 실행되는 것을 막을 수 있는 권한이 없다.</p>
+<p><strong>Push vs pull</strong></p>
+<p>observables를 사용할 때 이해해야 할 핵심 사항은 observables가 push한다는 것이다. (옵저버블은 push 시나리오를 따른다는 말) push와 pull은 데이터 생성자가 데이터 소비자와 커뮤니케이션하는 방법을 설명하는 두 가지 방식이다.</p>
+<p><strong>Pull</strong></p>
+<p>Pulling일 때 데이터 소비자는 데이터 생성자로부터 데이터를 가져 오는 시점을 결정한다. 생산자는 언제 데이터가 소비자에게 전달되는지를 알지 못한다.
+모든 자바 스크립트 함수는 pull 시나리오를 사용한다. 함수는 데이터의 프로듀서이며 함수를 호출하는 코드는, 호출에서 하나의 반환 값을 “꺼내”(pull) 가져와 이를 소비한다.</p>
+<p><strong>Push</strong></p>
+<p>Pushing일 때, 다른 방향으로 동작한다. 데이터 생성자 (뉴스 레터 생성자)는 소비자 (뉴스 레터 구독자)가 데이터를 가져 오는 시점을 결정합니다.</p>
+<p>프로미스는 오늘날 자바 스크립트에서 사용하는 가장 일반적인 push 방법입니다. 프로미스(생산자) 전달자는 등록된 콜백(소비자)에게 resolve된 값을 전달하고, 프로미스는 함수와는 달리 콜백에 그 값이 “푸시 (push)”되는 시기를 정확하게 결정한다.</p>
+<p>Observables는 JavaScript로 데이터를 푸시하는 새로운 방법이다. 옵저버블은 여러 값의 생산자로서 구독자에게 “푸시 (pushing)”한다.</p>
+<h3 id="angular에서-observables" style="position:relative;"><a href="#angular%EC%97%90%EC%84%9C-observables" aria-label="angular에서 observables permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Angular에서 Observables</h3>
+<p>Angular에서 HTTP 요청을 하면 옵저버블 형태로 반환을 한다.</p>
+<div class="gatsby-highlight" data-language="typescript"><pre class="language-typescript"><code class="language-typescript"><span class="token keyword">import</span> <span class="token punctuation">{</span> Observable <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"rxjs/Rx"</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> Injectable <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"@angular/core"</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> Http<span class="token punctuation">,</span> Response <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"@angular/http"</span>
+
+@<span class="token function">Injectable</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">export</span> <span class="token keyword">class</span> <span class="token class-name">HttpClient</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">constructor</span><span class="token punctuation">(</span>
+        <span class="token parameter"><span class="token keyword">public</span> http<span class="token operator">:</span> Http</span>
+    <span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token function">fetchUsers</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>http<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token string">"/api/users"</span><span class="token punctuation">)</span>
+            <span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">res<span class="token operator">:</span> Response</span><span class="token punctuation">)</span> <span class="token operator">=></span> res<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>observable을 반환하는 fetchUsers 메서드를 사용하여 간단한 HttpClient를 만들었다. 어떤 종류의 리스트에 사용자를 표시하고 싶으므로 fetchUsers 메서드를 사용해서 해보자. 이 메소드는 옵저버블을 반환하기 때문에 우리는 그것을 구독해야 한다. Angular에서 우리는 두 가지 방식으로 Observable을 구독 할 수 있다.</p>
+<p><strong>방식 1</strong></p>
+<p>비동기 파이프를 사용하여 템플릿의 옵저버블을 구독하는 방법이 있다. 이로 인해 Angular는 컴포넌트의 생명주기 동안 구독을 처리한다. Angular는 자동으로 구독하고 구독취소한다. 비동기 파이프가 노출되야하므로 모듈에 “CommonModule”을 import하자.</p>
+<div class="gatsby-highlight" data-language="typescript"><pre class="language-typescript"><code class="language-typescript"><span class="token keyword">import</span> <span class="token punctuation">{</span> Component <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"@angular/core"</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> Observable <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"rxjs/Rx"</span>
+
+<span class="token comment">// client</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> HttpClient <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"../services/client"</span>
+
+<span class="token comment">// interface</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> IUser <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"../services/interfaces"</span>
+
+@<span class="token function">Component</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    selector<span class="token operator">:</span> <span class="token string">"user-list"</span><span class="token punctuation">,</span>
+    templateUrl<span class="token operator">:</span>  <span class="token string">"./template.html"</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">export</span> <span class="token keyword">class</span> <span class="token class-name">UserList</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">public</span> users$<span class="token operator">:</span> Observable<span class="token operator">&lt;</span>IUser<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token operator">></span>
+
+    <span class="token keyword">constructor</span><span class="token punctuation">(</span>
+        <span class="token parameter"><span class="token keyword">public</span> client<span class="token operator">:</span> HttpClient<span class="token punctuation">,</span></span>
+    <span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+    <span class="token comment">// 컴포넌트 초기화시 사용자들을 불러옴</span>
+    <span class="token comment">// fetchUsers 메소드는 관찰 가능 객체를 반환</span>
+    <span class="token keyword">public</span> <span class="token function">ngOnInit</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>users$ <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>client<span class="token punctuation">.</span><span class="token function">fetchUsers</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div>
+<div class="gatsby-highlight" data-language="html"><pre class="language-html"><code class="language-html"><span class="token comment">&lt;!-- 비동기 파이프를 사용하여 자동으로 구독/구독취소 함 --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>user__list<span class="token punctuation">"</span></span> <span class="token attr-name">*ngIf</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>(users$ | async).length<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>user<span class="token punctuation">"</span></span> <span class="token attr-name">*ngFor</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>let user of users$ | async<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+        {{ user.name }} - {{ user.birth_date }}
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">></span></span></code></pre></div>
+<blockquote>
+<p>일반적으로 달러($)기호는 Stream의 약어로 쓰이기 때문에 변수이름 앞에 $를 사용하면 변수의 관찰 가능 여부를 쉽게 식별 할 수 있다.</p>
+</blockquote>
+<p><strong>방식 2</strong></p>
+<p><code class="language-text">subscribe()</code> 메소드를 사용하여 옵저버블을 구독한다. 데이터를 표시하기 전에 먼저 데이터에 뭔가 작업하기를 원한다면 편리할 수 ​​있다. 단점은 구독을 직접 관리해야한다는 것다.(구독취소를 해주어야 함)</p>
+<div class="gatsby-highlight" data-language="typescript"><pre class="language-typescript"><code class="language-typescript"><span class="token keyword">import</span> <span class="token punctuation">{</span> Component <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"@angular/core"</span>
+
+<span class="token comment">// client</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> HttpClient <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"../services/client"</span>
+
+<span class="token comment">// interface</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> IUser <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"../services/interfaces"</span>
+
+@<span class="token function">Component</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    selector<span class="token operator">:</span> <span class="token string">"user-list"</span><span class="token punctuation">,</span>
+    templateUrl<span class="token operator">:</span>  <span class="token string">"./template.html"</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">export</span> <span class="token keyword">class</span> <span class="token class-name">UserList</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">public</span> users<span class="token operator">:</span> IUser<span class="token punctuation">[</span><span class="token punctuation">]</span>
+
+    <span class="token keyword">constructor</span><span class="token punctuation">(</span>
+        <span class="token parameter"><span class="token keyword">public</span> client<span class="token operator">:</span> HttpClient<span class="token punctuation">,</span></span>
+    <span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+    <span class="token comment">// 수동으로 구독하고 사용자를 가저옴</span>
+    <span class="token keyword">public</span> <span class="token function">ngOnInit</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>client<span class="token punctuation">.</span><span class="token function">fetchUsers</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">subscribe</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">users<span class="token operator">:</span> IUser<span class="token punctuation">[</span><span class="token punctuation">]</span></span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+            <span class="token comment">// do stuff with our data here.</span>
+            <span class="token comment">// ....</span>
+            <span class="token comment">// asign data to our class property in the end</span>
+            <span class="token comment">// so it will be available to our template</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>users <span class="token operator">=</span> users
+        <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div>
+<div class="gatsby-highlight" data-language="html"><pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>user__list<span class="token punctuation">"</span></span> <span class="token attr-name">*ngIf</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>users.length<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>user<span class="token punctuation">"</span></span> <span class="token attr-name">*ngFor</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>let user of users<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+        {{ user.name }} - {{ user.birth_date }}
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">></span></span></code></pre></div>
+<p>템플릿 로직이 꽤 비슷하다는 것을 알 수 있듯이, 2번 방식으로 간다면 구성 요소 논리는 훨씬 더 복잡해 질 수 있다. 일반적으로 방식1을 선택하는 것이 좋다. 가장 쉽고 구독을 수동으로 관리할 필요가 없다. <code class="language-text">2번방법에서 구독을 사용하지 않는 동안 열어두면 메모리 누수가 발생하므로 좋지 않다.</code></p>
+<h3 id="creating-an-observable-yourself" style="position:relative;"><a href="#creating-an-observable-yourself" aria-label="creating an observable yourself permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Creating an observable yourself</h3>
+<p>Angular가 제공한 일반적인 옵저버블을 다루는 방법을 알았으므로 옵저버블을 어떻게 생성하는지 보자.</p>
+<div class="gatsby-highlight" data-language="typescript"><pre class="language-typescript"><code class="language-typescript"><span class="token keyword">import</span> <span class="token punctuation">{</span> Observable <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"rxjs/Observable"</span>
+
+<span class="token comment">// create observable</span>
+<span class="token keyword">const</span> simpleObservable <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Observable</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">observer</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    
+    <span class="token comment">// observable execution</span>
+    observer<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token string">"bla bla bla"</span><span class="token punctuation">)</span>
+    observer<span class="token punctuation">.</span><span class="token function">complete</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token comment">// subscribe to the observable</span>
+simpleObservable<span class="token punctuation">.</span><span class="token function">subscribe</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment">// dispose the observable</span>
+simpleObservable<span class="token punctuation">.</span><span class="token function">unsubscribe</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre></div>
+<p>observables는 새로운 Observable() 호출을 사용하여 만든 다음 observer에 가입하고 next()를 호출하여 실행하고 unsubscribe()를 호출하여 삭제한다.</p>
+<p><strong>observable 만들기</strong></p>
+<p>observables를 만드는 것은 쉽다. 새로운 Observable()을 호출하고 옵저버를 나타내는 하나의 인수를 전달하면됩니다. 그러므로 저는 보통 그것을 “observer”라고 부른다.</p>
+<p><strong>옵저버블 구독하기</strong></p>
+<p>옵저버블은 구독하지 않으면 아무 일도 일어나지 않을 것이다. 옵저버를 구독 할 때 subscribe()를 호출 할 때마다 옵저버블에 독립 설정이 실행된다. 구독 요청은 동일한 옵저버블에 대한 여러 구독자간에 공유되지 않는다.</p>
+<p><strong>옵저버블 실행하기</strong>
+observables 안의 코드는 observables의 실행을 나타낸다. 옵저버블을 만들 때 주어진 매개 변수(observer)에는 옵저버블의 구독자에게 데이터를 보낼 수있는 세 가지 함수가 있다.</p>
+<ul>
+<li>next: Number나 Array나 객체같은 여러 값을 subscribers에게 보낸다.</li>
+<li>error: 자바스크립트 에러나 예외값을 보낸다.</li>
+<li>complete : 어떤 값도 보내지 않는다.</li>
+</ul>
+<p><code class="language-text">next</code> <strong>콜은 구독자에게 실제로 데이터를 전달할 때 가장 일반적이다.</strong> 옵저버블의 실행 중에는 <code class="language-text">observer.next()</code>의 무한 호출이있을 수 있지만 <code class="language-text">observer.error()</code> 또는 <code class="language-text">observer.complete()</code>가 호출되면 실행이 중지되고 더 이상 데이터가 subscribers에게 전달되지 않는다.</p>
+<p><strong>옵저버블 처분</strong>
+옵저버블의실행은 무한한 시간 동안 실행될 수 있기 때문에, 실행을 막을 수있는 방법이 필요하다. 각 구독자마다 각 실행이 실행되기 때문에, 메모리와 컴퓨팅 성능이 낭비, 즉 더 이상 데이터가 필요없는 구독자는 구독을 멈추는 것이 중요하다.</p>
+<p>옵저버블을 구독할 때, 진행중인 실행을 취소하면 구독이 반환된다. 실행을 취소하려면 <code class="language-text">unsubscribe()</code>를 호출하면 된다. </p></section><hr/><div></div><footer class="post__PostFooter-z0x2sj-9 gDLYpk"><p>Published under <span><a class="post__FooterTagLink-z0x2sj-10 hKDtNq" href="/tag/web">Web</a>, </span><span><a class="post__FooterTagLink-z0x2sj-10 hKDtNq" href="/tag/angular">Angular</a></span> on <time dateTime="2019-02-17T00:00:00.000Z">17 February, 2019</time>.</p></footer></article></div><div class="post__LeftSidebar-z0x2sj-1 guoPGM"><div class="post__TocWrapper-z0x2sj-3 hyzxOc"><nav class="toc__StyledNav-dzz3d3-0 kAaKev toc"></nav></div></div><button role="button" aria-label="Toggle table of contents" class="post__ToggleTocButton-z0x2sj-14 ewrmMm"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M432 416H16a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zm0-128H16a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zm0-128H16a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zm0-128H16A16 16 0 0 0 0 48v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16z"></path></svg></button></div><section class="post__PostAddition-z0x2sj-11 dWgKtp"><div class="common__Container-sc-1wbwqlx-0 post__PostAdditionContent-z0x2sj-12 kWRivk"><div class="post__BioWrapper-z0x2sj-13 rrUdK"><section class="bio__StyledBio-j3ch0c-0 gmpFBk"><div class="avatar__StyledAvatar-sc-1papyes-0 cCbMYU gatsby-image-wrapper" style="position:relative;overflow:hidden;display:inline-block;width:70px;height:70px"><img aria-hidden="true" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsSAAALEgHS3X78AAAEfUlEQVQ4y1WUbWxTVRjHL4YPLL4wYtwYg9FtdKwY5EUjwwDb4lxAEA1kycxUTFA0mChiNFPDNMNgVEwQiEJA3GQbrBvrqFBwBUb3ytp1YwO2MbqXru3t69Z262b0y897i53thyf3nHPv+d3/ef7PcwSXU8QpOpCfbpczHPLYYbcT8I9jc4h03e7F3NVNIOAnGJjAFfV9ZH+EIUSDIiE67ExPT9He1s7LW18n69lcslZnsWf3+zTob+D3T4Q3u5z/AyNPIRrkcT/8ICgpOVtWwZqMNSQ9lsjiBUkoFylIS05BmZZJ6cHvmJkJ4ZH2RGAxQI/bFQ55MTQVRHvpKqqUTFTJaSieWsrShBSSn0wmMzWDjNRlJMQnsG/f57g9njA0AgwfWQZ5Pe6wQp/XjdVmZ/uWHbz2Yg5PK5aTnqhAuTCNdEmhYlEKqckKUhIXEzc3nl/LzjE1GQinKJI6IaJOljsj5a229iIvLF/Lm1u3s161lizValRJy1EmKlmVtgKVYhkrlZnME+LYVbSbUGgyDIykTYg+7sx0iGNHfmZnTi57CnfyxkubKVyfR3HhLo5/tJ8f9r7H0QMfUrL3bVRLUnlGuZJhiwWfzxMWFAOUJ8FggLqaajavX8emFav5/XApRm0FFn0dYze1DOir8Q83ovn1e3bk5ZC3cQO3WtvDJsqC5NTFAqUXt1oM5K5ag/rEjzj7m2lXn8GsLqP/Ug1N5ScxXa7CqK9iR042u98qZKCvj4kJX3h/GOjzemZNmZoMYuowUpCfj99mpP2PCs58WUKXupyh62ouHPqW06UlTFga+ezdIgq2vcpk0D9bJXIIMkwOeRKQCvbBwADHS4sJ2jpwm29iNVxhfKSTgPSDoRYddy+r+cth5Ng3+zn4RYnUAKFZdTFHliey2nEpwU11Zdi76/GZGxHbriH23sTRo8dh+hO38QaBwUbOHT3A/Z5OJiQRnqjmiClsuVO8Xi/WwW4c3Rq8XTrEVkmV7jxdmnKGr19gpLEeq1FN57UKyQjZWVdM2woRQ6Lbz+l0YbtrwNd7CUuzlnu6i9zR1vGgpR7bLQ2D7WpGLf3SqTwxF0u4U6JvmIdj6aYRRcSRfkaaKhky1HJPU4O5shJLiwZLUwV9HTpcbk/MTSMXd7iXI4sOuw27FLYxq1SPfnq7TXRfOY2np15yuIbBq2ps5npuN/zC0J2Wh8D/QNEhyAB54JX62O/3MR3y09Bwgy3biugzVDLSUkXb+ZPoTx3DrDvF/ebfGL7bisvlxm4bmwXJguQQJoPjUt5EOk2dVFdr+ODjr3l0YRaqdQXY7hnw3K7lztUzNJ/7iQetVZLDlzlx5DCGpjb++TuETYKOSaIicGHfJ6VszCsiKTWbR+LXIiRsZG5SNunPF9Bj7mR8yCgZUYe1VY3VpGZaqs9Piw+RmpGLVquTjBGl+vXNqhSEJ55jzoJ1xCVuYP6STcSn5/N4Wj7zkrPRXzcQCnpxDPfjGOhg1HQB72gPxV8dQZiTQdz8VeS/8g7lZ2sYHR1GFO38C4HH48JXOTvxAAAAAElFTkSuQmCC" alt="winuss" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:1;transition-delay:500ms"/><noscript><picture><source srcset="/static/f39bad8c29c07a4d4c5b9eb67697ccb3/75aa5/blogger.png 1x,
+/static/f39bad8c29c07a4d4c5b9eb67697ccb3/97b93/blogger.png 1.5x,
+/static/f39bad8c29c07a4d4c5b9eb67697ccb3/9adda/blogger.png 2x" /><img loading="lazy" width="70" height="70" srcset="/static/f39bad8c29c07a4d4c5b9eb67697ccb3/75aa5/blogger.png 1x,
+/static/f39bad8c29c07a4d4c5b9eb67697ccb3/97b93/blogger.png 1.5x,
+/static/f39bad8c29c07a4d4c5b9eb67697ccb3/9adda/blogger.png 2x" src="/static/f39bad8c29c07a4d4c5b9eb67697ccb3/75aa5/blogger.png" alt="winuss" style="position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center"/></picture></noscript></div><h3 class="bio__AuthorName-j3ch0c-2 kStElJ">winuss</h3><p class="bio__AuthorDescription-j3ch0c-1 frcJlw">Every end is a <strong>new beginning</strong>.
+            <a href="https://devtimes.com" rel="noopener" target="_blank">devtimes.com</a></p><ul class="social-channel-list__StyledSocialChannels-z1p8fq-0 cNysWr"><li class="social-channel-list__StyledSocialChannel-z1p8fq-1 htFYTF"><a href="https://github.com/winuss" target="_blank" rel="noopener" aria-label="github"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 496 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg></a></li></ul></section></div></div></section></main><footer class="style__StyledFooter-sc-1xdlo4d-0 hdhrBK"><div class="common__Container-sc-1wbwqlx-0 style__FooterContainer-sc-1xdlo4d-1 kcCrhV"><nav class="style__StyledNav-sc-1xdlo4d-4 cKJeHJ"><ul><li><a href="/rss.xml" rel="noopener noreferrer" class="style__FooterMenuItem-sc-1xdlo4d-5 evGsdC">RSS</a></li><li><a href="/sitemap.xml" rel="noopener noreferrer" class="style__FooterMenuItem-sc-1xdlo4d-5 evGsdC">Sitemap</a></li></ul></nav><div><p class="style__Copyright-sc-1xdlo4d-2 dkniVZ"><strong>DevTimes</strong> © <!-- -->2021</p><p class="style__DesignBy-sc-1xdlo4d-3 eysmNL">Theme by <a href="https://nehalist.io" target="_blank" rel="noopener">nehalist.io</a></p></div></div></footer></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script>
+  
+  
+  if(true) {
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  }
+  if (typeof ga === "function") {
+    ga('create', 'UA-168375315-1', 'auto', {});
+      
+      
+      
+      
+      
+      }</script><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/angular-observable";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"app":["/app-a8b2574222d925c54afd.js"],"component---src-pages-404-tsx":["/component---src-pages-404-tsx-057dc180d56b15804385.js"],"component---src-pages-archive-tsx":["/component---src-pages-archive-tsx-fdf2cd80a3f85b7fc325.js"],"component---src-pages-tags-tsx":["/component---src-pages-tags-tsx-958d9cb016ae8b948b75.js"],"component---src-templates-page-tsx":["/component---src-templates-page-tsx-7ec48fbcec09fea3ec81.js"],"component---src-templates-post-tsx":["/component---src-templates-post-tsx-8a7ad919cf47b755089e.js"],"component---src-templates-posts-tsx":["/component---src-templates-posts-tsx-0e5d08b16e0a44a2a740.js"],"component---src-templates-tag-tsx":["/component---src-templates-tag-tsx-93f232bc138f470217e2.js"]};/*]]>*/</script><script src="/component---src-templates-post-tsx-8a7ad919cf47b755089e.js" async=""></script><script src="/6c18e55fdd71cb6af87612710cbe2c0cb61bdd56-92ca3db2def247415ce0.js" async=""></script><script src="/1bfc9850-693458f4bfc03c5b78c9.js" async=""></script><script src="/styles-85581d4dae49207538a9.js" async=""></script><script src="/app-a8b2574222d925c54afd.js" async=""></script><script src="/framework-737c3e16d462c41141c7.js" async=""></script><script src="/webpack-runtime-54fc4c4fe4b49e1e33de.js" async=""></script></body></html>

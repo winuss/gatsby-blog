@@ -1,0 +1,442 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><style data-href="/styles.b8221ec0ff064b96422d.css">code[class*=language-],pre[class*=language-]{color:#f8f8f2;background:none;text-shadow:0 1px rgba(0,0,0,.3);font-family:Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;font-size:1em;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:1em;margin:.5em 0;overflow:auto;border-radius:.3em}:not(pre)>code[class*=language-],pre[class*=language-]{background:#272822}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal}.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#708090}.token.punctuation{color:#f8f8f2}.token.namespace{opacity:.7}.token.constant,.token.deleted,.token.property,.token.symbol,.token.tag{color:#f92672}.token.boolean,.token.number{color:#ae81ff}.token.attr-name,.token.builtin,.token.char,.token.inserted,.token.selector,.token.string{color:#a6e22e}.language-css .token.string,.style .token.string,.token.entity,.token.operator,.token.url,.token.variable{color:#f8f8f2}.token.atrule,.token.attr-value,.token.class-name,.token.function{color:#e6db74}.token.keyword{color:#66d9ef}.token.important,.token.regex{color:#fd971f}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}</style><meta name="generator" content="Gatsby 2.21.0"/><title data-react-helmet="true">NLP - Bag of words, n-gram - DevTimes</title><meta data-react-helmet="true" name="description" content="자연어 처리(natural language processing)는 인간의 언어 현상을 기계적으로 분석해서 컴퓨터가 이해할 수 있는 형태로 만드는 자연 언어 이해 혹은 그러한 형태를 다시 인간이 이해할 수 있는 언어로 표현하는 제반 기술을 의미한다."/><meta data-react-helmet="true" name="og:title" content="NLP - Bag of words, n-gram - DevTimes"/><meta data-react-helmet="true" name="og:type" content="website"/><meta data-react-helmet="true" name="og:description" content="자연어 처리(natural language processing)는 인간의 언어 현상을 기계적으로 분석해서 컴퓨터가 이해할 수 있는 형태로 만드는 자연 언어 이해 혹은 그러한 형태를 다시 인간이 이해할 수 있는 언어로 표현하는 제반 기술을 의미한다."/><meta data-react-helmet="true" name="og:url" content="https://devtimes.com/nlp-basic"/><meta data-react-helmet="true" name="twitter:label1" content="Written by"/><meta data-react-helmet="true" name="twitter:data1" content="winuss"/><meta data-react-helmet="true" name="twitter:card" content="summary"/><meta data-react-helmet="true" name="twitter:creator" content="winuss"/><meta data-react-helmet="true" name="twitter:title" content="NLP - Bag of words, n-gram - DevTimes"/><meta data-react-helmet="true" name="twitter:description" content="자연어 처리(natural language processing)는 인간의 언어 현상을 기계적으로 분석해서 컴퓨터가 이해할 수 있는 형태로 만드는 자연 언어 이해 혹은 그러한 형태를 다시 인간이 이해할 수 있는 언어로 표현하는 제반 기술을 의미한다."/><meta data-react-helmet="true" name="keywords" content="angular, python, machine learning, deep learning, game, ML-DL, ML, NLP"/><meta data-react-helmet="true" name="article:published_time" content="2019-03-07T00:00:00.000Z"/><meta data-react-helmet="true" name="article:modified_time" content="2019-03-07T00:00:00.000Z"/><meta data-react-helmet="true" name="twitter:label2" content="Filed under"/><meta data-react-helmet="true" name="twitter:data2" content="ML-DL"/><meta data-react-helmet="true" name="og:image" content="https://devtimes.com//static/c7da038937e7bf3502929f7490bce973/cd86a/cover.png"/><meta data-react-helmet="true" name="twitter:image" content="https://devtimes.com//static/c7da038937e7bf3502929f7490bce973/cd86a/cover.png"/><script data-react-helmet="true" type="application/ld+json">
+        {
+          "@context": "https://schema.org/",
+          "@type": "Article",
+          "author": {
+            "@type": "Person",
+            "name": "winuss"
+          },
+          "keywords": "ML-DL, ML, NLP",
+          "headline": "NLP - Bag of words, n-gram - DevTimes",
+          "url": "https://devtimes.com/nlp-basic",
+          "datePublished": "2019-03-07T00:00:00.000Z",
+          "dateModified": "2019-03-07T00:00:00.000Z",
+          "image": {
+            "@type": "ImageObject",
+            "url": "https://devtimes.com//static/c7da038937e7bf3502929f7490bce973/cd86a/cover.png",
+            "width": "1000",
+            "height": "520"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "DevTimes"
+          },
+          "description": "자연어 처리(natural language processing)는 인간의 언어 현상을 기계적으로 분석해서 컴퓨터가 이해할 수 있는 형태로 만드는 자연 언어 이해 혹은 그러한 형태를 다시 인간이 이해할 수 있는 언어로 표현하는 제반 기술을 의미한다.",
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://devtimes.com"
+          }
+        }
+      </script><style data-styled="gOVsKi fbNACK dqKNZj JgKdn jnMIuM hqRQjv gWKWdg jMoVC fiqFtq llrxFq imSJbr JexoF iRWYuq bOhMpF eMHMJv fymZCI bdTsjL eHCGZv ixYMGE gDLYpk hKDtNq dWgKtp kWRivk rrUdK gmpFBk cCbMYU kStElJ frcJlw cNysWr htFYTF hdhrBK kcCrhV cKJeHJ evGsdC dkniVZ eysmNL" data-styled-version="4.4.1">
+/* sc-component-id: sc-global-2451124928 */
+html{box-sizing:border-box;background-color:#fafafa;} body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;line-height:1.9em;} *{box-sizing:border-box;} h1,h2,h3,h4,h5,h6{outline:none;} a{color:#000;-webkit-text-decoration:none;text-decoration:none;} .gatsby-highlight{font-size:0.85em;background-color:#282a36;border-radius:0.2em;padding:1em 1.4em;overflow:auto;width:100%;border:0.1em solid #c6c6c8;margin-bottom:6px;} div[data-language='text'].gatsby-highlight{background-color:#f0f0f0;border:0.03em solid #c6c6c8;margin-left:2px;margin-right:2px;width:calc(100% - 4px);} .gatsby-highlight pre.language-text code.language-text{color:#000;text-shadow:none;} .gatsby-highlight pre[class*='language-']{background-color:transparent;margin:0;padding:0;overflow:initial;float:left;min-width:100%;} .gatsby-highlight-code-line{background-color:#353631;display:block;margin-right:-1em;margin-left:-1em;padding-right:1em;padding-left:0.75em;} .remark-sticky-table{border-radius:2px;margin:32px 0px;} .remark-sticky-table-table{border-collapse:collapse;box-sizing:border-box;border:1px solid #bcbcbc;width:auto;} .remark-sticky-table-th{background-color:#f7f7f7;font-weight:600;text-align:left;border-bottom:1px solid #b8bcc9;} .remark-sticky-table-tbody:nth-child(odd){background-color:#fafafa;} .remark-sticky-table-th,.remark-sticky-table-td{padding:4px 12px;} table.dataframe{border-collapse:collapse;font-size:0.75em;margin-bottom:8px;margin-left:2px;margin-right:2px;line-height:2em;display:block;overflow-x:auto;white-space:nowrap;border:1px solid transparent;} table.dataframe > tbody{text-align:right;} .dataframe td,.dataframe th{border:1px solid #bcbcbc;padding:0px 12px;} .dataframe tr:nth-child(even){background-color:#f2f2f2;} .dataframe tr:hover{background-color:#d6d9e0;} .dataframe th{background-color:#f7f7f7;padding:0px 12px;}
+/* sc-component-id: style__NavContainer-sc-1nu4t1g-0 */
+.gOVsKi{z-index:1000;background-color:#20232a;position:-webkit-sticky;position:sticky;top:0;box-shadow:0 0 3px rgba(0,0,0,.03),0 3px 46px rgba(0,0,0,.07);}
+/* sc-component-id: style__Nav-sc-1nu4t1g-1 */
+.fbNACK{width:1260px;margin-left:auto;margin-right:auto;max-width:100%;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;position:relative;} @media (max-width:1300px){.fbNACK{padding:0 20px;}}
+/* sc-component-id: style__NavWrapper-sc-1nu4t1g-2 */
+.jnMIuM{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;width:100%;height:70px;white-space:nowrap;} @media (max-width:576px){.jnMIuM{width:90%;}}
+/* sc-component-id: style__NavMenu-sc-1nu4t1g-3 */
+.hqRQjv{-webkit-align-self:center;-ms-flex-item-align:center;align-self:center;list-style-type:none;margin:0;padding:0;} @media (max-width:576px){.hqRQjv{width:80%;overflow-x:auto;overflow-y:hidden;-webkit-mask-image:linear-gradient(to right,transparent,#000 25px,#000 90%,transparent);mask-image:linear-gradient(to right,transparent,#000 25px,#000 90%,transparent);}}.gWKWdg{-webkit-align-self:center;-ms-flex-item-align:center;align-self:center;list-style-type:none;margin:0;padding:0;}
+/* sc-component-id: style__NavMenuItem-sc-1nu4t1g-4 */
+.jMoVC{cursor:pointer;display:inline-block;border:0;background:transparent;outline:none;-webkit-text-decoration:none;text-decoration:none;}
+/* sc-component-id: style__NavLink-sc-1nu4t1g-5 */
+.fiqFtq{color:#fff;opacity:.8;padding:16px;-webkit-transition:opacity .5s;transition:opacity .5s;} .fiqFtq:hover{opacity:1;}
+/* sc-component-id: style__SearchContainer-sc-1nu4t1g-6 */
+.llrxFq{-webkit-align-self:center;-ms-flex-item-align:center;align-self:center;position:relative;}
+/* sc-component-id: style__ToggleSearchButton-sc-1nu4t1g-7 */
+.imSJbr{cursor:pointer;color:#fff;opacity:.8;background:none;outline:none;border:0;-webkit-transition:opacity .5s;transition:opacity .5s;} .imSJbr:hover{opacity:1;}
+/* sc-component-id: logo__LogoImage-nd9ri7-0 */
+.JgKdn{max-height:30px;width:30px;margin-right:45px;} @media (max-width:576px){.JgKdn{margin-right:15px;}}
+/* sc-component-id: logo__HomeLink-nd9ri7-1 */
+.dqKNZj{-webkit-align-self:center;-ms-flex-item-align:center;align-self:center;height:30px;}
+/* sc-component-id: style__StyledFooter-sc-1xdlo4d-0 */
+.hdhrBK{max-width:100%;padding:10px 0;z-index:700;position:relative;font-size:.9em;margin-top:50px;}
+/* sc-component-id: style__FooterContainer-sc-1xdlo4d-1 */
+.kcCrhV{width:1260px;margin-left:auto;margin-right:auto;max-width:100%;text-align:right;line-height:1.1em;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;} @media (max-width:1300px){.kcCrhV{padding:0 20px;}}
+/* sc-component-id: style__Copyright-sc-1xdlo4d-2 */
+.dkniVZ{margin:0;}
+/* sc-component-id: style__DesignBy-sc-1xdlo4d-3 */
+.eysmNL{margin:0;opacity:.8;font-size:.8em;} .eysmNL a{font-weight:bold;-webkit-text-decoration:none;text-decoration:none;color:#000;} .eysmNL a:hover{-webkit-text-decoration:underline;text-decoration:underline;}
+/* sc-component-id: style__StyledNav-sc-1xdlo4d-4 */
+.cKJeHJ ul{list-style-type:none;margin:0;padding:0;} .cKJeHJ li{display:inline-block;margin-right:25px;} .cKJeHJ li:last-child{margin-right:0;}
+/* sc-component-id: style__FooterMenuItem-sc-1xdlo4d-5 */
+.evGsdC{color:#000;-webkit-text-decoration:none;text-decoration:none;}
+/* sc-component-id: reading-progress__ReadingProgressBar-i1hf8v-0 */
+.JexoF{position:-webkit-sticky;position:sticky;height:5px;top:70px;background-color:#4bc822;z-index:500;}
+/* sc-component-id: social-channel-list__StyledSocialChannels-z1p8fq-0 */
+.cNysWr{list-style-type:none;margin:0;padding:0;}
+/* sc-component-id: social-channel-list__StyledSocialChannel-z1p8fq-1 */
+.htFYTF{display:inline-block;margin:0 10px;font-size:1.6em;opacity:.7;-webkit-transition:opacity .5s;transition:opacity .5s;} .htFYTF:hover{opacity:1;}
+/* sc-component-id: avatar__StyledAvatar-sc-1papyes-0 */
+.cCbMYU{max-width:70px;border-radius:100%;}
+/* sc-component-id: bio__StyledBio-j3ch0c-0 */
+.gmpFBk{margin:auto;text-align:center;width:100%;}
+/* sc-component-id: bio__AuthorDescription-j3ch0c-1 */
+.frcJlw{margin:10px 0 13px;} .frcJlw a{color:#000;-webkit-text-decoration:underline;text-decoration:underline;}
+/* sc-component-id: bio__AuthorName-j3ch0c-2 */
+.kStElJ{margin:10px;}
+/* sc-component-id: post__PostContainer-z0x2sj-0 */
+.iRWYuq{width:1260px;margin-left:auto;margin-right:auto;max-width:100%;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;padding:0 !important;} @media (max-width:1300px){.iRWYuq{padding:0 20px;}}
+/* sc-component-id: post__PostContent-z0x2sj-2 */
+.bOhMpF{margin-top:-5px;border-right:1px #e5eff5 solid;border-left:1px #e5eff5 solid;background-color:#fff;box-shadow:0 0 3px rgba(0,0,0,.03),0 3px 46px rgba(0,0,0,.1);z-index:10;width:1035px;max-width:100%;} .bOhMpF li > a,.bOhMpF p > a{color:#a4cbb8;border-bottom:2px #a4cbb8 solid;} .bOhMpF pre{margin:30px 0;} .bOhMpF blockquote{border-left:4px #a4cbb8 solid;background-color:#fafafa;margin:30px 0;padding:5px 20px;border-radius:.3em;} .bOhMpF h3::before,.bOhMpF h4::before,.bOhMpF h5::before,.bOhMpF h6::before{display:block;content:" ";height:90px;margin-top:-90px;visibility:hidden;} .bOhMpF h2{border-top:1px solid #ececec;margin-top:44px;padding-top:40px;line-height:1.2;} .bOhMpF code[class*="language-text"]{padding:2px;font-size:0.9em;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;} .bOhMpF p > .language-text{background-color:#f2e6e9;padding:0 4px 2px 4px;font-weight:600;color:#c7254e;text-align:center;} .bOhMpF p > img{max-width:100%;border-radius:.3em;margin:30px 0;} .bOhMpF hr{border-top:1px solid #ececec;border-bottom:0;margin-top:44px;margin-bottom:40px;} .bOhMpF .gatsby-resp-image-link{margin:30px 0;max-width:100%;} .bOhMpF .gatsby-resp-image-link .gatsby-resp-image-image{border-radius:.3em;}
+/* sc-component-id: post__PostHeader-z0x2sj-4 */
+.eMHMJv{padding:40px;} @media (max-width:576px){.eMHMJv{padding:20px;}}
+/* sc-component-id: post__FeaturedImage-z0x2sj-5 */
+.eHCGZv{border-radius:0;} @media (max-width:1300px){.eHCGZv{margin-left:-1px;margin-right:-1px;}}
+/* sc-component-id: post__StyledPost-z0x2sj-6 */
+.ixYMGE{padding:40px;} @media (max-width:576px){.ixYMGE{padding:20px;}}
+/* sc-component-id: post__PostMeta-z0x2sj-7 */
+.fymZCI{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;opacity:.8;font-size:.9em;}
+/* sc-component-id: post__PostTitle-z0x2sj-8 */
+.bdTsjL{margin:0;padding:0;}
+/* sc-component-id: post__PostFooter-z0x2sj-9 */
+.gDLYpk{background-color:#fafafa;font-size:.8em;color:#666;padding:40px;line-height:1em;} .gDLYpk p{margin:5px 0;}
+/* sc-component-id: post__FooterTagLink-z0x2sj-10 */
+.hKDtNq{color:#000 !important;-webkit-text-decoration:none;text-decoration:none;border-bottom:0 !important;}
+/* sc-component-id: post__PostAddition-z0x2sj-11 */
+.dWgKtp{background-color:#fff;border-top:1px #e5eff5 solid;border-bottom:1px #e5eff5 solid;z-index:700;position:relative;padding:40px;}
+/* sc-component-id: post__PostAdditionContent-z0x2sj-12 */
+.kWRivk{width:1260px;margin-left:auto;margin-right:auto;max-width:100%;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;} @media (max-width:1300px){.kWRivk{padding:0 20px;}}
+/* sc-component-id: post__BioWrapper-z0x2sj-13 */
+.rrUdK{width:50%;margin:auto;} @media (max-width:576px){.rrUdK{width:100%;}}</style><link rel="sitemap" type="application/xml" href="/sitemap.xml"/><link rel="icon" href="/favicon-32x32.png?v=53395c7476cdf4ad211173db66a6affd"/><link rel="manifest" href="/manifest.webmanifest"/><meta name="theme-color" content="#a4cbb8"/><link rel="apple-touch-icon" sizes="48x48" href="/icons/icon-48x48.png?v=53395c7476cdf4ad211173db66a6affd"/><link rel="apple-touch-icon" sizes="72x72" href="/icons/icon-72x72.png?v=53395c7476cdf4ad211173db66a6affd"/><link rel="apple-touch-icon" sizes="96x96" href="/icons/icon-96x96.png?v=53395c7476cdf4ad211173db66a6affd"/><link rel="apple-touch-icon" sizes="144x144" href="/icons/icon-144x144.png?v=53395c7476cdf4ad211173db66a6affd"/><link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192x192.png?v=53395c7476cdf4ad211173db66a6affd"/><link rel="apple-touch-icon" sizes="256x256" href="/icons/icon-256x256.png?v=53395c7476cdf4ad211173db66a6affd"/><link rel="apple-touch-icon" sizes="384x384" href="/icons/icon-384x384.png?v=53395c7476cdf4ad211173db66a6affd"/><link rel="apple-touch-icon" sizes="512x512" href="/icons/icon-512x512.png?v=53395c7476cdf4ad211173db66a6affd"/><link rel="preconnect dns-prefetch" href="https://www.google-analytics.com"/><style type="text/css">
+    .anchor.before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: translateX(-100%);
+      padding-right: 4px;
+    }
+    .anchor.after {
+      display: inline-block;
+      padding-left: 4px;
+    }
+    h1 .anchor svg,
+    h2 .anchor svg,
+    h3 .anchor svg,
+    h4 .anchor svg,
+    h5 .anchor svg,
+    h6 .anchor svg {
+      visibility: hidden;
+    }
+    h1:hover .anchor svg,
+    h2:hover .anchor svg,
+    h3:hover .anchor svg,
+    h4:hover .anchor svg,
+    h5:hover .anchor svg,
+    h6:hover .anchor svg,
+    h1 .anchor:focus svg,
+    h2 .anchor:focus svg,
+    h3 .anchor:focus svg,
+    h4 .anchor:focus svg,
+    h5 .anchor:focus svg,
+    h6 .anchor:focus svg {
+      visibility: visible;
+    }
+  </style><script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+      var hash = window.decodeURI(location.hash.replace('#', ''))
+      if (hash !== '') {
+        var element = document.getElementById(hash)
+        if (element) {
+          var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+          var clientTop = document.documentElement.clientTop || document.body.clientTop || 0
+          var offset = element.getBoundingClientRect().top + scrollTop - clientTop
+          // Wait for the browser to finish rendering before scrolling.
+          setTimeout((function() {
+            window.scrollTo(0, offset - 0)
+          }), 0)
+        }
+      }
+    })
+  </script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="/rss.xml"/><link as="script" rel="preload" href="/webpack-runtime-54fc4c4fe4b49e1e33de.js"/><link as="script" rel="preload" href="/framework-737c3e16d462c41141c7.js"/><link as="script" rel="preload" href="/app-a8b2574222d925c54afd.js"/><link as="script" rel="preload" href="/styles-85581d4dae49207538a9.js"/><link as="script" rel="preload" href="/1bfc9850-693458f4bfc03c5b78c9.js"/><link as="script" rel="preload" href="/6c18e55fdd71cb6af87612710cbe2c0cb61bdd56-92ca3db2def247415ce0.js"/><link as="script" rel="preload" href="/component---src-templates-post-tsx-8a7ad919cf47b755089e.js"/><link as="fetch" rel="preload" href="/page-data/nlp-basic/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div class="style__NavContainer-sc-1nu4t1g-0 gOVsKi"><div class="common__Container-sc-1wbwqlx-0 style__Nav-sc-1nu4t1g-1 fbNACK"><a class="logo__HomeLink-nd9ri7-1 dqKNZj" href="/"><div class="logo__LogoImage-nd9ri7-0 JgKdn gatsby-image-wrapper" style="position:relative;overflow:hidden;display:inline-block;width:30px;height:30px"><img aria-hidden="true" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsSAAALEgHS3X78AAAC1UlEQVQ4y4WVTUubQRCAo6bQQEvxH+SSQw4SCOI5kGsiQtNCCTQeepD+BgVbDzlqsRSFBGKgBJpDTzlEbfUaFTVQSyAQ7QdYvIgt0eT9mOnMZme7BqELk9ndd/bZmdnZTQAAAtxYk4zq/j2SJyQVklMSBxFd0t9IPpA8o/F9bTtKfcUQrToyIIM09b+i1TzPU2I3smuTehoIGMbIXbDX1hr2yCXt83otvjUv4DcWVP1ImK+0jU99j0RBKpUKzM/Pw+LiIqytrYHrujDgKBtPQ9/e8pImUhaMBX3fVwsTiQS7ryQcDuPNzY0A1Y94S3pWYEEaf9GTsiMQUO2QSqUMcGJiAnu93mBn3xeorPlJ6hG7+VhPuJoF2kO1MJ1OG2AsFjNASaG1ljTOMfD9XcBBChE7nQ4eHh7i0dERtlotddqO42C/32cBGrOhlMAnDrlj5Q+GSgOHW7vdxsnJSYzH4xiJRLBYLKqc6oj+sIeO5M1KtoGxoXjFrdlsmhSwLC0tKUN9+qoG3X8OAUgRszBsGHh8fHwLyOU0DPxhe4j/aWdnZzgzM4PT09OYTCaxWq3aIXcZ+FFuxuXlJWxtbcHOzg7W63U8Pz/Hk5MT3NzcxO3tbdzf38erqyskG/W9VqsBHZo5FPLpMx/KrAAZxKU5NjamwimVSpjNZk14fBB7e3t2yEA5ROscXrKHDyn+U57Y3d312DAUCvEThOVyGXO5nAFMTU3hwcEBf8dgMKhs8vm8r3P4i4Dj6rZcX18/50kKy+VdZfdCoQCZTMYAo9EoNhoNsG0WFhaUd8SYk6s3oi/2Oy7WlZUVlx4Bb3l5mQsZaBOgPqyurgIfwMXFBWxsbHA6/PX1dYfzTK1sHgfzQmio/XzpZMPQVfMkZ7qVZb04F6D7aaDdbjdH+fhu3xauMRa535IzE6bNsP4CRsRb6j+g/gvSddK/LXiXS4NPk4bjw+u4rv8C5lC4pDZ5rvwAAAAASUVORK5CYII=" alt="DevTimes" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:1;transition-delay:500ms"/><noscript><picture><source srcset="/static/c9a164741da1db2837cd1e6d841a84fb/91664/main-logo.png 1x,
+/static/c9a164741da1db2837cd1e6d841a84fb/ad39b/main-logo.png 1.5x,
+/static/c9a164741da1db2837cd1e6d841a84fb/183c2/main-logo.png 2x" /><img loading="lazy" width="30" height="30" srcset="/static/c9a164741da1db2837cd1e6d841a84fb/91664/main-logo.png 1x,
+/static/c9a164741da1db2837cd1e6d841a84fb/ad39b/main-logo.png 1.5x,
+/static/c9a164741da1db2837cd1e6d841a84fb/183c2/main-logo.png 2x" src="/static/c9a164741da1db2837cd1e6d841a84fb/91664/main-logo.png" alt="DevTimes" style="position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center"/></picture></noscript></div></a><div class="style__NavWrapper-sc-1nu4t1g-2 jnMIuM"><ul class="style__NavMenu-sc-1nu4t1g-3 hqRQjv"><li class="style__NavMenuItem-sc-1nu4t1g-4 jMoVC"><a class="style__NavLink-sc-1nu4t1g-5 fiqFtq" href="/tag/web">Web</a></li><li class="style__NavMenuItem-sc-1nu4t1g-4 jMoVC"><a class="style__NavLink-sc-1nu4t1g-5 fiqFtq" href="/tag/python">Python</a></li><li class="style__NavMenuItem-sc-1nu4t1g-4 jMoVC"><a class="style__NavLink-sc-1nu4t1g-5 fiqFtq" href="/tag/ml-dl">ML-DL</a></li><li class="style__NavMenuItem-sc-1nu4t1g-4 jMoVC"><a class="style__NavLink-sc-1nu4t1g-5 fiqFtq" href="/tag/datalake">DataLake</a></li><li class="style__NavMenuItem-sc-1nu4t1g-4 jMoVC"><a class="style__NavLink-sc-1nu4t1g-5 fiqFtq" href="/tag/statistics">Statistics</a></li><li class="style__NavMenuItem-sc-1nu4t1g-4 jMoVC"><a class="style__NavLink-sc-1nu4t1g-5 fiqFtq" href="/tag/tip">Tips</a></li><li class="style__NavMenuItem-sc-1nu4t1g-4 jMoVC"><a class="style__NavLink-sc-1nu4t1g-5 fiqFtq" href="/page">About</a></li></ul><div class="style__SearchContainer-sc-1nu4t1g-6 llrxFq"><ul class="style__NavMenu-sc-1nu4t1g-3 gWKWdg"><li class="style__NavMenuItem-sc-1nu4t1g-4 jMoVC"><button role="button" aria-label="Toggle search" class="style__ToggleSearchButton-sc-1nu4t1g-7 imSJbr"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"></path></svg></button></li></ul></div></div></div></div><main><div style="width:0%" color="#4bc822" class="reading-progress__ReadingProgressBar-i1hf8v-0 JexoF"></div><div class="common__Container-sc-1wbwqlx-0 post__PostContainer-z0x2sj-0 iRWYuq"><div class="post__PostContent-z0x2sj-2 bOhMpF"><article class="post"><header class="post__PostHeader-z0x2sj-4 eMHMJv"><section class="post__PostMeta-z0x2sj-7 fymZCI"><a href="/tag/ml-dl">ML-DL</a><time dateTime="2019-03-07T00:00:00.000Z">07 March, 2019</time></section><h1 class="post__PostTitle-z0x2sj-8 bdTsjL">NLP - Bag of words, n-gram</h1></header><div class="post__FeaturedImage-z0x2sj-5 eHCGZv gatsby-image-wrapper" style="position:relative;overflow:hidden"><div aria-hidden="true" style="width:100%;padding-bottom:46.5%"></div><img aria-hidden="true" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAYAAAAywQxIAAAACXBIWXMAAAsSAAALEgHS3X78AAACXUlEQVQoz3WSXUiTURjHd9NNN0EXCdVNiRVkN1maBeFdYfgRWKaSkuaFFdVFriyJCow00+zDb9O+NCIrK1s5K8TVxK/ptBHbIp2Uqb3bnNvbNrf9Or4SdNMD/+dwOOf5nefjqBA2bxnBXZaPp+oCnsrzzN08h7+pGGlqmujsItYkqVmXcpaw3Sd5pO3j19QkbS/a0bzpUPS2Q4vT6VxAoVpwclsjUmIEzrxdODKisWftQM6MYWLIQFjCacKT1WzPucyS2Fzq2nTodd2UllVQV3+Hquo6rpaWY7FYF4Eh4byv7iPtXI7raDzukhPMXjmOJyuWydFhVuxRsyzuCOF7z6CKzKC2rRtDfx81tQ3U1zcqa8m/wAXnm/iKu7EYz7MGvLrX+IrykGsu4ff7ed5l4J5GT3mLluT8W9h+2pFmZqhtaOLh41a6urr5IOSam1sEFhh7yBzs5pBpgNzRXvYPfaK5p1P0wa1cCPhkZqUZvB4XkiTx136Yv+C4dopAZSH+24XI5fm4hVQrRblr2x8QqWlmo6aFpa21HBZQBRYM8m18nEHDEMaRUcwWC/Mi64U2MW7GkbwBe9oWpJRNOA5uw560HtUqAYzqfMI+fQepei2rxT67970CdMsyn00mTELDRiP9/QM47HblzC9+hiMtilnRd8eBzTjFIO0JEagSP2qIefeUBJ1GAYe9vMt1s1EJkr2/sdkmGBsbU2S1WrGN2xazn/6OqyAdR/pWnDlxuNSpzB6LF1MOhXD6fQRDQSoE6IZ4Wfmbotz/WSgQWLwzZsZTfZGQz0vIKxMSMX8AHoc67cKzVEIAAAAASUVORK5CYII=" alt="" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:1;transition-delay:500ms"/><noscript><picture><source srcset="/static/c7da038937e7bf3502929f7490bce973/dc47e/cover.png 200w,
+/static/c7da038937e7bf3502929f7490bce973/9f2d5/cover.png 400w,
+/static/c7da038937e7bf3502929f7490bce973/cd86a/cover.png 768w" sizes="(max-width: 768px) 100vw, 768px" /><img loading="lazy" sizes="(max-width: 768px) 100vw, 768px" srcset="/static/c7da038937e7bf3502929f7490bce973/dc47e/cover.png 200w,
+/static/c7da038937e7bf3502929f7490bce973/9f2d5/cover.png 400w,
+/static/c7da038937e7bf3502929f7490bce973/cd86a/cover.png 768w" src="/static/c7da038937e7bf3502929f7490bce973/cd86a/cover.png" alt="" style="position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center"/></picture></noscript></div><section class="post__StyledPost-z0x2sj-6 ixYMGE post"><p>자연어 처리(natural language processing)는 인간의 언어 현상을 기계적으로 분석해서 컴퓨터가 이해할 수 있는 형태로 만드는 자연 언어 이해 혹은 그러한 형태를 다시 인간이 이해할 수 있는 언어로 표현하는 제반 기술을 의미한다. (위키피디아)</p>
+<p>간단하게 말하면, 자연어의 의미를 분석하여 컴퓨터가 처리할 수 있도록 하는 일 이라고 생각하면 될 것 같다.</p>
+<h1 id="텍스트" style="position:relative;"><a href="#%ED%85%8D%EC%8A%A4%ED%8A%B8" aria-label="텍스트 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>텍스트</h1>
+<p>기계학습 모델을 만들기 위해서는 데이터를 모델에 맞게 변형시켜 주어야 한다. 알고리즘에서 텍스트를 그대로 받아들일수 없기 때문에 받아들일 수 있는 어떤 숫자값으로 변환을 해주어야 한다. 하지만 텍스트는 일단 언어가 제각기 다르기 떄문에 텍스트 자체를 어떻게 숫자화 할지 부터 시작해야한다.</p>
+<p>그럼 어떤 방법들이 있는지 살펴보자.</p>
+<h1 id="bowbag-of-words" style="position:relative;"><a href="#bowbag-of-words" aria-label="bowbag of words permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>BOW(bag of words)</h1>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 417px;"
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/0037be387a166505e7fa603e1bb1e026/f27fb/bow-01.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 64.99999999999999%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAIAAAAmMtkJAAAACXBIWXMAAA7DAAAOwwHHb6hkAAABtUlEQVQoz42SO27CQBCGkTgGRTgLR+Ak1ByAC1AjUSJ6ilhUUIAgJMLEPNYyMY5f6wdgGxswr/yOHUQQBVOsdsf+Zv79Z1OXJ+J8PmP1fX/9G0EQxPnU5bkAr6oqyDAMFUU5nU4JfP6Lhw1d15VlGasgCM1mk2EYQshms/nX+SGPOB6PPM+zLNtut8FrmqbI8uFwSGBUXSwWjuPcqkAAi8tRSsFDM9QSMpVkxfU87CMY9aCkWCzqun5Ve2fVfr9fWvZ2u6VU3+522HieF8GdTofjuGq12mq1cFytVrAEQKPRgEhk0FMURU3TbdMcjyfh4RglHSeC8/l8JpPJZl8KhQKOlmWVSqVcLpdOp2u1GjK2bWM8ruNi76zXs+lUEObwLILr9XqlUimXywzzimM8BrjQ7XZjY9A5tsaguqoosGA+nyed0Qo6ISz+CfCd7Zgt7hJdWNeXyyUyEAI7k1EB8/3gFkCJq9uxc6ZpQb9BqaJq+BSNKgh8SVqwQxaeUWrsw/DhU7FNo9fvj9gRO/zo9d4k6Rv5lOe53OeIEAyS58ZjjOEhbFBtMHj/EkW8ttlkMiMEdvwAOXPOwW+77AEAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="nlp-1"
+        title="nlp-1"
+        src="/static/0037be387a166505e7fa603e1bb1e026/f27fb/bow-01.png"
+        srcset="/static/0037be387a166505e7fa603e1bb1e026/5a46d/bow-01.png 300w,
+/static/0037be387a166505e7fa603e1bb1e026/f27fb/bow-01.png 417w"
+        sizes="(max-width: 417px) 100vw, 417px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span></p>
+<p>BOW(Bag of words)는 텍스트 데이터를 표현하는 방법 중 하나로 가장 간단하지만 효과적이라 기계학습에서 널리 쓰이는 방법이다. BOW는 텍스트의 구조와 상관없이 단어들을 담는 가방(Bag)으로 생각하면 된다. </p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">The game is fun
+The game is interesting
+The game is not funny</code></pre></div>
+<p>세 문장에서 나타나는 단아들을 모으고 세 문장을 각각 binary vector로 표현하는 것이 BOW이다. 각각의 문장을 binary vector로 표현하면 다음과 같다.</p>
+
+      <div class="remark-sticky-table"> 
+      <div class="remark-sticky-table-wrapper" style="width: 100%; height: 100%; overflow: auto;">
+          <table class="remark-sticky-table-table">
+      
+            
+               <thead class="remark-sticky-table-thead">
+                     <tr class="remark-sticky-table-tr">
+                     <th class="remark-sticky-table-th" style="position: sticky; display: table-cell; width: auto; min-width: auto; white-space: nowrap; top: 0px; z-index: 2;">the</th><th class="remark-sticky-table-th" style="position: sticky; display: table-cell; width: auto; min-width: auto; white-space: nowrap; top: 0px; z-index: 2;">game</th><th class="remark-sticky-table-th" style="position: sticky; display: table-cell; width: auto; min-width: auto; white-space: nowrap; top: 0px; z-index: 2;">is</th><th class="remark-sticky-table-th" style="position: sticky; display: table-cell; width: auto; min-width: auto; white-space: nowrap; top: 0px; z-index: 2;">fun</th><th class="remark-sticky-table-th" style="position: sticky; display: table-cell; width: auto; min-width: auto; white-space: nowrap; top: 0px; z-index: 2;">interesting</th><th class="remark-sticky-table-th" style="position: sticky; display: table-cell; width: auto; min-width: auto; white-space: nowrap; top: 0px; z-index: 2;">not</th><th class="remark-sticky-table-th" style="position: sticky; display: table-cell; width: auto; min-width: auto; white-space: nowrap; top: 0px; z-index: 2;">funny</th>
+                        </tr> 
+                        </thead><tbody class="remark-sticky-table-tbody">
+                     <tr class="remark-sticky-table-tr">
+                          <td class="remark-sticky-table-td">1</td><td class="remark-sticky-table-td">1</td><td class="remark-sticky-table-td">1</td><td class="remark-sticky-table-td">1</td><td class="remark-sticky-table-td">0</td><td class="remark-sticky-table-td">0</td><td class="remark-sticky-table-td">0</td>
+                         </tr>
+                         </tbody>
+               
+        
+          </table>
+      </div>
+    </div>
+  
+<blockquote>
+<p>The game is fun : <strong>[1, 1, 1, 1, 0, 0, 0]</strong></p>
+</blockquote>
+
+      <div class="remark-sticky-table"> 
+      <div class="remark-sticky-table-wrapper" style="width: 100%; height: 100%; overflow: auto;">
+          <table class="remark-sticky-table-table">
+      
+            
+               <thead class="remark-sticky-table-thead">
+                     <tr class="remark-sticky-table-tr">
+                     <th class="remark-sticky-table-th" style="position: sticky; display: table-cell; width: auto; min-width: auto; white-space: nowrap; top: 0px; z-index: 2;">the</th><th class="remark-sticky-table-th" style="position: sticky; display: table-cell; width: auto; min-width: auto; white-space: nowrap; top: 0px; z-index: 2;">game</th><th class="remark-sticky-table-th" style="position: sticky; display: table-cell; width: auto; min-width: auto; white-space: nowrap; top: 0px; z-index: 2;">is</th><th class="remark-sticky-table-th" style="position: sticky; display: table-cell; width: auto; min-width: auto; white-space: nowrap; top: 0px; z-index: 2;">fun</th><th class="remark-sticky-table-th" style="position: sticky; display: table-cell; width: auto; min-width: auto; white-space: nowrap; top: 0px; z-index: 2;">interesting</th><th class="remark-sticky-table-th" style="position: sticky; display: table-cell; width: auto; min-width: auto; white-space: nowrap; top: 0px; z-index: 2;">not</th><th class="remark-sticky-table-th" style="position: sticky; display: table-cell; width: auto; min-width: auto; white-space: nowrap; top: 0px; z-index: 2;">funny</th>
+                        </tr> 
+                        </thead><tbody class="remark-sticky-table-tbody">
+                     <tr class="remark-sticky-table-tr">
+                          <td class="remark-sticky-table-td">1</td><td class="remark-sticky-table-td">1</td><td class="remark-sticky-table-td">1</td><td class="remark-sticky-table-td">0</td><td class="remark-sticky-table-td">1</td><td class="remark-sticky-table-td">0</td><td class="remark-sticky-table-td">0</td>
+                         </tr>
+                         </tbody>
+               
+        
+          </table>
+      </div>
+    </div>
+  
+<blockquote>
+<p>The game is interesting : <strong>[1, 1, 1, 0, 1, 0, 0]</strong></p>
+</blockquote>
+
+      <div class="remark-sticky-table"> 
+      <div class="remark-sticky-table-wrapper" style="width: 100%; height: 100%; overflow: auto;">
+          <table class="remark-sticky-table-table">
+      
+            
+               <thead class="remark-sticky-table-thead">
+                     <tr class="remark-sticky-table-tr">
+                     <th class="remark-sticky-table-th" style="position: sticky; display: table-cell; width: auto; min-width: auto; white-space: nowrap; top: 0px; z-index: 2;">the</th><th class="remark-sticky-table-th" style="position: sticky; display: table-cell; width: auto; min-width: auto; white-space: nowrap; top: 0px; z-index: 2;">game</th><th class="remark-sticky-table-th" style="position: sticky; display: table-cell; width: auto; min-width: auto; white-space: nowrap; top: 0px; z-index: 2;">is</th><th class="remark-sticky-table-th" style="position: sticky; display: table-cell; width: auto; min-width: auto; white-space: nowrap; top: 0px; z-index: 2;">fun</th><th class="remark-sticky-table-th" style="position: sticky; display: table-cell; width: auto; min-width: auto; white-space: nowrap; top: 0px; z-index: 2;">interesting</th><th class="remark-sticky-table-th" style="position: sticky; display: table-cell; width: auto; min-width: auto; white-space: nowrap; top: 0px; z-index: 2;">not</th><th class="remark-sticky-table-th" style="position: sticky; display: table-cell; width: auto; min-width: auto; white-space: nowrap; top: 0px; z-index: 2;">funny</th>
+                        </tr> 
+                        </thead><tbody class="remark-sticky-table-tbody">
+                     <tr class="remark-sticky-table-tr">
+                          <td class="remark-sticky-table-td">1</td><td class="remark-sticky-table-td">1</td><td class="remark-sticky-table-td">1</td><td class="remark-sticky-table-td">0</td><td class="remark-sticky-table-td">0</td><td class="remark-sticky-table-td">1</td><td class="remark-sticky-table-td">1</td>
+                         </tr>
+                         </tbody>
+               
+        
+          </table>
+      </div>
+    </div>
+  
+<blockquote>
+<p>The game is not funny : <strong>[1, 1, 1, 0, 0, 1, 1]</strong></p>
+</blockquote>
+<p>만약 이 가방에 들어있지 않는 단어가 포함된 문장이 있어도 BOW는 그 없는 단어는 제외하고 있는 단어만을 가지고 벡터로 만들 것이다.</p>
+<p>그럼 이 수치로 표현된 값을 어떻게 활용할까?</p>
+<p>머신러닝 모델에 입력값으로 사용할 수도 있디만 단순히 계산만으로 문장간의 유사도(Sentence similarity)를 알 수도 있다.</p>
+<p><code class="language-text">the game is fun</code> 과 <code class="language-text">The game is interesting</code> 문장의 유사도를 구해보자.</p>
+
+      <div class="remark-sticky-table"> 
+      <div class="remark-sticky-table-wrapper" style="width: 100%; height: 100%; overflow: auto;">
+          <table class="remark-sticky-table-table">
+      
+            
+               <thead class="remark-sticky-table-thead">
+                     <tr class="remark-sticky-table-tr">
+                     <th class="remark-sticky-table-th" style="position: sticky; display: table-cell; width: auto; min-width: auto; white-space: nowrap; top: 0px; z-index: 2;">문장</th><th class="remark-sticky-table-th" style="position: sticky; display: table-cell; width: auto; min-width: auto; white-space: nowrap; top: 0px; z-index: 2;">벡터값</th>
+                        </tr> 
+                        </thead><tbody class="remark-sticky-table-tbody">
+                     <tr class="remark-sticky-table-tr">
+                          <td class="remark-sticky-table-td">the game is fun</td><td class="remark-sticky-table-td"><code class="language-text">1</code>, <code class="language-text">1</code>, <code class="language-text">1</code>, 1, 0, 0, 0</td>
+                         </tr>
+                         </tbody><tbody class="remark-sticky-table-tbody">
+                     <tr class="remark-sticky-table-tr">
+                          <td class="remark-sticky-table-td">The game is interesting</td><td class="remark-sticky-table-td"><code class="language-text">1</code>, <code class="language-text">1</code>, <code class="language-text">1</code>, 0, 1, 0, 0</td>
+                         </tr>
+                         </tbody>
+               
+        
+          </table>
+      </div>
+    </div>
+  
+<blockquote>
+<p><strong>유사도 = (1x1) + (1x1) + (1x1) + (1x0) + (0x1) + (0x0) + (0x0) = 3</strong></p>
+</blockquote>
+<p>또한 수치로 표한된 값을 이용해 기계학습 모델에 입력값으로 사용할 수가 있다. 문장에 대한 감성분석을 해주는 모델이 있다면, 벡터화된 값을 모델에 입력값으로 사용할 수 있고 모델은 우리가 원하는 <code class="language-text">Good</code> 또는 <code class="language-text">Bad</code>의 결과를 출력해 줄 수 있다.</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1200px;"
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/93cabce3b645984aeb6dc3ae405ecaa7/a3767/bow-ml.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 28.666666666666668%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAGCAYAAADDl76dAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABR0lEQVQY02WRvU7DMBSF81R9AuBRYGIAnqMSS1UGpk6UCcSCoBXQQieEChJTpaZpotKQxEnUpI3/cvA1Eghh6/PPsX1077VTVRU451BKQUoJIYSFNILWpHNeYWPuAuae4Oj2XCjJzV6CPBT/nh2jIM9zzGYzBEGAKIosq9XK6mmaYrFYYMMFUGvcPn+i2Z1g++gJzfMJBuMEpeKYliFEreBkWYYkSRCGIZbLpSWOY2tIZilLEOVrJC83qActdO4ZGrt97B+P0di7w1k/MCFpzNcJuJZwPM8DQSa+78N1XWtalqU1zFIGVnCwcQ/1sI3TXoytgwcctt5MlI/oXM9tGVwWQGgTIaVJRowxC6VHKRdFYSMnKAsuFLSp8/A1Qvtiih1jdnI5xeidAUICnm9KUsOpzUAforX+A+n/wG+7Gn38rOnMvLD9C1QJuruXBnsGAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="bow"
+        title="bow"
+        src="/static/93cabce3b645984aeb6dc3ae405ecaa7/c1b63/bow-ml.png"
+        srcset="/static/93cabce3b645984aeb6dc3ae405ecaa7/5a46d/bow-ml.png 300w,
+/static/93cabce3b645984aeb6dc3ae405ecaa7/0a47e/bow-ml.png 600w,
+/static/93cabce3b645984aeb6dc3ae405ecaa7/c1b63/bow-ml.png 1200w,
+/static/93cabce3b645984aeb6dc3ae405ecaa7/a3767/bow-ml.png 1210w"
+        sizes="(max-width: 1200px) 100vw, 1200px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span></p>
+<p>하지만 BOW는 몇 가지 단점이 있다.</p>
+<ul>
+<li><strong>Sparsity</strong><br>
+실제 사전에는 100만개가 넘는 단어들이 있을 수도 있다. 그렇게 되면 벡터의 차원이 100만개가 넘어가기 때문에 실제 문장하나를 표현할 때 대부분의 값이 0이고 그외의 값들은 상당히 적을 것이다. 결국 학습량이 많아지고 컴퓨터 자원도 상당히 많이 사용하게 된다.<br>
+(the game is fun [1,1,1,1,0,0,0,0,0,0,0,,,,,,0,0,0,0,0])</li>
+<li><strong>빈번한 단어는 더 많은 힘을 가진다.</strong><br>
+많이 출현한 단어는 힘이 세진다. 만약 의미없는 단어들이 많이 사용 되었다면 우리가 원하는 결과를 얻기는 어려울 것이다.</li>
+<li><strong>Out of vocabulary</strong><br>
+오타, 줄임말 등의 단어들이 포함되면 굉장히 난감해진다.^^;</li>
+<li><strong>단어의 순서가 무시됨</strong><br>
+단어의 출현 횟수만 셀수 있고 단어의 순서는 완전히 무시 된다. 단어의 순서가 무시된다는 것은 다른 의미를 가진 문장이 동일한 결과로 해석될 수 있다는 것이다.</li>
+</ul>
+<p>전혀 반대의 의미를 가진 두 문장을 보자.</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 786px;"
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/1f557bdb0147a1cfe1663bb193df0d0c/321ea/bow-02.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 36%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAYAAAAIy204AAAACXBIWXMAABcRAAAXEQHKJvM/AAABzElEQVQoz11STWsTURSdpCbZCAU32SnUrV1JLXRj7cqduPEH+A8M2EJXIuiyX6lQssgqVbHaoURjQ2koZCMSQiSaZNppmbZpyWRMJpk3eZPJfNzeWwspHni8++5599z7Dk84Sy9L1Y2F/fq3d78PNpeq+2L85Ggrrv/dSTwWEMCaNwFAYIyFTjU2Srn1/NELsXAG7/eqRmqv1k1mS1Zyu8Q/5mUuVBKxMeXDq9tPxqOTmdTac3A4WHoTWFdXObfOwfd/aJoWRNEYrm7PNOVWx9BM24Mv6e3d6L3pB8tf/9yJrYh33376OSZcw62Hj2ZSrMdBOT7xSqVfoOs66vnnhmGEWq3WGxSEWq0GlUoFTMZgbvbld+F/GOLrQCH7+QbFWlOdUlUVDmXZL5fLDgqB4zgKca7rzrfbbZAkyS4Wizb8wwJx2XwhlNiRAkvpcuBSFIng1X6fcw71et1Hz1zP8wCXHIlEnuZyuQ1SaDQaLjYaUGya5irVWZYVxJrhlJSgfTAYTPT7fVAUxcfLLsXIHYTD4WeZTEYkEWpm27ZLcafTiVMd5kbQmqHgtQkn6CJOcClIT0Qfj6+4eeLw3MPpe+QvNlskDv0doZ9AuABW82/6AALCAgAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="nlp-1"
+        title="nlp-1"
+        src="/static/1f557bdb0147a1cfe1663bb193df0d0c/321ea/bow-02.png"
+        srcset="/static/1f557bdb0147a1cfe1663bb193df0d0c/5a46d/bow-02.png 300w,
+/static/1f557bdb0147a1cfe1663bb193df0d0c/0a47e/bow-02.png 600w,
+/static/1f557bdb0147a1cfe1663bb193df0d0c/321ea/bow-02.png 786w"
+        sizes="(max-width: 786px) 100vw, 786px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span></p>
+<p>두 문장은 의미가 전혀 반대이지만 BOW를 이용해 처리한다면, 동일한 결과를 반환하게 될 것이다.
+이런 단점을 보완하기 위해 좀더 개선된 n-gram이란 것이 있다. BOW는 하나의 토큰을 사용하지만 n-gram은 n개의 토큰을 사용하여 어느정도 단어의 순서를 반영 결과에 반영해 준다.</p>
+<h1 id="n-gram" style="position:relative;"><a href="#n-gram" aria-label="n gram permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>N-Gram</h1>
+<p>BOW를 조금 더 개선하여 단어 하나만을 보는 것이 아니라 주변의 n개 단어를 뭉쳐서 보는 것이다. 뭉쳐진 n개의 단어들을 gram이라고 한다.
+단어 개수에 따라 부르는 명칭이 다른데 2개의 단어를 묶어서 사용하면 <code class="language-text">bi-gram</code>, 3개면 <code class="language-text">tri-gram</code>이라고 부른다.
+(1-gram은 uni-gram이라고 한다.) </p>
+<p>다음 문장을 bi-gram를 사용하여 처리 한다면,</p>
+<p><strong>"home run"</strong> 과 <strong>"run home"</strong></p>
+<blockquote>
+<p>bag of words : [home, run] , [run, home]<br>
+bi-gram : [home run], [run home]</p>
+</blockquote>
+<p>BOW를 사용한다면 두 문장은 같은 백터의 값을 갖게 되겠지만 bi-gram을 사용하면 2개를 뭉쳐서 사용하므로 어느정도의 순서가 보장되는 효과를 볼수 있게 되어 다른 결과 값을 가지게 될 것이다.</p>
+<p>이런 특성을 이용해 n-gram은 다음 단어 예측하거나 어떤 단어를 입력 했을때 오타를 발견하고 다른 단어를 추천해 주는데 활용할 수 있다.</p>
+<h1 id="텍스트-전처리-preprocessing" style="position:relative;"><a href="#%ED%85%8D%EC%8A%A4%ED%8A%B8-%EC%A0%84%EC%B2%98%EB%A6%AC-preprocessing" aria-label="텍스트 전처리 preprocessing permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>텍스트 전처리 (Preprocessing)</h1>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1010px;"
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/6991a0789807fb1e23a545e938b335a9/5b587/process.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 29.000000000000004%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAGCAYAAADDl76dAAAACXBIWXMAABcRAAAXEQHKJvM/AAABj0lEQVQY01VQPUhCURh9IC1ZSdAQQU1NTS1OrY2tQWkOJdFoQ4M2CYFQS2NGNEgghqZoTpL4r6GLk5ri7/Mpoj5/BvG9p93OtYL64Lz7cd4533fuZTqdDp/P57nhcCjmcrn9fr9/Nx6PRUEQWJyTQqFwCs0leInneXYwGIi1Wu2W47id0WgkNptNrtVq9dvt9rter19kICR2u/0TQuL1eq9gdhEUFkzo6ff7bzKZzGOpVCLJZHLS7XZJKpXyuFyuI0mSaD+lM+AvGQwGBWMymYhSqRRDoRCxWq0P5XL5lQrS6fQYKemy+3A4/IJFJBqNCo1Gg0QikTez2XxOB1YqFaFer5NisfgB/xKDqNQ8RRFcWYtkz+S7JPrJZrMXvV7vmvYYNuNYln2qVqu7P9wsIYaWjUajgvF4PBqkUAcCARX69WAwqHQ4HFqbzaZ2u93HTqdzE/+2YrHYocViOYvH4yqfz7edSCRW8EQnuPoBoIF3T6fTyRiUHFhm/tcvJ//DrQJrwAYg+6ObBxaAOUp8AbaJPCe4qq24AAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="nlp-1"
+        title="nlp-1"
+        src="/static/6991a0789807fb1e23a545e938b335a9/5b587/process.png"
+        srcset="/static/6991a0789807fb1e23a545e938b335a9/5a46d/process.png 300w,
+/static/6991a0789807fb1e23a545e938b335a9/0a47e/process.png 600w,
+/static/6991a0789807fb1e23a545e938b335a9/5b587/process.png 1010w"
+        sizes="(max-width: 1010px) 100vw, 1010px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span></p>
+<p>BOW나 n-gram이나 모두 많이 쓰이지만 가장 중요한 것은 단어의 전처리가 확실해야 한다는 것이다. 이 글에서는 설명을 위해 간단한 문장만을 사용하여 크게 신경을 쓸 필요는 없겠지만, 자연어 처리를 하다보면 다양한 케이스의 문장들을 접하게 될 것이며 이런 문장들을 토큰화하고 불필요한 단어들은 제거하고 같은 의미의 단어들은 치환하는 등의 고단한 작업 들을 해야 할 것이다. 하지만 다행인 것은 이런 전처리 작업들을 편하게 할 수 있도록 도와주는 좋은 라이브러리들이 있다.</p>
+<p>다음 포스팅에서는 전처리에 대해 자세히 살펴보도록 하겠다...</p></section><hr/><div></div><footer class="post__PostFooter-z0x2sj-9 gDLYpk"><p>Published under <span><a class="post__FooterTagLink-z0x2sj-10 hKDtNq" href="/tag/ml-dl">ML-DL</a>, </span><span><a class="post__FooterTagLink-z0x2sj-10 hKDtNq" href="/tag/ml">ML</a>, </span><span><a class="post__FooterTagLink-z0x2sj-10 hKDtNq" href="/tag/nlp">NLP</a></span> on <time dateTime="2019-03-07T00:00:00.000Z">07 March, 2019</time>.</p></footer></article></div></div><section class="post__PostAddition-z0x2sj-11 dWgKtp"><div class="common__Container-sc-1wbwqlx-0 post__PostAdditionContent-z0x2sj-12 kWRivk"><div class="post__BioWrapper-z0x2sj-13 rrUdK"><section class="bio__StyledBio-j3ch0c-0 gmpFBk"><div class="avatar__StyledAvatar-sc-1papyes-0 cCbMYU gatsby-image-wrapper" style="position:relative;overflow:hidden;display:inline-block;width:70px;height:70px"><img aria-hidden="true" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsSAAALEgHS3X78AAAEfUlEQVQ4y1WUbWxTVRjHL4YPLL4wYtwYg9FtdKwY5EUjwwDb4lxAEA1kycxUTFA0mChiNFPDNMNgVEwQiEJA3GQbrBvrqFBwBUb3ytp1YwO2MbqXru3t69Z262b0y897i53thyf3nHPv+d3/ef7PcwSXU8QpOpCfbpczHPLYYbcT8I9jc4h03e7F3NVNIOAnGJjAFfV9ZH+EIUSDIiE67ExPT9He1s7LW18n69lcslZnsWf3+zTob+D3T4Q3u5z/AyNPIRrkcT/8ICgpOVtWwZqMNSQ9lsjiBUkoFylIS05BmZZJ6cHvmJkJ4ZH2RGAxQI/bFQ55MTQVRHvpKqqUTFTJaSieWsrShBSSn0wmMzWDjNRlJMQnsG/f57g9njA0AgwfWQZ5Pe6wQp/XjdVmZ/uWHbz2Yg5PK5aTnqhAuTCNdEmhYlEKqckKUhIXEzc3nl/LzjE1GQinKJI6IaJOljsj5a229iIvLF/Lm1u3s161lizValRJy1EmKlmVtgKVYhkrlZnME+LYVbSbUGgyDIykTYg+7sx0iGNHfmZnTi57CnfyxkubKVyfR3HhLo5/tJ8f9r7H0QMfUrL3bVRLUnlGuZJhiwWfzxMWFAOUJ8FggLqaajavX8emFav5/XApRm0FFn0dYze1DOir8Q83ovn1e3bk5ZC3cQO3WtvDJsqC5NTFAqUXt1oM5K5ag/rEjzj7m2lXn8GsLqP/Ug1N5ScxXa7CqK9iR042u98qZKCvj4kJX3h/GOjzemZNmZoMYuowUpCfj99mpP2PCs58WUKXupyh62ouHPqW06UlTFga+ezdIgq2vcpk0D9bJXIIMkwOeRKQCvbBwADHS4sJ2jpwm29iNVxhfKSTgPSDoRYddy+r+cth5Ng3+zn4RYnUAKFZdTFHliey2nEpwU11Zdi76/GZGxHbriH23sTRo8dh+hO38QaBwUbOHT3A/Z5OJiQRnqjmiClsuVO8Xi/WwW4c3Rq8XTrEVkmV7jxdmnKGr19gpLEeq1FN57UKyQjZWVdM2woRQ6Lbz+l0YbtrwNd7CUuzlnu6i9zR1vGgpR7bLQ2D7WpGLf3SqTwxF0u4U6JvmIdj6aYRRcSRfkaaKhky1HJPU4O5shJLiwZLUwV9HTpcbk/MTSMXd7iXI4sOuw27FLYxq1SPfnq7TXRfOY2np15yuIbBq2ps5npuN/zC0J2Wh8D/QNEhyAB54JX62O/3MR3y09Bwgy3biugzVDLSUkXb+ZPoTx3DrDvF/ebfGL7bisvlxm4bmwXJguQQJoPjUt5EOk2dVFdr+ODjr3l0YRaqdQXY7hnw3K7lztUzNJ/7iQetVZLDlzlx5DCGpjb++TuETYKOSaIicGHfJ6VszCsiKTWbR+LXIiRsZG5SNunPF9Bj7mR8yCgZUYe1VY3VpGZaqs9Piw+RmpGLVquTjBGl+vXNqhSEJ55jzoJ1xCVuYP6STcSn5/N4Wj7zkrPRXzcQCnpxDPfjGOhg1HQB72gPxV8dQZiTQdz8VeS/8g7lZ2sYHR1GFO38C4HH48JXOTvxAAAAAElFTkSuQmCC" alt="winuss" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:1;transition-delay:500ms"/><noscript><picture><source srcset="/static/f39bad8c29c07a4d4c5b9eb67697ccb3/75aa5/blogger.png 1x,
+/static/f39bad8c29c07a4d4c5b9eb67697ccb3/97b93/blogger.png 1.5x,
+/static/f39bad8c29c07a4d4c5b9eb67697ccb3/9adda/blogger.png 2x" /><img loading="lazy" width="70" height="70" srcset="/static/f39bad8c29c07a4d4c5b9eb67697ccb3/75aa5/blogger.png 1x,
+/static/f39bad8c29c07a4d4c5b9eb67697ccb3/97b93/blogger.png 1.5x,
+/static/f39bad8c29c07a4d4c5b9eb67697ccb3/9adda/blogger.png 2x" src="/static/f39bad8c29c07a4d4c5b9eb67697ccb3/75aa5/blogger.png" alt="winuss" style="position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center"/></picture></noscript></div><h3 class="bio__AuthorName-j3ch0c-2 kStElJ">winuss</h3><p class="bio__AuthorDescription-j3ch0c-1 frcJlw">Every end is a <strong>new beginning</strong>.
+            <a href="https://devtimes.com" rel="noopener" target="_blank">devtimes.com</a></p><ul class="social-channel-list__StyledSocialChannels-z1p8fq-0 cNysWr"><li class="social-channel-list__StyledSocialChannel-z1p8fq-1 htFYTF"><a href="https://github.com/winuss" target="_blank" rel="noopener" aria-label="github"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 496 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg></a></li></ul></section></div></div></section></main><footer class="style__StyledFooter-sc-1xdlo4d-0 hdhrBK"><div class="common__Container-sc-1wbwqlx-0 style__FooterContainer-sc-1xdlo4d-1 kcCrhV"><nav class="style__StyledNav-sc-1xdlo4d-4 cKJeHJ"><ul><li><a href="/rss.xml" rel="noopener noreferrer" class="style__FooterMenuItem-sc-1xdlo4d-5 evGsdC">RSS</a></li><li><a href="/sitemap.xml" rel="noopener noreferrer" class="style__FooterMenuItem-sc-1xdlo4d-5 evGsdC">Sitemap</a></li></ul></nav><div><p class="style__Copyright-sc-1xdlo4d-2 dkniVZ"><strong>DevTimes</strong> © <!-- -->2021</p><p class="style__DesignBy-sc-1xdlo4d-3 eysmNL">Theme by <a href="https://nehalist.io" target="_blank" rel="noopener">nehalist.io</a></p></div></div></footer></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script>
+  
+  
+  if(true) {
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  }
+  if (typeof ga === "function") {
+    ga('create', 'UA-168375315-1', 'auto', {});
+      
+      
+      
+      
+      
+      }</script><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/nlp-basic";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"app":["/app-a8b2574222d925c54afd.js"],"component---src-pages-404-tsx":["/component---src-pages-404-tsx-057dc180d56b15804385.js"],"component---src-pages-archive-tsx":["/component---src-pages-archive-tsx-fdf2cd80a3f85b7fc325.js"],"component---src-pages-tags-tsx":["/component---src-pages-tags-tsx-958d9cb016ae8b948b75.js"],"component---src-templates-page-tsx":["/component---src-templates-page-tsx-7ec48fbcec09fea3ec81.js"],"component---src-templates-post-tsx":["/component---src-templates-post-tsx-8a7ad919cf47b755089e.js"],"component---src-templates-posts-tsx":["/component---src-templates-posts-tsx-0e5d08b16e0a44a2a740.js"],"component---src-templates-tag-tsx":["/component---src-templates-tag-tsx-93f232bc138f470217e2.js"]};/*]]>*/</script><script src="/component---src-templates-post-tsx-8a7ad919cf47b755089e.js" async=""></script><script src="/6c18e55fdd71cb6af87612710cbe2c0cb61bdd56-92ca3db2def247415ce0.js" async=""></script><script src="/1bfc9850-693458f4bfc03c5b78c9.js" async=""></script><script src="/styles-85581d4dae49207538a9.js" async=""></script><script src="/app-a8b2574222d925c54afd.js" async=""></script><script src="/framework-737c3e16d462c41141c7.js" async=""></script><script src="/webpack-runtime-54fc4c4fe4b49e1e33de.js" async=""></script></body></html>

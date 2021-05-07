@@ -1,0 +1,456 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><style data-href="/styles.b8221ec0ff064b96422d.css">code[class*=language-],pre[class*=language-]{color:#f8f8f2;background:none;text-shadow:0 1px rgba(0,0,0,.3);font-family:Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;font-size:1em;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:1em;margin:.5em 0;overflow:auto;border-radius:.3em}:not(pre)>code[class*=language-],pre[class*=language-]{background:#272822}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal}.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#708090}.token.punctuation{color:#f8f8f2}.token.namespace{opacity:.7}.token.constant,.token.deleted,.token.property,.token.symbol,.token.tag{color:#f92672}.token.boolean,.token.number{color:#ae81ff}.token.attr-name,.token.builtin,.token.char,.token.inserted,.token.selector,.token.string{color:#a6e22e}.language-css .token.string,.style .token.string,.token.entity,.token.operator,.token.url,.token.variable{color:#f8f8f2}.token.atrule,.token.attr-value,.token.class-name,.token.function{color:#e6db74}.token.keyword{color:#66d9ef}.token.important,.token.regex{color:#fd971f}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}</style><meta name="generator" content="Gatsby 2.21.0"/><title data-react-helmet="true">NLP - 텍스트 분류 (Word2Vec) - #3 - DevTimes</title><meta data-react-helmet="true" name="description" content="이번에는 word2vec을 활용하여 모델을 구현 해보자."/><meta data-react-helmet="true" name="og:title" content="NLP - 텍스트 분류 (Word2Vec) - #3 - DevTimes"/><meta data-react-helmet="true" name="og:type" content="website"/><meta data-react-helmet="true" name="og:description" content="이번에는 word2vec을 활용하여 모델을 구현 해보자."/><meta data-react-helmet="true" name="og:url" content="https://devtimes.com/nb-text-classification-word2vec"/><meta data-react-helmet="true" name="twitter:label1" content="Written by"/><meta data-react-helmet="true" name="twitter:data1" content="winuss"/><meta data-react-helmet="true" name="twitter:card" content="summary"/><meta data-react-helmet="true" name="twitter:creator" content="winuss"/><meta data-react-helmet="true" name="twitter:title" content="NLP - 텍스트 분류 (Word2Vec) - #3 - DevTimes"/><meta data-react-helmet="true" name="twitter:description" content="이번에는 word2vec을 활용하여 모델을 구현 해보자."/><meta data-react-helmet="true" name="keywords" content="angular, python, machine learning, deep learning, game, ML-DL, ML, NLP"/><meta data-react-helmet="true" name="article:published_time" content="2019-07-19T00:00:00.000Z"/><meta data-react-helmet="true" name="article:modified_time" content="2019-07-02T00:00:00.000Z"/><meta data-react-helmet="true" name="twitter:label2" content="Filed under"/><meta data-react-helmet="true" name="twitter:data2" content="ML-DL"/><script data-react-helmet="true" type="application/ld+json">
+        {
+          "@context": "https://schema.org/",
+          "@type": "Article",
+          "author": {
+            "@type": "Person",
+            "name": "winuss"
+          },
+          "keywords": "ML-DL, ML, NLP",
+          "headline": "NLP - 텍스트 분류 (Word2Vec) - #3 - DevTimes",
+          "url": "https://devtimes.com/nb-text-classification-word2vec",
+          "datePublished": "2019-07-19T00:00:00.000Z",
+          "dateModified": "2019-07-02T00:00:00.000Z",
+          
+          "publisher": {
+            "@type": "Organization",
+            "name": "DevTimes"
+          },
+          "description": "이번에는 word2vec을 활용하여 모델을 구현 해보자.",
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://devtimes.com"
+          }
+        }
+      </script><style data-styled="gOVsKi fbNACK dqKNZj JgKdn jnMIuM hqRQjv gWKWdg jMoVC fiqFtq llrxFq imSJbr JexoF iRWYuq bOhMpF eMHMJv fymZCI bdTsjL ixYMGE gDLYpk hKDtNq guoPGM hyzxOc kAaKev ewrmMm dWgKtp kWRivk rrUdK gmpFBk cCbMYU kStElJ frcJlw cNysWr htFYTF hdhrBK kcCrhV cKJeHJ evGsdC dkniVZ eysmNL" data-styled-version="4.4.1">
+/* sc-component-id: sc-global-2451124928 */
+html{box-sizing:border-box;background-color:#fafafa;} body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;line-height:1.9em;} *{box-sizing:border-box;} h1,h2,h3,h4,h5,h6{outline:none;} a{color:#000;-webkit-text-decoration:none;text-decoration:none;} .gatsby-highlight{font-size:0.85em;background-color:#282a36;border-radius:0.2em;padding:1em 1.4em;overflow:auto;width:100%;border:0.1em solid #c6c6c8;margin-bottom:6px;} div[data-language='text'].gatsby-highlight{background-color:#f0f0f0;border:0.03em solid #c6c6c8;margin-left:2px;margin-right:2px;width:calc(100% - 4px);} .gatsby-highlight pre.language-text code.language-text{color:#000;text-shadow:none;} .gatsby-highlight pre[class*='language-']{background-color:transparent;margin:0;padding:0;overflow:initial;float:left;min-width:100%;} .gatsby-highlight-code-line{background-color:#353631;display:block;margin-right:-1em;margin-left:-1em;padding-right:1em;padding-left:0.75em;} .remark-sticky-table{border-radius:2px;margin:32px 0px;} .remark-sticky-table-table{border-collapse:collapse;box-sizing:border-box;border:1px solid #bcbcbc;width:auto;} .remark-sticky-table-th{background-color:#f7f7f7;font-weight:600;text-align:left;border-bottom:1px solid #b8bcc9;} .remark-sticky-table-tbody:nth-child(odd){background-color:#fafafa;} .remark-sticky-table-th,.remark-sticky-table-td{padding:4px 12px;} table.dataframe{border-collapse:collapse;font-size:0.75em;margin-bottom:8px;margin-left:2px;margin-right:2px;line-height:2em;display:block;overflow-x:auto;white-space:nowrap;border:1px solid transparent;} table.dataframe > tbody{text-align:right;} .dataframe td,.dataframe th{border:1px solid #bcbcbc;padding:0px 12px;} .dataframe tr:nth-child(even){background-color:#f2f2f2;} .dataframe tr:hover{background-color:#d6d9e0;} .dataframe th{background-color:#f7f7f7;padding:0px 12px;}
+/* sc-component-id: style__NavContainer-sc-1nu4t1g-0 */
+.gOVsKi{z-index:1000;background-color:#20232a;position:-webkit-sticky;position:sticky;top:0;box-shadow:0 0 3px rgba(0,0,0,.03),0 3px 46px rgba(0,0,0,.07);}
+/* sc-component-id: style__Nav-sc-1nu4t1g-1 */
+.fbNACK{width:1260px;margin-left:auto;margin-right:auto;max-width:100%;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;position:relative;} @media (max-width:1300px){.fbNACK{padding:0 20px;}}
+/* sc-component-id: style__NavWrapper-sc-1nu4t1g-2 */
+.jnMIuM{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;width:100%;height:70px;white-space:nowrap;} @media (max-width:576px){.jnMIuM{width:90%;}}
+/* sc-component-id: style__NavMenu-sc-1nu4t1g-3 */
+.hqRQjv{-webkit-align-self:center;-ms-flex-item-align:center;align-self:center;list-style-type:none;margin:0;padding:0;} @media (max-width:576px){.hqRQjv{width:80%;overflow-x:auto;overflow-y:hidden;-webkit-mask-image:linear-gradient(to right,transparent,#000 25px,#000 90%,transparent);mask-image:linear-gradient(to right,transparent,#000 25px,#000 90%,transparent);}}.gWKWdg{-webkit-align-self:center;-ms-flex-item-align:center;align-self:center;list-style-type:none;margin:0;padding:0;}
+/* sc-component-id: style__NavMenuItem-sc-1nu4t1g-4 */
+.jMoVC{cursor:pointer;display:inline-block;border:0;background:transparent;outline:none;-webkit-text-decoration:none;text-decoration:none;}
+/* sc-component-id: style__NavLink-sc-1nu4t1g-5 */
+.fiqFtq{color:#fff;opacity:.8;padding:16px;-webkit-transition:opacity .5s;transition:opacity .5s;} .fiqFtq:hover{opacity:1;}
+/* sc-component-id: style__SearchContainer-sc-1nu4t1g-6 */
+.llrxFq{-webkit-align-self:center;-ms-flex-item-align:center;align-self:center;position:relative;}
+/* sc-component-id: style__ToggleSearchButton-sc-1nu4t1g-7 */
+.imSJbr{cursor:pointer;color:#fff;opacity:.8;background:none;outline:none;border:0;-webkit-transition:opacity .5s;transition:opacity .5s;} .imSJbr:hover{opacity:1;}
+/* sc-component-id: logo__LogoImage-nd9ri7-0 */
+.JgKdn{max-height:30px;width:30px;margin-right:45px;} @media (max-width:576px){.JgKdn{margin-right:15px;}}
+/* sc-component-id: logo__HomeLink-nd9ri7-1 */
+.dqKNZj{-webkit-align-self:center;-ms-flex-item-align:center;align-self:center;height:30px;}
+/* sc-component-id: style__StyledFooter-sc-1xdlo4d-0 */
+.hdhrBK{max-width:100%;padding:10px 0;z-index:700;position:relative;font-size:.9em;margin-top:50px;}
+/* sc-component-id: style__FooterContainer-sc-1xdlo4d-1 */
+.kcCrhV{width:1260px;margin-left:auto;margin-right:auto;max-width:100%;text-align:right;line-height:1.1em;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;} @media (max-width:1300px){.kcCrhV{padding:0 20px;}}
+/* sc-component-id: style__Copyright-sc-1xdlo4d-2 */
+.dkniVZ{margin:0;}
+/* sc-component-id: style__DesignBy-sc-1xdlo4d-3 */
+.eysmNL{margin:0;opacity:.8;font-size:.8em;} .eysmNL a{font-weight:bold;-webkit-text-decoration:none;text-decoration:none;color:#000;} .eysmNL a:hover{-webkit-text-decoration:underline;text-decoration:underline;}
+/* sc-component-id: style__StyledNav-sc-1xdlo4d-4 */
+.cKJeHJ ul{list-style-type:none;margin:0;padding:0;} .cKJeHJ li{display:inline-block;margin-right:25px;} .cKJeHJ li:last-child{margin-right:0;}
+/* sc-component-id: style__FooterMenuItem-sc-1xdlo4d-5 */
+.evGsdC{color:#000;-webkit-text-decoration:none;text-decoration:none;}
+/* sc-component-id: toc__StyledNav-dzz3d3-0 */
+.kAaKev .toc-list{list-style-type:none;margin:0;padding:0 0 0 0;border-left:2.5px solid #dcdee4;} .kAaKev .toc-list .toc-list{padding-top:10px;} .kAaKev .toc-list-item{line-height:1.2em;padding-bottom:10px;} .kAaKev .toc-list-item:last-child{padding-bottom:0;} .kAaKev .toc-link{color:#808080;-webkit-text-decoration:none;text-decoration:none;font-size:0.9em;font-weight:550;padding-left:8px;} .kAaKev .is-active-link{margin-left:-2.5px;padding-left:8px;border-left:2.5px solid #13acee;color:#099bcc;}
+/* sc-component-id: reading-progress__ReadingProgressBar-i1hf8v-0 */
+.JexoF{position:-webkit-sticky;position:sticky;height:5px;top:70px;background-color:#4bc822;z-index:500;}
+/* sc-component-id: social-channel-list__StyledSocialChannels-z1p8fq-0 */
+.cNysWr{list-style-type:none;margin:0;padding:0;}
+/* sc-component-id: social-channel-list__StyledSocialChannel-z1p8fq-1 */
+.htFYTF{display:inline-block;margin:0 10px;font-size:1.6em;opacity:.7;-webkit-transition:opacity .5s;transition:opacity .5s;} .htFYTF:hover{opacity:1;}
+/* sc-component-id: avatar__StyledAvatar-sc-1papyes-0 */
+.cCbMYU{max-width:70px;border-radius:100%;}
+/* sc-component-id: bio__StyledBio-j3ch0c-0 */
+.gmpFBk{margin:auto;text-align:center;width:100%;}
+/* sc-component-id: bio__AuthorDescription-j3ch0c-1 */
+.frcJlw{margin:10px 0 13px;} .frcJlw a{color:#000;-webkit-text-decoration:underline;text-decoration:underline;}
+/* sc-component-id: bio__AuthorName-j3ch0c-2 */
+.kStElJ{margin:10px;}
+/* sc-component-id: post__PostContainer-z0x2sj-0 */
+.iRWYuq{width:1260px;margin-left:auto;margin-right:auto;max-width:100%;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;padding:0 !important;} @media (max-width:1300px){.iRWYuq{padding:0 20px;}}
+/* sc-component-id: post__LeftSidebar-z0x2sj-1 */
+.guoPGM{min-width:300px;max-width:300px;-webkit-transition:opacity .5s,z-index .5s;transition:opacity .5s,z-index .5s;font-size:0.9em;margin-left:20px;} @media (max-width:1300px){.guoPGM{position:fixed;opacity:0;z-index:-1;background-color:#fff;width:100% !important;padding:0 20px;margin-top:-5px;height:calc(100vh - 70px);}}
+/* sc-component-id: post__PostContent-z0x2sj-2 */
+.bOhMpF{margin-top:-5px;border-right:1px #e5eff5 solid;border-left:1px #e5eff5 solid;background-color:#fff;box-shadow:0 0 3px rgba(0,0,0,.03),0 3px 46px rgba(0,0,0,.1);z-index:10;width:1035px;max-width:100%;} .bOhMpF li > a,.bOhMpF p > a{color:#a4cbb8;border-bottom:2px #a4cbb8 solid;} .bOhMpF pre{margin:30px 0;} .bOhMpF blockquote{border-left:4px #a4cbb8 solid;background-color:#fafafa;margin:30px 0;padding:5px 20px;border-radius:.3em;} .bOhMpF h3::before,.bOhMpF h4::before,.bOhMpF h5::before,.bOhMpF h6::before{display:block;content:" ";height:90px;margin-top:-90px;visibility:hidden;} .bOhMpF h2{border-top:1px solid #ececec;margin-top:44px;padding-top:40px;line-height:1.2;} .bOhMpF code[class*="language-text"]{padding:2px;font-size:0.9em;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;} .bOhMpF p > .language-text{background-color:#f2e6e9;padding:0 4px 2px 4px;font-weight:600;color:#c7254e;text-align:center;} .bOhMpF p > img{max-width:100%;border-radius:.3em;margin:30px 0;} .bOhMpF hr{border-top:1px solid #ececec;border-bottom:0;margin-top:44px;margin-bottom:40px;} .bOhMpF .gatsby-resp-image-link{margin:30px 0;max-width:100%;} .bOhMpF .gatsby-resp-image-link .gatsby-resp-image-image{border-radius:.3em;}
+/* sc-component-id: post__TocWrapper-z0x2sj-3 */
+.hyzxOc{position:-webkit-sticky;position:sticky;top:70px;padding:40px 30px 40px 0;}
+/* sc-component-id: post__PostHeader-z0x2sj-4 */
+.eMHMJv{padding:40px;} @media (max-width:576px){.eMHMJv{padding:20px;}}
+/* sc-component-id: post__StyledPost-z0x2sj-6 */
+.ixYMGE{padding:40px;} @media (max-width:576px){.ixYMGE{padding:20px;}}
+/* sc-component-id: post__PostMeta-z0x2sj-7 */
+.fymZCI{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;opacity:.8;font-size:.9em;}
+/* sc-component-id: post__PostTitle-z0x2sj-8 */
+.bdTsjL{margin:0;padding:0;}
+/* sc-component-id: post__PostFooter-z0x2sj-9 */
+.gDLYpk{background-color:#fafafa;font-size:.8em;color:#666;padding:40px;line-height:1em;} .gDLYpk p{margin:5px 0;}
+/* sc-component-id: post__FooterTagLink-z0x2sj-10 */
+.hKDtNq{color:#000 !important;-webkit-text-decoration:none;text-decoration:none;border-bottom:0 !important;}
+/* sc-component-id: post__PostAddition-z0x2sj-11 */
+.dWgKtp{background-color:#fff;border-top:1px #e5eff5 solid;border-bottom:1px #e5eff5 solid;z-index:700;position:relative;padding:40px;}
+/* sc-component-id: post__PostAdditionContent-z0x2sj-12 */
+.kWRivk{width:1260px;margin-left:auto;margin-right:auto;max-width:100%;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;} @media (max-width:1300px){.kWRivk{padding:0 20px;}}
+/* sc-component-id: post__BioWrapper-z0x2sj-13 */
+.rrUdK{width:50%;margin:auto;} @media (max-width:576px){.rrUdK{width:100%;}}
+/* sc-component-id: post__ToggleTocButton-z0x2sj-14 */
+.ewrmMm{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;position:fixed;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;right:20px;bottom:20px;border-radius:100%;box-shadow:0 0 3px rgba(0,0,0,.03),0 3px 46px rgba(0,0,0,.1);border:0;z-index:5000;width:50px;height:50px;background-color:#20232a;color:#fff;outline:none;} @media (min-width:1300px){.ewrmMm{display:none;}}</style><link rel="sitemap" type="application/xml" href="/sitemap.xml"/><link rel="icon" href="/favicon-32x32.png?v=53395c7476cdf4ad211173db66a6affd"/><link rel="manifest" href="/manifest.webmanifest"/><meta name="theme-color" content="#a4cbb8"/><link rel="apple-touch-icon" sizes="48x48" href="/icons/icon-48x48.png?v=53395c7476cdf4ad211173db66a6affd"/><link rel="apple-touch-icon" sizes="72x72" href="/icons/icon-72x72.png?v=53395c7476cdf4ad211173db66a6affd"/><link rel="apple-touch-icon" sizes="96x96" href="/icons/icon-96x96.png?v=53395c7476cdf4ad211173db66a6affd"/><link rel="apple-touch-icon" sizes="144x144" href="/icons/icon-144x144.png?v=53395c7476cdf4ad211173db66a6affd"/><link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192x192.png?v=53395c7476cdf4ad211173db66a6affd"/><link rel="apple-touch-icon" sizes="256x256" href="/icons/icon-256x256.png?v=53395c7476cdf4ad211173db66a6affd"/><link rel="apple-touch-icon" sizes="384x384" href="/icons/icon-384x384.png?v=53395c7476cdf4ad211173db66a6affd"/><link rel="apple-touch-icon" sizes="512x512" href="/icons/icon-512x512.png?v=53395c7476cdf4ad211173db66a6affd"/><link rel="preconnect dns-prefetch" href="https://www.google-analytics.com"/><style type="text/css">
+    .anchor.before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: translateX(-100%);
+      padding-right: 4px;
+    }
+    .anchor.after {
+      display: inline-block;
+      padding-left: 4px;
+    }
+    h1 .anchor svg,
+    h2 .anchor svg,
+    h3 .anchor svg,
+    h4 .anchor svg,
+    h5 .anchor svg,
+    h6 .anchor svg {
+      visibility: hidden;
+    }
+    h1:hover .anchor svg,
+    h2:hover .anchor svg,
+    h3:hover .anchor svg,
+    h4:hover .anchor svg,
+    h5:hover .anchor svg,
+    h6:hover .anchor svg,
+    h1 .anchor:focus svg,
+    h2 .anchor:focus svg,
+    h3 .anchor:focus svg,
+    h4 .anchor:focus svg,
+    h5 .anchor:focus svg,
+    h6 .anchor:focus svg {
+      visibility: visible;
+    }
+  </style><script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+      var hash = window.decodeURI(location.hash.replace('#', ''))
+      if (hash !== '') {
+        var element = document.getElementById(hash)
+        if (element) {
+          var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+          var clientTop = document.documentElement.clientTop || document.body.clientTop || 0
+          var offset = element.getBoundingClientRect().top + scrollTop - clientTop
+          // Wait for the browser to finish rendering before scrolling.
+          setTimeout((function() {
+            window.scrollTo(0, offset - 0)
+          }), 0)
+        }
+      }
+    })
+  </script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="/rss.xml"/><link as="script" rel="preload" href="/webpack-runtime-54fc4c4fe4b49e1e33de.js"/><link as="script" rel="preload" href="/framework-737c3e16d462c41141c7.js"/><link as="script" rel="preload" href="/app-a8b2574222d925c54afd.js"/><link as="script" rel="preload" href="/styles-85581d4dae49207538a9.js"/><link as="script" rel="preload" href="/1bfc9850-693458f4bfc03c5b78c9.js"/><link as="script" rel="preload" href="/6c18e55fdd71cb6af87612710cbe2c0cb61bdd56-92ca3db2def247415ce0.js"/><link as="script" rel="preload" href="/component---src-templates-post-tsx-8a7ad919cf47b755089e.js"/><link as="fetch" rel="preload" href="/page-data/nb-text-classification-word2vec/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div class="style__NavContainer-sc-1nu4t1g-0 gOVsKi"><div class="common__Container-sc-1wbwqlx-0 style__Nav-sc-1nu4t1g-1 fbNACK"><a class="logo__HomeLink-nd9ri7-1 dqKNZj" href="/"><div class="logo__LogoImage-nd9ri7-0 JgKdn gatsby-image-wrapper" style="position:relative;overflow:hidden;display:inline-block;width:30px;height:30px"><img aria-hidden="true" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsSAAALEgHS3X78AAAC1UlEQVQ4y4WVTUubQRCAo6bQQEvxH+SSQw4SCOI5kGsiQtNCCTQeepD+BgVbDzlqsRSFBGKgBJpDTzlEbfUaFTVQSyAQ7QdYvIgt0eT9mOnMZme7BqELk9ndd/bZmdnZTQAAAtxYk4zq/j2SJyQVklMSBxFd0t9IPpA8o/F9bTtKfcUQrToyIIM09b+i1TzPU2I3smuTehoIGMbIXbDX1hr2yCXt83otvjUv4DcWVP1ImK+0jU99j0RBKpUKzM/Pw+LiIqytrYHrujDgKBtPQ9/e8pImUhaMBX3fVwsTiQS7ryQcDuPNzY0A1Y94S3pWYEEaf9GTsiMQUO2QSqUMcGJiAnu93mBn3xeorPlJ6hG7+VhPuJoF2kO1MJ1OG2AsFjNASaG1ljTOMfD9XcBBChE7nQ4eHh7i0dERtlotddqO42C/32cBGrOhlMAnDrlj5Q+GSgOHW7vdxsnJSYzH4xiJRLBYLKqc6oj+sIeO5M1KtoGxoXjFrdlsmhSwLC0tKUN9+qoG3X8OAUgRszBsGHh8fHwLyOU0DPxhe4j/aWdnZzgzM4PT09OYTCaxWq3aIXcZ+FFuxuXlJWxtbcHOzg7W63U8Pz/Hk5MT3NzcxO3tbdzf38erqyskG/W9VqsBHZo5FPLpMx/KrAAZxKU5NjamwimVSpjNZk14fBB7e3t2yEA5ROscXrKHDyn+U57Y3d312DAUCvEThOVyGXO5nAFMTU3hwcEBf8dgMKhs8vm8r3P4i4Dj6rZcX18/50kKy+VdZfdCoQCZTMYAo9EoNhoNsG0WFhaUd8SYk6s3oi/2Oy7WlZUVlx4Bb3l5mQsZaBOgPqyurgIfwMXFBWxsbHA6/PX1dYfzTK1sHgfzQmio/XzpZMPQVfMkZ7qVZb04F6D7aaDdbjdH+fhu3xauMRa535IzE6bNsP4CRsRb6j+g/gvSddK/LXiXS4NPk4bjw+u4rv8C5lC4pDZ5rvwAAAAASUVORK5CYII=" alt="DevTimes" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:1;transition-delay:500ms"/><noscript><picture><source srcset="/static/c9a164741da1db2837cd1e6d841a84fb/91664/main-logo.png 1x,
+/static/c9a164741da1db2837cd1e6d841a84fb/ad39b/main-logo.png 1.5x,
+/static/c9a164741da1db2837cd1e6d841a84fb/183c2/main-logo.png 2x" /><img loading="lazy" width="30" height="30" srcset="/static/c9a164741da1db2837cd1e6d841a84fb/91664/main-logo.png 1x,
+/static/c9a164741da1db2837cd1e6d841a84fb/ad39b/main-logo.png 1.5x,
+/static/c9a164741da1db2837cd1e6d841a84fb/183c2/main-logo.png 2x" src="/static/c9a164741da1db2837cd1e6d841a84fb/91664/main-logo.png" alt="DevTimes" style="position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center"/></picture></noscript></div></a><div class="style__NavWrapper-sc-1nu4t1g-2 jnMIuM"><ul class="style__NavMenu-sc-1nu4t1g-3 hqRQjv"><li class="style__NavMenuItem-sc-1nu4t1g-4 jMoVC"><a class="style__NavLink-sc-1nu4t1g-5 fiqFtq" href="/tag/web">Web</a></li><li class="style__NavMenuItem-sc-1nu4t1g-4 jMoVC"><a class="style__NavLink-sc-1nu4t1g-5 fiqFtq" href="/tag/python">Python</a></li><li class="style__NavMenuItem-sc-1nu4t1g-4 jMoVC"><a class="style__NavLink-sc-1nu4t1g-5 fiqFtq" href="/tag/ml-dl">ML-DL</a></li><li class="style__NavMenuItem-sc-1nu4t1g-4 jMoVC"><a class="style__NavLink-sc-1nu4t1g-5 fiqFtq" href="/tag/datalake">DataLake</a></li><li class="style__NavMenuItem-sc-1nu4t1g-4 jMoVC"><a class="style__NavLink-sc-1nu4t1g-5 fiqFtq" href="/tag/statistics">Statistics</a></li><li class="style__NavMenuItem-sc-1nu4t1g-4 jMoVC"><a class="style__NavLink-sc-1nu4t1g-5 fiqFtq" href="/tag/tip">Tips</a></li><li class="style__NavMenuItem-sc-1nu4t1g-4 jMoVC"><a class="style__NavLink-sc-1nu4t1g-5 fiqFtq" href="/page">About</a></li></ul><div class="style__SearchContainer-sc-1nu4t1g-6 llrxFq"><ul class="style__NavMenu-sc-1nu4t1g-3 gWKWdg"><li class="style__NavMenuItem-sc-1nu4t1g-4 jMoVC"><button role="button" aria-label="Toggle search" class="style__ToggleSearchButton-sc-1nu4t1g-7 imSJbr"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"></path></svg></button></li></ul></div></div></div></div><main><div style="width:0%" color="#4bc822" class="reading-progress__ReadingProgressBar-i1hf8v-0 JexoF"></div><div class="common__Container-sc-1wbwqlx-0 post__PostContainer-z0x2sj-0 iRWYuq"><div class="post__PostContent-z0x2sj-2 bOhMpF"><article class="post"><header class="post__PostHeader-z0x2sj-4 eMHMJv"><section class="post__PostMeta-z0x2sj-7 fymZCI"><a href="/tag/ml-dl">ML-DL</a><time dateTime="2019-07-19T00:00:00.000Z">19 July, 2019</time></section><h1 class="post__PostTitle-z0x2sj-8 bdTsjL">NLP - 텍스트 분류 (Word2Vec) - #3</h1></header><section class="post__StyledPost-z0x2sj-6 ixYMGE post"><p>이번에는 word2vec을 활용하여 모델을 구현 해보자.</p>
+<h3 id="word2vec을-활용한-모델-구현" style="position:relative;"><a href="#word2vec%EC%9D%84-%ED%99%9C%EC%9A%A9%ED%95%9C-%EB%AA%A8%EB%8D%B8-%EA%B5%AC%ED%98%84" aria-label="word2vec을 활용한 모델 구현 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>word2vec을 활용한 모델 구현</h3>
+<p>word2vec을 활용해 모델을 만들기 위해서는 먼저 각 단어에 대해 word2vec으로 백터화해야 한다.</p>
+<p>word2vec의 경우 단어로 표현된 리스트를 입력값으로 넣어야 한다.</p>
+<div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python"><span class="token keyword">import</span> pandas <span class="token keyword">as</span> pd</code></pre></div>
+<div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python">DATA_IN_PATH <span class="token operator">=</span> <span class="token string">'./data_in/'</span>
+TRAIN_CLEAN_DATA <span class="token operator">=</span> <span class="token string">'train_clean.csv'</span>
+
+train_data <span class="token operator">=</span> pd<span class="token punctuation">.</span>read_csv<span class="token punctuation">(</span>DATA_IN_PATH <span class="token operator">+</span> TRAIN_CLEAN_DATA<span class="token punctuation">)</span>
+
+reviews <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span>train_data<span class="token punctuation">[</span><span class="token string">'review'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+sentiments <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span>train_data<span class="token punctuation">[</span><span class="token string">'sentiment'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+sentences <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+<span class="token keyword">for</span> review <span class="token keyword">in</span> reviews<span class="token punctuation">:</span>
+    sentences<span class="token punctuation">.</span>append<span class="token punctuation">(</span>review<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">#review문장내 단어들을 배열로 저장(뜨어쓰기 기준)</span></code></pre></div>
+<h3 id="word2vec-백터화" style="position:relative;"><a href="#word2vec-%EB%B0%B1%ED%84%B0%ED%99%94" aria-label="word2vec 백터화 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>word2vec 백터화</h3>
+<p>이제 word2vec 모델 학습을 진행하기 앞서 word2vec 모델의 하이퍼 파라미터를 설정해야 한다.</p>
+<div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python"><span class="token comment"># 학습 시 필요한 하이퍼 파라미터</span>
+num_features <span class="token operator">=</span> <span class="token number">300</span>    <span class="token comment"># 워드 백터 특정값 수</span>
+min_word_count <span class="token operator">=</span> <span class="token number">40</span>   <span class="token comment"># 단어에 대한 최소 빈도 수</span>
+num_workers <span class="token operator">=</span> <span class="token number">4</span>       <span class="token comment"># 프로세스 개수</span>
+context <span class="token operator">=</span> <span class="token number">10</span>         <span class="token comment"># 컨텍스트 윈도우 크기</span>
+downsampling <span class="token operator">=</span> <span class="token number">1e</span><span class="token operator">-</span><span class="token number">3</span>   <span class="token comment"># 다운 샘플링 비율</span></code></pre></div>
+<ul>
+<li>num_fratures : 각 단어에 대한 임베딩된 벡터의 차원을 정한다.</li>
+<li>min<em>word</em>count : 모델에 의미 있는 단어를 가지고 학습하기 위해 적은 빈도 수의 단어들은 학습하지 않는다.</li>
+<li>num_workers : 모델에 의미 있는 단어를 가지고 학습하기 위해 적은 빈도 수의 단어들은 학습하지 않는다.</li>
+<li>context : word2vec을 수행하기 위한 컨텍스트 윈도우 크기를 지정한다.</li>
+<li>downsampling : word2vec 학습을 수행할 때 더 빠른 학습을 위해 정답 단어 라벨에 대한 다운샘플링 비율을 지정한다. (보통 0.001이 좋은 성능을 낸다고 한다)</li>
+</ul>
+<div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python"><span class="token keyword">import</span> logging
+logging<span class="token punctuation">.</span>basicConfig<span class="token punctuation">(</span><span class="token builtin">format</span><span class="token operator">=</span><span class="token string">'%(asctime)s : %(levelname)s : %(message)s'</span><span class="token punctuation">,</span>\
+   level<span class="token operator">=</span>logging<span class="token punctuation">.</span>INFO<span class="token punctuation">)</span></code></pre></div>
+<p>로깅을 할 떄 format을 위와 같이 지정하고, 로그 수준을 INFO로 하면 word2vec의 학습과정에서 로그 메시지를 양식에 맞게 INFO 수준으로 볼 수 있다.</p>
+<div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python"><span class="token keyword">from</span> gensim<span class="token punctuation">.</span>models <span class="token keyword">import</span> word2vec
+
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Training model..."</span><span class="token punctuation">)</span>
+
+model <span class="token operator">=</span> word2vec<span class="token punctuation">.</span>Word2Vec<span class="token punctuation">(</span>sentences<span class="token punctuation">,</span>
+                        workers<span class="token operator">=</span>num_workers<span class="token punctuation">,</span>
+                        size<span class="token operator">=</span>num_features<span class="token punctuation">,</span>
+                        min_count<span class="token operator">=</span>min_word_count<span class="token punctuation">,</span>
+                        window<span class="token operator">=</span>context<span class="token punctuation">,</span>
+                        sample<span class="token operator">=</span>downsampling<span class="token punctuation">)</span></code></pre></div>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">2019-07-12 21:56:43,872 : INFO : collecting all words and their counts
+2019-07-12 21:56:43,872 : INFO : PROGRESS: at sentence #0, processed 0 words, keeping 0 word types
+
+
+Training model...
+
+
+2019-07-12 21:56:44,092 : INFO : PROGRESS: at sentence #10000, processed 1205223 words, keeping 51374 word types
+2019-07-12 21:56:44,305 : INFO : PROGRESS: at sentence #20000, processed 2396605 words, keeping 67660 word types
+2019-07-12 21:56:44,406 : INFO : collected 74065 word types from a corpus of 2988089 raw words and 25000 sentences
+2019-07-12 21:56:44,406 : INFO : Loading a fresh vocabulary
+2019-07-12 21:56:44,443 : INFO : min_count=40 retains 8160 unique words (11% of original 74065, drops 65905)
+2019-07-12 21:56:44,443 : INFO : min_count=40 leaves 2627273 word corpus (87% of original 2988089, drops 360816)
+2019-07-12 21:56:44,454 : INFO : deleting the raw counts dictionary of 74065 items
+2019-07-12 21:56:44,469 : INFO : sample=0.001 downsamples 30 most-common words
+2019-07-12 21:56:44,469 : INFO : downsampling leaves estimated 2494384 word corpus (94.9% of prior 2627273)
+2019-07-12 21:56:44,481 : INFO : estimated required memory for 8160 words and 300 dimensions: 23664000 bytes
+2019-07-12 21:56:44,481 : INFO : resetting layer weights
+2019-07-12 21:56:44,577 : INFO : training model with 4 workers on 8160 vocabulary and 300 features, using sg=0 hs=0 sample=0.001 negative=5 window=10
+2019-07-12 21:56:45,578 : INFO : EPOCH 1 - PROGRESS: at 53.88% examples, 1354613 words/s, in_qsize 7, out_qsize 0
+2019-07-12 21:56:46,589 : INFO : EPOCH 1 - PROGRESS: at 97.12% examples, 1208841 words/s, in_qsize 8, out_qsize 0
+2019-07-12 21:56:46,625 : INFO : worker thread finished; awaiting finish of 3 more threads
+2019-07-12 21:56:46,631 : INFO : worker thread finished; awaiting finish of 2 more threads
+2019-07-12 21:56:46,639 : INFO : worker thread finished; awaiting finish of 1 more threads
+2019-07-12 21:56:46,645 : INFO : worker thread finished; awaiting finish of 0 more threads
+2019-07-12 21:56:46,649 : INFO : EPOCH - 1 : training on 2988089 raw words (2494785 effective words) took 2.1s, 1208654 effective words/s
+2019-07-12 21:56:47,643 : INFO : EPOCH 2 - PROGRESS: at 51.68% examples, 1296637 words/s, in_qsize 7, out_qsize 0
+2019-07-12 21:56:48,565 : INFO : worker thread finished; awaiting finish of 3 more threads
+2019-07-12 21:56:48,565 : INFO : worker thread finished; awaiting finish of 2 more threads
+2019-07-12 21:56:48,579 : INFO : worker thread finished; awaiting finish of 1 more threads
+2019-07-12 21:56:48,587 : INFO : worker thread finished; awaiting finish of 0 more threads
+2019-07-12 21:56:48,587 : INFO : EPOCH - 2 : training on 2988089 raw words (2494872 effective words) took 1.9s, 1287927 effective words/s
+2019-07-12 21:56:49,584 : INFO : EPOCH 3 - PROGRESS: at 52.03% examples, 1307272 words/s, in_qsize 7, out_qsize 0
+2019-07-12 21:56:50,495 : INFO : worker thread finished; awaiting finish of 3 more threads
+2019-07-12 21:56:50,504 : INFO : worker thread finished; awaiting finish of 2 more threads
+2019-07-12 21:56:50,504 : INFO : worker thread finished; awaiting finish of 1 more threads
+2019-07-12 21:56:50,513 : INFO : worker thread finished; awaiting finish of 0 more threads
+2019-07-12 21:56:50,513 : INFO : EPOCH - 3 : training on 2988089 raw words (2494507 effective words) took 1.9s, 1297134 effective words/s
+2019-07-12 21:56:51,508 : INFO : EPOCH 4 - PROGRESS: at 52.60% examples, 1319590 words/s, in_qsize 7, out_qsize 0
+2019-07-12 21:56:52,421 : INFO : worker thread finished; awaiting finish of 3 more threads
+2019-07-12 21:56:52,438 : INFO : worker thread finished; awaiting finish of 2 more threads
+2019-07-12 21:56:52,438 : INFO : worker thread finished; awaiting finish of 1 more threads
+2019-07-12 21:56:52,444 : INFO : worker thread finished; awaiting finish of 0 more threads
+2019-07-12 21:56:52,444 : INFO : EPOCH - 4 : training on 2988089 raw words (2494292 effective words) took 1.9s, 1293999 effective words/s
+2019-07-12 21:56:53,445 : INFO : EPOCH 5 - PROGRESS: at 54.20% examples, 1360524 words/s, in_qsize 7, out_qsize 0
+2019-07-12 21:56:54,212 : INFO : worker thread finished; awaiting finish of 3 more threads
+2019-07-12 21:56:54,228 : INFO : worker thread finished; awaiting finish of 2 more threads
+2019-07-12 21:56:54,235 : INFO : worker thread finished; awaiting finish of 1 more threads
+2019-07-12 21:56:54,241 : INFO : worker thread finished; awaiting finish of 0 more threads
+2019-07-12 21:56:54,242 : INFO : EPOCH - 5 : training on 2988089 raw words (2494012 effective words) took 1.8s, 1390220 effective words/s
+2019-07-12 21:56:54,242 : INFO : training on a 14940445 raw words (12472468 effective words) took 9.7s, 1291189 effective words/s</code></pre></div>
+<p>word2vec으로 학습시킨 모델의 경우 모델을 따로 저장해두면 이후 다시 사용할수 있기 때문에 저장해두자</p>
+<div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python"><span class="token comment"># 모델의 하이퍼파라미터를 설정한 내용을 모델 이름에 담는다면 나중에 참고하기 용이하다.</span>
+<span class="token comment"># 모델을 저장하면 Word2Vec.load()를 통해 다시 사용할 수 있다.</span>
+model_name <span class="token operator">=</span> <span class="token string">"300features_40minwords_10context"</span>
+model<span class="token punctuation">.</span>save<span class="token punctuation">(</span>model_name<span class="token punctuation">)</span></code></pre></div>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">2019-07-12 22:00:40,807 : INFO : saving Word2Vec object under 300features_40minwords_10context, separately None
+2019-07-12 22:00:40,807 : INFO : not storing attribute vectors_norm
+2019-07-12 22:00:40,807 : INFO : not storing attribute cum_table
+C:\Users\nicey\.conda\envs\nlp\lib\site-packages\smart_open\smart_open_lib.py:398: UserWarning: This function is deprecated, use smart_open.open instead. See the migration notes for details: https://github.com/RaRe-Technologies/smart_open/blob/master/README.rst#migrating-to-the-new-open-function
+  &#39;See the migration notes for details: %s&#39; % _MIGRATION_NOTES_URL
+2019-07-12 22:00:41,229 : INFO : saved 300features_40minwords_10context</code></pre></div>
+<p>에제 만들어진 word2vec 모델을 활용해 선형 회귀 모델을 학습해보자. 우선 학습을 위해 하나의 리뷰를 같은 형태의 입력값으로 만들어야 한다. 지금은 word2vec 모델에서 각 단어가 벡터로 표현돼 있다. 그리고 리뷰마다 단어의 개수가 모두 다르기 때문에 입력값을 하나으 형태로 만들어야 한다. 가장 단순한 방법은 문장에 있는 모든 단어의 벡터값에 대해 평균을 내서 리뷰 하나당 하나의 벡터로 만드는 방법이 있다.</p>
+<p>그럼 하나의 리뷰에 대해 전체 단어의 평균값을 계산하는 함수를 구현하자</p>
+<div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python"><span class="token keyword">import</span> numpy <span class="token keyword">as</span> np</code></pre></div>
+<div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">get_features</span><span class="token punctuation">(</span>words<span class="token punctuation">,</span> model<span class="token punctuation">,</span> num_features<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment"># 출력 벡터 초기화</span>
+    feature_vector <span class="token operator">=</span> np<span class="token punctuation">.</span>zeros<span class="token punctuation">(</span><span class="token punctuation">(</span>num_features<span class="token punctuation">)</span><span class="token punctuation">,</span> dtype<span class="token operator">=</span>np<span class="token punctuation">.</span>float32<span class="token punctuation">)</span>
+    
+    num_words <span class="token operator">=</span> <span class="token number">0</span>
+    <span class="token comment"># 어휘 사전 준비</span>
+    index2word_set <span class="token operator">=</span> <span class="token builtin">set</span><span class="token punctuation">(</span>model<span class="token punctuation">.</span>wv<span class="token punctuation">.</span>index2word<span class="token punctuation">)</span>
+    
+    <span class="token keyword">for</span> w <span class="token keyword">in</span> words<span class="token punctuation">:</span>
+        <span class="token keyword">if</span> w <span class="token keyword">in</span> index2word_set<span class="token punctuation">:</span>
+            num_words <span class="token operator">=</span> <span class="token number">1</span>
+            <span class="token comment"># 사전에 해당하는 단어에 대해 단어 벡터를 더함</span>
+            feature_vector <span class="token operator">=</span> np<span class="token punctuation">.</span>add<span class="token punctuation">(</span>feature_vector<span class="token punctuation">,</span> model<span class="token punctuation">[</span>w<span class="token punctuation">]</span><span class="token punctuation">)</span>
+            
+    <span class="token comment"># 문장의 단어 수만큼 나누어 단어 벡터의 평균값을 문장 벡터로 함</span>
+    feature_vector <span class="token operator">=</span> np<span class="token punctuation">.</span>divide<span class="token punctuation">(</span>feature_vector<span class="token punctuation">,</span> num_words<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> feature_vector</code></pre></div>
+<ul>
+<li>words : 단어의 모음인 하나의 리뷰가 들어간다.</li>
+<li>model : word2vec 모델을 넣는 공이며, 우리가 학습한 word2vec 모델이 들어간다.</li>
+<li>num_features : word2vec으로 임베딩할 때 정했던 벡터의 차원 수를 뜻한다.</li>
+</ul>
+<p>하나의 벡터를 만드는 과정을 빠르게 하기 위해 np.zeros를 사용해 미리 모두 0값을 가지는 벡터를 만든다. 그리고 문장의 단어가 모델 단어사전에 속하는지 보기 위해 model.wv.index2word를 set객체로 생성해서 index2word_set 변수에 할당한다. 다음 반복문을 통해 리뷰를 구성하는 단어에 대해 임베딩된 벡터가 있는 단어 벡터의 합을 구하고 사용한 단어의 전체 개수로 나누어 평균 벡터의 값을 구한다.</p>
+<p>문장에 특징값을 만들 수 있는 함수를 구현했다면 이제 앞에서 정의한 함수를 사용해 전체 리뷰에 대해 각 리뷰의 평균 벡터를 구하는 함수를 정의하자</p>
+<div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">get_dataset</span><span class="token punctuation">(</span>reviews<span class="token punctuation">,</span> model<span class="token punctuation">,</span> num_features<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    dataset <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    
+    <span class="token keyword">for</span> s <span class="token keyword">in</span> reviews<span class="token punctuation">:</span>
+        dataset<span class="token punctuation">.</span>append<span class="token punctuation">(</span>get_features<span class="token punctuation">(</span>s<span class="token punctuation">,</span> model<span class="token punctuation">,</span> num_features<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        
+    reviewFeatureVecs <span class="token operator">=</span> np<span class="token punctuation">.</span>stack<span class="token punctuation">(</span>dataset<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> reviewFeatureVecs</code></pre></div>
+<ul>
+<li>reviews : 학습 데이터인 전체 리뷰 데이터를 입력</li>
+<li>model : word2vec 모델을 입력</li>
+<li>num_features : word2vec으로 임베딩할 때 정했던 벡터의 차원 수</li>
+</ul>
+<p>전체 리뷰에 대한 평균 벡터를 담을 0으로 채워진 numpy 배열을 미리 만든다. 배열은 2차원, 배열의 행에는 각 문장에 대한 길이, 열에는 평균 벡터의 차원수 즉 크기를 입력. 그리고 각 리뷰에 대해 반복문을 돌면서 각 리뷰에 대해 특징 값을 만든다.</p>
+<p>구현한 함수를 사용해 실제 학습에 사용될 입력값을 만들어 보자.</p>
+<div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python">test_data_vecs <span class="token operator">=</span> get_dataset<span class="token punctuation">(</span>sentences<span class="token punctuation">,</span> model<span class="token punctuation">,</span> num_features<span class="token punctuation">)</span></code></pre></div>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">C:\Users\nicey\.conda\envs\nlp\lib\site-packages\ipykernel_launcher.py:13: DeprecationWarning: Call to deprecated `__getitem__` (Method will be removed in 4.0.0, use self.wv.__getitem__() instead).
+  del sys.path[0]</code></pre></div>
+<h3 id="학습과-검증-데이터셋-분리" style="position:relative;"><a href="#%ED%95%99%EC%8A%B5%EA%B3%BC-%EA%B2%80%EC%A6%9D-%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%85%8B-%EB%B6%84%EB%A6%AC" aria-label="학습과 검증 데이터셋 분리 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>학습과 검증 데이터셋 분리</h3>
+<div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python"><span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>model_selection <span class="token keyword">import</span> train_test_split
+<span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
+
+X <span class="token operator">=</span> test_data_vecs
+y <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span>sentiments<span class="token punctuation">)</span>
+
+RANDOM_SEED <span class="token operator">=</span> <span class="token number">42</span>
+TEST_SPLIT <span class="token operator">=</span> <span class="token number">0.2</span>
+
+X_train<span class="token punctuation">,</span> X_test<span class="token punctuation">,</span> y_train<span class="token punctuation">,</span> y_test <span class="token operator">=</span> train_test_split<span class="token punctuation">(</span>X<span class="token punctuation">,</span> y<span class="token punctuation">,</span> test_size<span class="token operator">=</span>TEST_SPLIT<span class="token punctuation">,</span> 
+                                                    random_state<span class="token operator">=</span>RANDOM_SEED<span class="token punctuation">)</span></code></pre></div>
+<h3 id="모델-선언-및-학습" style="position:relative;"><a href="#%EB%AA%A8%EB%8D%B8-%EC%84%A0%EC%96%B8-%EB%B0%8F-%ED%95%99%EC%8A%B5" aria-label="모델 선언 및 학습 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>모델 선언 및 학습</h3>
+<div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python"><span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>linear_model <span class="token keyword">import</span> LogisticRegression
+
+lgs <span class="token operator">=</span> LogisticRegression<span class="token punctuation">(</span>class_weight<span class="token operator">=</span><span class="token string">'balanced'</span><span class="token punctuation">)</span>
+lgs<span class="token punctuation">.</span>fit<span class="token punctuation">(</span>X_train<span class="token punctuation">,</span> y_train<span class="token punctuation">)</span></code></pre></div>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">C:\Users\nicey\.conda\envs\nlp\lib\site-packages\sklearn\linear_model\logistic.py:432: FutureWarning: Default solver will be changed to &#39;lbfgs&#39; in 0.22. Specify a solver to silence this warning.
+  FutureWarning)
+
+
+
+
+
+LogisticRegression(C=1.0, class_weight=&#39;balanced&#39;, dual=False,
+                   fit_intercept=True, intercept_scaling=1, l1_ratio=None,
+                   max_iter=100, multi_class=&#39;warn&#39;, n_jobs=None, penalty=&#39;l2&#39;,
+                   random_state=None, solver=&#39;warn&#39;, tol=0.0001, verbose=0,
+                   warm_start=False)</code></pre></div>
+<p>class_weight을 <code class="language-text">balanced</code>로 설정했다. 이는 각 라벨에 대해 균형있게 학습하기 위함이다.</p>
+<h3 id="검증-데이터셋을-이용한-성능-평가" style="position:relative;"><a href="#%EA%B2%80%EC%A6%9D-%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%85%8B%EC%9D%84-%EC%9D%B4%EC%9A%A9%ED%95%9C-%EC%84%B1%EB%8A%A5-%ED%8F%89%EA%B0%80" aria-label="검증 데이터셋을 이용한 성능 평가 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>검증 데이터셋을 이용한 성능 평가</h3>
+<div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python">predicted <span class="token operator">=</span> lgs<span class="token punctuation">.</span>predict<span class="token punctuation">(</span>X_test<span class="token punctuation">)</span>
+<span class="token keyword">from</span> sklearn <span class="token keyword">import</span> metrics
+
+fpr<span class="token punctuation">,</span> tpr<span class="token punctuation">,</span> _ <span class="token operator">=</span> metrics<span class="token punctuation">.</span>roc_curve<span class="token punctuation">(</span>y_test<span class="token punctuation">,</span> <span class="token punctuation">(</span>lgs<span class="token punctuation">.</span>predict_proba<span class="token punctuation">(</span>X_test<span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+auc <span class="token operator">=</span> metrics<span class="token punctuation">.</span>auc<span class="token punctuation">(</span>fpr<span class="token punctuation">,</span> tpr<span class="token punctuation">)</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"------------"</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Accuracy: %f"</span> <span class="token operator">%</span> lgs<span class="token punctuation">.</span>score<span class="token punctuation">(</span>X_test<span class="token punctuation">,</span> y_test<span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment">#checking the accuracy</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Precision: %f"</span> <span class="token operator">%</span> metrics<span class="token punctuation">.</span>precision_score<span class="token punctuation">(</span>y_test<span class="token punctuation">,</span> predicted<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Recall: %f"</span> <span class="token operator">%</span> metrics<span class="token punctuation">.</span>recall_score<span class="token punctuation">(</span>y_test<span class="token punctuation">,</span> predicted<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"F1-Score: %f"</span> <span class="token operator">%</span> metrics<span class="token punctuation">.</span>f1_score<span class="token punctuation">(</span>y_test<span class="token punctuation">,</span> predicted<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"AUC: %f"</span> <span class="token operator">%</span> auc<span class="token punctuation">)</span></code></pre></div>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">------------
+Accuracy: 0.874200
+Precision: 0.869141
+Recall: 0.883287
+F1-Score: 0.876157
+AUC: 0.940927</code></pre></div>
+<p>학습 결과를 확인해 보면 TF-IDF를 사용해서 학습한 것보다 상대적으로 성능이 조금 떨어지는 것을 볼 수 있다. word2vec이 단어 간의 유사도를 보는 관점에서는 분명히 효과적일 수는 있지만 항상 좋은 성능을 보장하지는 않는다는 점을 알 수 있다.</p>
+<h2 id="데이터-제출" style="position:relative;"><a href="#%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A0%9C%EC%B6%9C" aria-label="데이터 제출 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>데이터 제출</h2>
+<div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python">TEST_CLEAN_DATA <span class="token operator">=</span> <span class="token string">'test_clean.csv'</span>
+
+test_data <span class="token operator">=</span> pd<span class="token punctuation">.</span>read_csv<span class="token punctuation">(</span>DATA_IN_PATH <span class="token operator">+</span> TEST_CLEAN_DATA<span class="token punctuation">)</span>
+
+test_review <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span>test_data<span class="token punctuation">[</span><span class="token string">'review'</span><span class="token punctuation">]</span><span class="token punctuation">)</span></code></pre></div>
+<div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python">test_data<span class="token punctuation">.</span>head<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span></code></pre></div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre></div>
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>review</th>
+      <th>id</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>naturally film main themes mortality nostalgia...</td>
+      <td>"12311_10"</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>movie disaster within disaster film full great...</td>
+      <td>"8348_2"</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>movie kids saw tonight child loved one point k...</td>
+      <td>"5828_4"</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>afraid dark left impression several different ...</td>
+      <td>"7186_2"</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>accurate depiction small time mob life filmed ...</td>
+      <td>"12128_7"</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python">test_sentences <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token keyword">for</span> review <span class="token keyword">in</span> test_review<span class="token punctuation">:</span>
+    test_sentences<span class="token punctuation">.</span>append<span class="token punctuation">(</span>review<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre></div>
+<div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python">test_data_vecs <span class="token operator">=</span> get_dataset<span class="token punctuation">(</span>test_sentences<span class="token punctuation">,</span> model<span class="token punctuation">,</span> num_features<span class="token punctuation">)</span>
+test_predicted <span class="token operator">=</span> lgs<span class="token punctuation">.</span>predict<span class="token punctuation">(</span>test_data_vecs<span class="token punctuation">)</span></code></pre></div>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">C:\Users\nicey\.conda\envs\nlp\lib\site-packages\ipykernel_launcher.py:13: DeprecationWarning: Call to deprecated `__getitem__` (Method will be removed in 4.0.0, use self.wv.__getitem__() instead).
+  del sys.path[0]</code></pre></div>
+<div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python"><span class="token keyword">import</span> os
+
+DATA_OUT_PATH <span class="token operator">=</span> <span class="token string">'./data_out/'</span>
+
+<span class="token keyword">if</span> <span class="token keyword">not</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>exists<span class="token punctuation">(</span>DATA_OUT_PATH<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    os<span class="token punctuation">.</span>makedirs<span class="token punctuation">(</span>DATA_OUT_PATH<span class="token punctuation">)</span>
+
+ids <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span>test_data<span class="token punctuation">[</span><span class="token string">'id'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+answer_dataset <span class="token operator">=</span> pd<span class="token punctuation">.</span>DataFrame<span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token string">'id'</span><span class="token punctuation">:</span> ids<span class="token punctuation">,</span> <span class="token string">'sentiment'</span><span class="token punctuation">:</span> test_predicted<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+answer_dataset<span class="token punctuation">.</span>to_csv<span class="token punctuation">(</span>DATA_OUT_PATH <span class="token operator">+</span> <span class="token string">'lgs_w2v_answer.csv'</span><span class="token punctuation">,</span> index<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> quoting<span class="token operator">=</span><span class="token number">3</span><span class="token punctuation">)</span></code></pre></div></section><hr/><div></div><footer class="post__PostFooter-z0x2sj-9 gDLYpk"><p>Published under <span><a class="post__FooterTagLink-z0x2sj-10 hKDtNq" href="/tag/ml-dl">ML-DL</a>, </span><span><a class="post__FooterTagLink-z0x2sj-10 hKDtNq" href="/tag/ml">ML</a>, </span><span><a class="post__FooterTagLink-z0x2sj-10 hKDtNq" href="/tag/nlp">NLP</a></span> on <time dateTime="2019-07-19T00:00:00.000Z">19 July, 2019</time>.</p><p>Last updated on <time dateTime="2019-07-02T00:00:00.000Z">02 July, 2019</time>.</p></footer></article></div><div class="post__LeftSidebar-z0x2sj-1 guoPGM"><div class="post__TocWrapper-z0x2sj-3 hyzxOc"><nav class="toc__StyledNav-dzz3d3-0 kAaKev toc"></nav></div></div><button role="button" aria-label="Toggle table of contents" class="post__ToggleTocButton-z0x2sj-14 ewrmMm"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M432 416H16a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zm0-128H16a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zm0-128H16a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zm0-128H16A16 16 0 0 0 0 48v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16z"></path></svg></button></div><section class="post__PostAddition-z0x2sj-11 dWgKtp"><div class="common__Container-sc-1wbwqlx-0 post__PostAdditionContent-z0x2sj-12 kWRivk"><div class="post__BioWrapper-z0x2sj-13 rrUdK"><section class="bio__StyledBio-j3ch0c-0 gmpFBk"><div class="avatar__StyledAvatar-sc-1papyes-0 cCbMYU gatsby-image-wrapper" style="position:relative;overflow:hidden;display:inline-block;width:70px;height:70px"><img aria-hidden="true" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsSAAALEgHS3X78AAAEfUlEQVQ4y1WUbWxTVRjHL4YPLL4wYtwYg9FtdKwY5EUjwwDb4lxAEA1kycxUTFA0mChiNFPDNMNgVEwQiEJA3GQbrBvrqFBwBUb3ytp1YwO2MbqXru3t69Z262b0y897i53thyf3nHPv+d3/ef7PcwSXU8QpOpCfbpczHPLYYbcT8I9jc4h03e7F3NVNIOAnGJjAFfV9ZH+EIUSDIiE67ExPT9He1s7LW18n69lcslZnsWf3+zTob+D3T4Q3u5z/AyNPIRrkcT/8ICgpOVtWwZqMNSQ9lsjiBUkoFylIS05BmZZJ6cHvmJkJ4ZH2RGAxQI/bFQ55MTQVRHvpKqqUTFTJaSieWsrShBSSn0wmMzWDjNRlJMQnsG/f57g9njA0AgwfWQZ5Pe6wQp/XjdVmZ/uWHbz2Yg5PK5aTnqhAuTCNdEmhYlEKqckKUhIXEzc3nl/LzjE1GQinKJI6IaJOljsj5a229iIvLF/Lm1u3s161lizValRJy1EmKlmVtgKVYhkrlZnME+LYVbSbUGgyDIykTYg+7sx0iGNHfmZnTi57CnfyxkubKVyfR3HhLo5/tJ8f9r7H0QMfUrL3bVRLUnlGuZJhiwWfzxMWFAOUJ8FggLqaajavX8emFav5/XApRm0FFn0dYze1DOir8Q83ovn1e3bk5ZC3cQO3WtvDJsqC5NTFAqUXt1oM5K5ag/rEjzj7m2lXn8GsLqP/Ug1N5ScxXa7CqK9iR042u98qZKCvj4kJX3h/GOjzemZNmZoMYuowUpCfj99mpP2PCs58WUKXupyh62ouHPqW06UlTFga+ezdIgq2vcpk0D9bJXIIMkwOeRKQCvbBwADHS4sJ2jpwm29iNVxhfKSTgPSDoRYddy+r+cth5Ng3+zn4RYnUAKFZdTFHliey2nEpwU11Zdi76/GZGxHbriH23sTRo8dh+hO38QaBwUbOHT3A/Z5OJiQRnqjmiClsuVO8Xi/WwW4c3Rq8XTrEVkmV7jxdmnKGr19gpLEeq1FN57UKyQjZWVdM2woRQ6Lbz+l0YbtrwNd7CUuzlnu6i9zR1vGgpR7bLQ2D7WpGLf3SqTwxF0u4U6JvmIdj6aYRRcSRfkaaKhky1HJPU4O5shJLiwZLUwV9HTpcbk/MTSMXd7iXI4sOuw27FLYxq1SPfnq7TXRfOY2np15yuIbBq2ps5npuN/zC0J2Wh8D/QNEhyAB54JX62O/3MR3y09Bwgy3biugzVDLSUkXb+ZPoTx3DrDvF/ebfGL7bisvlxm4bmwXJguQQJoPjUt5EOk2dVFdr+ODjr3l0YRaqdQXY7hnw3K7lztUzNJ/7iQetVZLDlzlx5DCGpjb++TuETYKOSaIicGHfJ6VszCsiKTWbR+LXIiRsZG5SNunPF9Bj7mR8yCgZUYe1VY3VpGZaqs9Piw+RmpGLVquTjBGl+vXNqhSEJ55jzoJ1xCVuYP6STcSn5/N4Wj7zkrPRXzcQCnpxDPfjGOhg1HQB72gPxV8dQZiTQdz8VeS/8g7lZ2sYHR1GFO38C4HH48JXOTvxAAAAAElFTkSuQmCC" alt="winuss" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:1;transition-delay:500ms"/><noscript><picture><source srcset="/static/f39bad8c29c07a4d4c5b9eb67697ccb3/75aa5/blogger.png 1x,
+/static/f39bad8c29c07a4d4c5b9eb67697ccb3/97b93/blogger.png 1.5x,
+/static/f39bad8c29c07a4d4c5b9eb67697ccb3/9adda/blogger.png 2x" /><img loading="lazy" width="70" height="70" srcset="/static/f39bad8c29c07a4d4c5b9eb67697ccb3/75aa5/blogger.png 1x,
+/static/f39bad8c29c07a4d4c5b9eb67697ccb3/97b93/blogger.png 1.5x,
+/static/f39bad8c29c07a4d4c5b9eb67697ccb3/9adda/blogger.png 2x" src="/static/f39bad8c29c07a4d4c5b9eb67697ccb3/75aa5/blogger.png" alt="winuss" style="position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center"/></picture></noscript></div><h3 class="bio__AuthorName-j3ch0c-2 kStElJ">winuss</h3><p class="bio__AuthorDescription-j3ch0c-1 frcJlw">Every end is a <strong>new beginning</strong>.
+            <a href="https://devtimes.com" rel="noopener" target="_blank">devtimes.com</a></p><ul class="social-channel-list__StyledSocialChannels-z1p8fq-0 cNysWr"><li class="social-channel-list__StyledSocialChannel-z1p8fq-1 htFYTF"><a href="https://github.com/winuss" target="_blank" rel="noopener" aria-label="github"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 496 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg></a></li></ul></section></div></div></section></main><footer class="style__StyledFooter-sc-1xdlo4d-0 hdhrBK"><div class="common__Container-sc-1wbwqlx-0 style__FooterContainer-sc-1xdlo4d-1 kcCrhV"><nav class="style__StyledNav-sc-1xdlo4d-4 cKJeHJ"><ul><li><a href="/rss.xml" rel="noopener noreferrer" class="style__FooterMenuItem-sc-1xdlo4d-5 evGsdC">RSS</a></li><li><a href="/sitemap.xml" rel="noopener noreferrer" class="style__FooterMenuItem-sc-1xdlo4d-5 evGsdC">Sitemap</a></li></ul></nav><div><p class="style__Copyright-sc-1xdlo4d-2 dkniVZ"><strong>DevTimes</strong> © <!-- -->2021</p><p class="style__DesignBy-sc-1xdlo4d-3 eysmNL">Theme by <a href="https://nehalist.io" target="_blank" rel="noopener">nehalist.io</a></p></div></div></footer></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script>
+  
+  
+  if(true) {
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  }
+  if (typeof ga === "function") {
+    ga('create', 'UA-168375315-1', 'auto', {});
+      
+      
+      
+      
+      
+      }</script><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/nb-text-classification-word2vec";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"app":["/app-a8b2574222d925c54afd.js"],"component---src-pages-404-tsx":["/component---src-pages-404-tsx-057dc180d56b15804385.js"],"component---src-pages-archive-tsx":["/component---src-pages-archive-tsx-fdf2cd80a3f85b7fc325.js"],"component---src-pages-tags-tsx":["/component---src-pages-tags-tsx-958d9cb016ae8b948b75.js"],"component---src-templates-page-tsx":["/component---src-templates-page-tsx-7ec48fbcec09fea3ec81.js"],"component---src-templates-post-tsx":["/component---src-templates-post-tsx-8a7ad919cf47b755089e.js"],"component---src-templates-posts-tsx":["/component---src-templates-posts-tsx-0e5d08b16e0a44a2a740.js"],"component---src-templates-tag-tsx":["/component---src-templates-tag-tsx-93f232bc138f470217e2.js"]};/*]]>*/</script><script src="/component---src-templates-post-tsx-8a7ad919cf47b755089e.js" async=""></script><script src="/6c18e55fdd71cb6af87612710cbe2c0cb61bdd56-92ca3db2def247415ce0.js" async=""></script><script src="/1bfc9850-693458f4bfc03c5b78c9.js" async=""></script><script src="/styles-85581d4dae49207538a9.js" async=""></script><script src="/app-a8b2574222d925c54afd.js" async=""></script><script src="/framework-737c3e16d462c41141c7.js" async=""></script><script src="/webpack-runtime-54fc4c4fe4b49e1e33de.js" async=""></script></body></html>

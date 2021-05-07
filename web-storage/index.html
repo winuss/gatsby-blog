@@ -1,0 +1,248 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><style data-href="/styles.b8221ec0ff064b96422d.css">code[class*=language-],pre[class*=language-]{color:#f8f8f2;background:none;text-shadow:0 1px rgba(0,0,0,.3);font-family:Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;font-size:1em;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:1em;margin:.5em 0;overflow:auto;border-radius:.3em}:not(pre)>code[class*=language-],pre[class*=language-]{background:#272822}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal}.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#708090}.token.punctuation{color:#f8f8f2}.token.namespace{opacity:.7}.token.constant,.token.deleted,.token.property,.token.symbol,.token.tag{color:#f92672}.token.boolean,.token.number{color:#ae81ff}.token.attr-name,.token.builtin,.token.char,.token.inserted,.token.selector,.token.string{color:#a6e22e}.language-css .token.string,.style .token.string,.token.entity,.token.operator,.token.url,.token.variable{color:#f8f8f2}.token.atrule,.token.attr-value,.token.class-name,.token.function{color:#e6db74}.token.keyword{color:#66d9ef}.token.important,.token.regex{color:#fd971f}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}</style><meta name="generator" content="Gatsby 2.21.0"/><title data-react-helmet="true">Web Storage - DevTimes</title><meta data-react-helmet="true" name="description" content="Web Storage는 HTML5에서 추가된 간단한 키와 값을 저장(key-value storage) 할 수 있는 저장소이다."/><meta data-react-helmet="true" name="og:title" content="Web Storage - DevTimes"/><meta data-react-helmet="true" name="og:type" content="website"/><meta data-react-helmet="true" name="og:description" content="Web Storage는 HTML5에서 추가된 간단한 키와 값을 저장(key-value storage) 할 수 있는 저장소이다."/><meta data-react-helmet="true" name="og:url" content="https://devtimes.com/web-storage"/><meta data-react-helmet="true" name="twitter:label1" content="Written by"/><meta data-react-helmet="true" name="twitter:data1" content="winuss"/><meta data-react-helmet="true" name="twitter:card" content="summary"/><meta data-react-helmet="true" name="twitter:creator" content="winuss"/><meta data-react-helmet="true" name="twitter:title" content="Web Storage - DevTimes"/><meta data-react-helmet="true" name="twitter:description" content="Web Storage는 HTML5에서 추가된 간단한 키와 값을 저장(key-value storage) 할 수 있는 저장소이다."/><meta data-react-helmet="true" name="keywords" content="angular, python, machine learning, deep learning, game, Web"/><meta data-react-helmet="true" name="article:published_time" content="2021-04-11T00:00:00.000Z"/><meta data-react-helmet="true" name="article:modified_time" content="2021-04-11T00:00:00.000Z"/><meta data-react-helmet="true" name="twitter:label2" content="Filed under"/><meta data-react-helmet="true" name="twitter:data2" content="Web"/><meta data-react-helmet="true" name="og:image" content="https://devtimes.com//static/b06ba6efc64c4ca80aa5ac260f48ab29/4f316/cover.png"/><meta data-react-helmet="true" name="twitter:image" content="https://devtimes.com//static/b06ba6efc64c4ca80aa5ac260f48ab29/4f316/cover.png"/><script data-react-helmet="true" type="application/ld+json">
+        {
+          "@context": "https://schema.org/",
+          "@type": "Article",
+          "author": {
+            "@type": "Person",
+            "name": "winuss"
+          },
+          "keywords": "Web",
+          "headline": "Web Storage - DevTimes",
+          "url": "https://devtimes.com/web-storage",
+          "datePublished": "2021-04-11T00:00:00.000Z",
+          "dateModified": "2021-04-11T00:00:00.000Z",
+          "image": {
+            "@type": "ImageObject",
+            "url": "https://devtimes.com//static/b06ba6efc64c4ca80aa5ac260f48ab29/4f316/cover.png",
+            "width": "1000",
+            "height": "520"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "DevTimes"
+          },
+          "description": "Web Storage는 HTML5에서 추가된 간단한 키와 값을 저장(key-value storage) 할 수 있는 저장소이다.",
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://devtimes.com"
+          }
+        }
+      </script><style data-styled="gOVsKi fbNACK dqKNZj JgKdn jnMIuM hqRQjv gWKWdg jMoVC fiqFtq llrxFq imSJbr cVQZot iRWYuq bOhMpF eMHMJv fymZCI bdTsjL eHCGZv ixYMGE gDLYpk hKDtNq guoPGM hyzxOc kAaKev ewrmMm dWgKtp kWRivk rrUdK gmpFBk cCbMYU kStElJ frcJlw cNysWr htFYTF hdhrBK kcCrhV cKJeHJ evGsdC dkniVZ eysmNL" data-styled-version="4.4.1">
+/* sc-component-id: sc-global-2451124928 */
+html{box-sizing:border-box;background-color:#fafafa;} body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;line-height:1.9em;} *{box-sizing:border-box;} h1,h2,h3,h4,h5,h6{outline:none;} a{color:#000;-webkit-text-decoration:none;text-decoration:none;} .gatsby-highlight{font-size:0.85em;background-color:#282a36;border-radius:0.2em;padding:1em 1.4em;overflow:auto;width:100%;border:0.1em solid #c6c6c8;margin-bottom:6px;} div[data-language='text'].gatsby-highlight{background-color:#f0f0f0;border:0.03em solid #c6c6c8;margin-left:2px;margin-right:2px;width:calc(100% - 4px);} .gatsby-highlight pre.language-text code.language-text{color:#000;text-shadow:none;} .gatsby-highlight pre[class*='language-']{background-color:transparent;margin:0;padding:0;overflow:initial;float:left;min-width:100%;} .gatsby-highlight-code-line{background-color:#353631;display:block;margin-right:-1em;margin-left:-1em;padding-right:1em;padding-left:0.75em;} .remark-sticky-table{border-radius:2px;margin:32px 0px;} .remark-sticky-table-table{border-collapse:collapse;box-sizing:border-box;border:1px solid #bcbcbc;width:auto;} .remark-sticky-table-th{background-color:#f7f7f7;font-weight:600;text-align:left;border-bottom:1px solid #b8bcc9;} .remark-sticky-table-tbody:nth-child(odd){background-color:#fafafa;} .remark-sticky-table-th,.remark-sticky-table-td{padding:4px 12px;} table.dataframe{border-collapse:collapse;font-size:0.75em;margin-bottom:8px;margin-left:2px;margin-right:2px;line-height:2em;display:block;overflow-x:auto;white-space:nowrap;border:1px solid transparent;} table.dataframe > tbody{text-align:right;} .dataframe td,.dataframe th{border:1px solid #bcbcbc;padding:0px 12px;} .dataframe tr:nth-child(even){background-color:#f2f2f2;} .dataframe tr:hover{background-color:#d6d9e0;} .dataframe th{background-color:#f7f7f7;padding:0px 12px;}
+/* sc-component-id: style__NavContainer-sc-1nu4t1g-0 */
+.gOVsKi{z-index:1000;background-color:#20232a;position:-webkit-sticky;position:sticky;top:0;box-shadow:0 0 3px rgba(0,0,0,.03),0 3px 46px rgba(0,0,0,.07);}
+/* sc-component-id: style__Nav-sc-1nu4t1g-1 */
+.fbNACK{width:1260px;margin-left:auto;margin-right:auto;max-width:100%;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;position:relative;} @media (max-width:1300px){.fbNACK{padding:0 20px;}}
+/* sc-component-id: style__NavWrapper-sc-1nu4t1g-2 */
+.jnMIuM{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;width:100%;height:70px;white-space:nowrap;} @media (max-width:576px){.jnMIuM{width:90%;}}
+/* sc-component-id: style__NavMenu-sc-1nu4t1g-3 */
+.hqRQjv{-webkit-align-self:center;-ms-flex-item-align:center;align-self:center;list-style-type:none;margin:0;padding:0;} @media (max-width:576px){.hqRQjv{width:80%;overflow-x:auto;overflow-y:hidden;-webkit-mask-image:linear-gradient(to right,transparent,#000 25px,#000 90%,transparent);mask-image:linear-gradient(to right,transparent,#000 25px,#000 90%,transparent);}}.gWKWdg{-webkit-align-self:center;-ms-flex-item-align:center;align-self:center;list-style-type:none;margin:0;padding:0;}
+/* sc-component-id: style__NavMenuItem-sc-1nu4t1g-4 */
+.jMoVC{cursor:pointer;display:inline-block;border:0;background:transparent;outline:none;-webkit-text-decoration:none;text-decoration:none;}
+/* sc-component-id: style__NavLink-sc-1nu4t1g-5 */
+.fiqFtq{color:#fff;opacity:.8;padding:16px;-webkit-transition:opacity .5s;transition:opacity .5s;} .fiqFtq:hover{opacity:1;}
+/* sc-component-id: style__SearchContainer-sc-1nu4t1g-6 */
+.llrxFq{-webkit-align-self:center;-ms-flex-item-align:center;align-self:center;position:relative;}
+/* sc-component-id: style__ToggleSearchButton-sc-1nu4t1g-7 */
+.imSJbr{cursor:pointer;color:#fff;opacity:.8;background:none;outline:none;border:0;-webkit-transition:opacity .5s;transition:opacity .5s;} .imSJbr:hover{opacity:1;}
+/* sc-component-id: logo__LogoImage-nd9ri7-0 */
+.JgKdn{max-height:30px;width:30px;margin-right:45px;} @media (max-width:576px){.JgKdn{margin-right:15px;}}
+/* sc-component-id: logo__HomeLink-nd9ri7-1 */
+.dqKNZj{-webkit-align-self:center;-ms-flex-item-align:center;align-self:center;height:30px;}
+/* sc-component-id: style__StyledFooter-sc-1xdlo4d-0 */
+.hdhrBK{max-width:100%;padding:10px 0;z-index:700;position:relative;font-size:.9em;margin-top:50px;}
+/* sc-component-id: style__FooterContainer-sc-1xdlo4d-1 */
+.kcCrhV{width:1260px;margin-left:auto;margin-right:auto;max-width:100%;text-align:right;line-height:1.1em;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;} @media (max-width:1300px){.kcCrhV{padding:0 20px;}}
+/* sc-component-id: style__Copyright-sc-1xdlo4d-2 */
+.dkniVZ{margin:0;}
+/* sc-component-id: style__DesignBy-sc-1xdlo4d-3 */
+.eysmNL{margin:0;opacity:.8;font-size:.8em;} .eysmNL a{font-weight:bold;-webkit-text-decoration:none;text-decoration:none;color:#000;} .eysmNL a:hover{-webkit-text-decoration:underline;text-decoration:underline;}
+/* sc-component-id: style__StyledNav-sc-1xdlo4d-4 */
+.cKJeHJ ul{list-style-type:none;margin:0;padding:0;} .cKJeHJ li{display:inline-block;margin-right:25px;} .cKJeHJ li:last-child{margin-right:0;}
+/* sc-component-id: style__FooterMenuItem-sc-1xdlo4d-5 */
+.evGsdC{color:#000;-webkit-text-decoration:none;text-decoration:none;}
+/* sc-component-id: toc__StyledNav-dzz3d3-0 */
+.kAaKev .toc-list{list-style-type:none;margin:0;padding:0 0 0 0;border-left:2.5px solid #dcdee4;} .kAaKev .toc-list .toc-list{padding-top:10px;} .kAaKev .toc-list-item{line-height:1.2em;padding-bottom:10px;} .kAaKev .toc-list-item:last-child{padding-bottom:0;} .kAaKev .toc-link{color:#808080;-webkit-text-decoration:none;text-decoration:none;font-size:0.9em;font-weight:550;padding-left:8px;} .kAaKev .is-active-link{margin-left:-2.5px;padding-left:8px;border-left:2.5px solid #13acee;color:#099bcc;}
+/* sc-component-id: reading-progress__ReadingProgressBar-i1hf8v-0 */
+.cVQZot{position:-webkit-sticky;position:sticky;height:5px;top:70px;background-color:#ff8000;z-index:500;}
+/* sc-component-id: social-channel-list__StyledSocialChannels-z1p8fq-0 */
+.cNysWr{list-style-type:none;margin:0;padding:0;}
+/* sc-component-id: social-channel-list__StyledSocialChannel-z1p8fq-1 */
+.htFYTF{display:inline-block;margin:0 10px;font-size:1.6em;opacity:.7;-webkit-transition:opacity .5s;transition:opacity .5s;} .htFYTF:hover{opacity:1;}
+/* sc-component-id: avatar__StyledAvatar-sc-1papyes-0 */
+.cCbMYU{max-width:70px;border-radius:100%;}
+/* sc-component-id: bio__StyledBio-j3ch0c-0 */
+.gmpFBk{margin:auto;text-align:center;width:100%;}
+/* sc-component-id: bio__AuthorDescription-j3ch0c-1 */
+.frcJlw{margin:10px 0 13px;} .frcJlw a{color:#000;-webkit-text-decoration:underline;text-decoration:underline;}
+/* sc-component-id: bio__AuthorName-j3ch0c-2 */
+.kStElJ{margin:10px;}
+/* sc-component-id: post__PostContainer-z0x2sj-0 */
+.iRWYuq{width:1260px;margin-left:auto;margin-right:auto;max-width:100%;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;padding:0 !important;} @media (max-width:1300px){.iRWYuq{padding:0 20px;}}
+/* sc-component-id: post__LeftSidebar-z0x2sj-1 */
+.guoPGM{min-width:300px;max-width:300px;-webkit-transition:opacity .5s,z-index .5s;transition:opacity .5s,z-index .5s;font-size:0.9em;margin-left:20px;} @media (max-width:1300px){.guoPGM{position:fixed;opacity:0;z-index:-1;background-color:#fff;width:100% !important;padding:0 20px;margin-top:-5px;height:calc(100vh - 70px);}}
+/* sc-component-id: post__PostContent-z0x2sj-2 */
+.bOhMpF{margin-top:-5px;border-right:1px #e5eff5 solid;border-left:1px #e5eff5 solid;background-color:#fff;box-shadow:0 0 3px rgba(0,0,0,.03),0 3px 46px rgba(0,0,0,.1);z-index:10;width:1035px;max-width:100%;} .bOhMpF li > a,.bOhMpF p > a{color:#a4cbb8;border-bottom:2px #a4cbb8 solid;} .bOhMpF pre{margin:30px 0;} .bOhMpF blockquote{border-left:4px #a4cbb8 solid;background-color:#fafafa;margin:30px 0;padding:5px 20px;border-radius:.3em;} .bOhMpF h3::before,.bOhMpF h4::before,.bOhMpF h5::before,.bOhMpF h6::before{display:block;content:" ";height:90px;margin-top:-90px;visibility:hidden;} .bOhMpF h2{border-top:1px solid #ececec;margin-top:44px;padding-top:40px;line-height:1.2;} .bOhMpF code[class*="language-text"]{padding:2px;font-size:0.9em;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;} .bOhMpF p > .language-text{background-color:#f2e6e9;padding:0 4px 2px 4px;font-weight:600;color:#c7254e;text-align:center;} .bOhMpF p > img{max-width:100%;border-radius:.3em;margin:30px 0;} .bOhMpF hr{border-top:1px solid #ececec;border-bottom:0;margin-top:44px;margin-bottom:40px;} .bOhMpF .gatsby-resp-image-link{margin:30px 0;max-width:100%;} .bOhMpF .gatsby-resp-image-link .gatsby-resp-image-image{border-radius:.3em;}
+/* sc-component-id: post__TocWrapper-z0x2sj-3 */
+.hyzxOc{position:-webkit-sticky;position:sticky;top:70px;padding:40px 30px 40px 0;}
+/* sc-component-id: post__PostHeader-z0x2sj-4 */
+.eMHMJv{padding:40px;} @media (max-width:576px){.eMHMJv{padding:20px;}}
+/* sc-component-id: post__FeaturedImage-z0x2sj-5 */
+.eHCGZv{border-radius:0;} @media (max-width:1300px){.eHCGZv{margin-left:-1px;margin-right:-1px;}}
+/* sc-component-id: post__StyledPost-z0x2sj-6 */
+.ixYMGE{padding:40px;} @media (max-width:576px){.ixYMGE{padding:20px;}}
+/* sc-component-id: post__PostMeta-z0x2sj-7 */
+.fymZCI{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;opacity:.8;font-size:.9em;}
+/* sc-component-id: post__PostTitle-z0x2sj-8 */
+.bdTsjL{margin:0;padding:0;}
+/* sc-component-id: post__PostFooter-z0x2sj-9 */
+.gDLYpk{background-color:#fafafa;font-size:.8em;color:#666;padding:40px;line-height:1em;} .gDLYpk p{margin:5px 0;}
+/* sc-component-id: post__FooterTagLink-z0x2sj-10 */
+.hKDtNq{color:#000 !important;-webkit-text-decoration:none;text-decoration:none;border-bottom:0 !important;}
+/* sc-component-id: post__PostAddition-z0x2sj-11 */
+.dWgKtp{background-color:#fff;border-top:1px #e5eff5 solid;border-bottom:1px #e5eff5 solid;z-index:700;position:relative;padding:40px;}
+/* sc-component-id: post__PostAdditionContent-z0x2sj-12 */
+.kWRivk{width:1260px;margin-left:auto;margin-right:auto;max-width:100%;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;} @media (max-width:1300px){.kWRivk{padding:0 20px;}}
+/* sc-component-id: post__BioWrapper-z0x2sj-13 */
+.rrUdK{width:50%;margin:auto;} @media (max-width:576px){.rrUdK{width:100%;}}
+/* sc-component-id: post__ToggleTocButton-z0x2sj-14 */
+.ewrmMm{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;position:fixed;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;right:20px;bottom:20px;border-radius:100%;box-shadow:0 0 3px rgba(0,0,0,.03),0 3px 46px rgba(0,0,0,.1);border:0;z-index:5000;width:50px;height:50px;background-color:#20232a;color:#fff;outline:none;} @media (min-width:1300px){.ewrmMm{display:none;}}</style><link rel="sitemap" type="application/xml" href="/sitemap.xml"/><link rel="icon" href="/favicon-32x32.png?v=53395c7476cdf4ad211173db66a6affd"/><link rel="manifest" href="/manifest.webmanifest"/><meta name="theme-color" content="#a4cbb8"/><link rel="apple-touch-icon" sizes="48x48" href="/icons/icon-48x48.png?v=53395c7476cdf4ad211173db66a6affd"/><link rel="apple-touch-icon" sizes="72x72" href="/icons/icon-72x72.png?v=53395c7476cdf4ad211173db66a6affd"/><link rel="apple-touch-icon" sizes="96x96" href="/icons/icon-96x96.png?v=53395c7476cdf4ad211173db66a6affd"/><link rel="apple-touch-icon" sizes="144x144" href="/icons/icon-144x144.png?v=53395c7476cdf4ad211173db66a6affd"/><link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192x192.png?v=53395c7476cdf4ad211173db66a6affd"/><link rel="apple-touch-icon" sizes="256x256" href="/icons/icon-256x256.png?v=53395c7476cdf4ad211173db66a6affd"/><link rel="apple-touch-icon" sizes="384x384" href="/icons/icon-384x384.png?v=53395c7476cdf4ad211173db66a6affd"/><link rel="apple-touch-icon" sizes="512x512" href="/icons/icon-512x512.png?v=53395c7476cdf4ad211173db66a6affd"/><link rel="preconnect dns-prefetch" href="https://www.google-analytics.com"/><style type="text/css">
+    .anchor.before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: translateX(-100%);
+      padding-right: 4px;
+    }
+    .anchor.after {
+      display: inline-block;
+      padding-left: 4px;
+    }
+    h1 .anchor svg,
+    h2 .anchor svg,
+    h3 .anchor svg,
+    h4 .anchor svg,
+    h5 .anchor svg,
+    h6 .anchor svg {
+      visibility: hidden;
+    }
+    h1:hover .anchor svg,
+    h2:hover .anchor svg,
+    h3:hover .anchor svg,
+    h4:hover .anchor svg,
+    h5:hover .anchor svg,
+    h6:hover .anchor svg,
+    h1 .anchor:focus svg,
+    h2 .anchor:focus svg,
+    h3 .anchor:focus svg,
+    h4 .anchor:focus svg,
+    h5 .anchor:focus svg,
+    h6 .anchor:focus svg {
+      visibility: visible;
+    }
+  </style><script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+      var hash = window.decodeURI(location.hash.replace('#', ''))
+      if (hash !== '') {
+        var element = document.getElementById(hash)
+        if (element) {
+          var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+          var clientTop = document.documentElement.clientTop || document.body.clientTop || 0
+          var offset = element.getBoundingClientRect().top + scrollTop - clientTop
+          // Wait for the browser to finish rendering before scrolling.
+          setTimeout((function() {
+            window.scrollTo(0, offset - 0)
+          }), 0)
+        }
+      }
+    })
+  </script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="/rss.xml"/><link as="script" rel="preload" href="/webpack-runtime-54fc4c4fe4b49e1e33de.js"/><link as="script" rel="preload" href="/framework-737c3e16d462c41141c7.js"/><link as="script" rel="preload" href="/app-a8b2574222d925c54afd.js"/><link as="script" rel="preload" href="/styles-85581d4dae49207538a9.js"/><link as="script" rel="preload" href="/1bfc9850-693458f4bfc03c5b78c9.js"/><link as="script" rel="preload" href="/6c18e55fdd71cb6af87612710cbe2c0cb61bdd56-92ca3db2def247415ce0.js"/><link as="script" rel="preload" href="/component---src-templates-post-tsx-8a7ad919cf47b755089e.js"/><link as="fetch" rel="preload" href="/page-data/web-storage/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div class="style__NavContainer-sc-1nu4t1g-0 gOVsKi"><div class="common__Container-sc-1wbwqlx-0 style__Nav-sc-1nu4t1g-1 fbNACK"><a class="logo__HomeLink-nd9ri7-1 dqKNZj" href="/"><div class="logo__LogoImage-nd9ri7-0 JgKdn gatsby-image-wrapper" style="position:relative;overflow:hidden;display:inline-block;width:30px;height:30px"><img aria-hidden="true" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsSAAALEgHS3X78AAAC1UlEQVQ4y4WVTUubQRCAo6bQQEvxH+SSQw4SCOI5kGsiQtNCCTQeepD+BgVbDzlqsRSFBGKgBJpDTzlEbfUaFTVQSyAQ7QdYvIgt0eT9mOnMZme7BqELk9ndd/bZmdnZTQAAAtxYk4zq/j2SJyQVklMSBxFd0t9IPpA8o/F9bTtKfcUQrToyIIM09b+i1TzPU2I3smuTehoIGMbIXbDX1hr2yCXt83otvjUv4DcWVP1ImK+0jU99j0RBKpUKzM/Pw+LiIqytrYHrujDgKBtPQ9/e8pImUhaMBX3fVwsTiQS7ryQcDuPNzY0A1Y94S3pWYEEaf9GTsiMQUO2QSqUMcGJiAnu93mBn3xeorPlJ6hG7+VhPuJoF2kO1MJ1OG2AsFjNASaG1ljTOMfD9XcBBChE7nQ4eHh7i0dERtlotddqO42C/32cBGrOhlMAnDrlj5Q+GSgOHW7vdxsnJSYzH4xiJRLBYLKqc6oj+sIeO5M1KtoGxoXjFrdlsmhSwLC0tKUN9+qoG3X8OAUgRszBsGHh8fHwLyOU0DPxhe4j/aWdnZzgzM4PT09OYTCaxWq3aIXcZ+FFuxuXlJWxtbcHOzg7W63U8Pz/Hk5MT3NzcxO3tbdzf38erqyskG/W9VqsBHZo5FPLpMx/KrAAZxKU5NjamwimVSpjNZk14fBB7e3t2yEA5ROscXrKHDyn+U57Y3d312DAUCvEThOVyGXO5nAFMTU3hwcEBf8dgMKhs8vm8r3P4i4Dj6rZcX18/50kKy+VdZfdCoQCZTMYAo9EoNhoNsG0WFhaUd8SYk6s3oi/2Oy7WlZUVlx4Bb3l5mQsZaBOgPqyurgIfwMXFBWxsbHA6/PX1dYfzTK1sHgfzQmio/XzpZMPQVfMkZ7qVZb04F6D7aaDdbjdH+fhu3xauMRa535IzE6bNsP4CRsRb6j+g/gvSddK/LXiXS4NPk4bjw+u4rv8C5lC4pDZ5rvwAAAAASUVORK5CYII=" alt="DevTimes" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:1;transition-delay:500ms"/><noscript><picture><source srcset="/static/c9a164741da1db2837cd1e6d841a84fb/91664/main-logo.png 1x,
+/static/c9a164741da1db2837cd1e6d841a84fb/ad39b/main-logo.png 1.5x,
+/static/c9a164741da1db2837cd1e6d841a84fb/183c2/main-logo.png 2x" /><img loading="lazy" width="30" height="30" srcset="/static/c9a164741da1db2837cd1e6d841a84fb/91664/main-logo.png 1x,
+/static/c9a164741da1db2837cd1e6d841a84fb/ad39b/main-logo.png 1.5x,
+/static/c9a164741da1db2837cd1e6d841a84fb/183c2/main-logo.png 2x" src="/static/c9a164741da1db2837cd1e6d841a84fb/91664/main-logo.png" alt="DevTimes" style="position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center"/></picture></noscript></div></a><div class="style__NavWrapper-sc-1nu4t1g-2 jnMIuM"><ul class="style__NavMenu-sc-1nu4t1g-3 hqRQjv"><li class="style__NavMenuItem-sc-1nu4t1g-4 jMoVC"><a class="style__NavLink-sc-1nu4t1g-5 fiqFtq" href="/tag/web">Web</a></li><li class="style__NavMenuItem-sc-1nu4t1g-4 jMoVC"><a class="style__NavLink-sc-1nu4t1g-5 fiqFtq" href="/tag/python">Python</a></li><li class="style__NavMenuItem-sc-1nu4t1g-4 jMoVC"><a class="style__NavLink-sc-1nu4t1g-5 fiqFtq" href="/tag/ml-dl">ML-DL</a></li><li class="style__NavMenuItem-sc-1nu4t1g-4 jMoVC"><a class="style__NavLink-sc-1nu4t1g-5 fiqFtq" href="/tag/datalake">DataLake</a></li><li class="style__NavMenuItem-sc-1nu4t1g-4 jMoVC"><a class="style__NavLink-sc-1nu4t1g-5 fiqFtq" href="/tag/statistics">Statistics</a></li><li class="style__NavMenuItem-sc-1nu4t1g-4 jMoVC"><a class="style__NavLink-sc-1nu4t1g-5 fiqFtq" href="/tag/tip">Tips</a></li><li class="style__NavMenuItem-sc-1nu4t1g-4 jMoVC"><a class="style__NavLink-sc-1nu4t1g-5 fiqFtq" href="/page">About</a></li></ul><div class="style__SearchContainer-sc-1nu4t1g-6 llrxFq"><ul class="style__NavMenu-sc-1nu4t1g-3 gWKWdg"><li class="style__NavMenuItem-sc-1nu4t1g-4 jMoVC"><button role="button" aria-label="Toggle search" class="style__ToggleSearchButton-sc-1nu4t1g-7 imSJbr"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"></path></svg></button></li></ul></div></div></div></div><main><div style="width:0%" color="#ff8000" class="reading-progress__ReadingProgressBar-i1hf8v-0 cVQZot"></div><div class="common__Container-sc-1wbwqlx-0 post__PostContainer-z0x2sj-0 iRWYuq"><div class="post__PostContent-z0x2sj-2 bOhMpF"><article class="post"><header class="post__PostHeader-z0x2sj-4 eMHMJv"><section class="post__PostMeta-z0x2sj-7 fymZCI"><a href="/tag/web">Web</a><time dateTime="2021-04-11T00:00:00.000Z">11 April, 2021</time></section><h1 class="post__PostTitle-z0x2sj-8 bdTsjL">Web Storage</h1></header><div class="post__FeaturedImage-z0x2sj-5 eHCGZv gatsby-image-wrapper" style="position:relative;overflow:hidden"><div aria-hidden="true" style="width:100%;padding-bottom:39.5%"></div><img aria-hidden="true" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAIAAAB2/0i6AAAACXBIWXMAAAsSAAALEgHS3X78AAAAy0lEQVQY02P4jwH+/fsHJC/eurN62865y1c9fvUWLogGGLBo/vsXSN5bNPlcddqp2pT7SyaRoBmoG0h8mNn8ZlbLrznlXyYX/gPrJk4z2Ob3q2a8WDTh6875n9dOhQsS1vz3zx8g+XHD/Ccl4e86kj6tnwWy+M9vIp0NcuHf719+ndj9+8SOf18//ifS2T9//b5048G1O49fvP5w782XJ59/P3/3+f7jF89fvSdK8637z85duXvv4fO7959evfng1oOnu49eBBqHqRkASsnE738BTeIAAAAASUVORK5CYII=" alt="" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:1;transition-delay:500ms"/><noscript><picture><source srcset="/static/b06ba6efc64c4ca80aa5ac260f48ab29/dc47e/cover.png 200w,
+/static/b06ba6efc64c4ca80aa5ac260f48ab29/9f2d5/cover.png 400w,
+/static/b06ba6efc64c4ca80aa5ac260f48ab29/4f316/cover.png 624w" sizes="(max-width: 624px) 100vw, 624px" /><img loading="lazy" sizes="(max-width: 624px) 100vw, 624px" srcset="/static/b06ba6efc64c4ca80aa5ac260f48ab29/dc47e/cover.png 200w,
+/static/b06ba6efc64c4ca80aa5ac260f48ab29/9f2d5/cover.png 400w,
+/static/b06ba6efc64c4ca80aa5ac260f48ab29/4f316/cover.png 624w" src="/static/b06ba6efc64c4ca80aa5ac260f48ab29/4f316/cover.png" alt="" style="position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center"/></picture></noscript></div><section class="post__StyledPost-z0x2sj-6 ixYMGE post"><h3 id="web-storage" style="position:relative;"><a href="#web-storage" aria-label="web storage permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Web Storage</h3>
+<p>Web Storage는 HTML5에서 추가된 간단한 키와 값을 저장(key-value storage) 할 수 있는 저장소이다.
+데이터의 지속성에 따라 영구저장소(LocalStorage)와 임시저장소(SessionStorage) 두가지를 지원한다. 그 동안 많이 사용해 왔던 쿠키와 거의 차이가 없어 보이지만
+몇 가지 쿠키의 단점을 극복하는 개선점이 도입이 되었다.</p>
+<h3 id="web-storage-특징" style="position:relative;"><a href="#web-storage-%ED%8A%B9%EC%A7%95" aria-label="web storage 특징 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Web Storage 특징</h3>
+<p>Web Storage는 다음과 같은 특징이 있다.</p>
+<ul>
+<li>키와 값은 무조건 문자열로 변환되어 저장된다. (객체를 읽고 쓰려면 JSON.stringify, JSON.parse를 사용)</li>
+<li>브라우저별 용량제한이 다르다. (용량 제한은 대략 5MB)</li>
+<li>도메인별 Storage는 다르며 도메인별로 용량 제한이 있다. (Protocal, host, port가 같으면 같은 스토리지를 공유)</li>
+<li>이것 마저 용량이 부족하다면 indexedDB가 있다.</li>
+</ul>
+<p> (indexedDB에 대해서는 다음에 좀더 자세히 알아보도록 하고,,)</p>
+<h3 id="localstorage와-sessionstorage" style="position:relative;"><a href="#localstorage%EC%99%80-sessionstorage" aria-label="localstorage와 sessionstorage permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>localStorage와 sessionStorage</h3>
+<p>Web Storage는 데이터의 지속성에 따라 두 가지 용도의 저장소를 제공한다.</p>
+<h2 id="localstorage" style="position:relative;"><a href="#localstorage" aria-label="localstorage permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>LocalStorage</h2>
+<p>저장한 데이터를 명시적으로 지우지 않는 이상 영구적으로 보관이 가능하다. 앞서 말한 것처럼 도메인별로 스토리지가 생성이 되고 Windows 전역 객체의 LocalStorage라는 컬렉션을 통해 저장과 조회가 이루어진다.</p>
+<h2 id="sessionstorage" style="position:relative;"><a href="#sessionstorage" aria-label="sessionstorage permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>SessionStorage</h2>
+<p>SessionStorage는 데이터가 지속적으로 보관이 되지 않는다. 이는 마치 브라우저 기반 세션 쿠키와 그 성질이 비슷한데, 현재 페이지가 브라우징되고 있는 브라우저 컨텍스트 내에서만 데이터가 유지된다.
+쉽게 말하자면, 탭 브라우징이나 브라우저를 하나 더 실행해서 같은 페이지를 실행했을 때, 이 두 페이지의 SessionStorage는 각각 별개의 영역으로 서로 침범하지 못한다는 의미이다. 이는 도메인만 같으면 전역적으로 공유 가능한 LocalStorage와 구분 되는 가장 큰 특징이다.</p>
+<h3 id="cookie" style="position:relative;"><a href="#cookie" aria-label="cookie permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Cookie</h3>
+<ul>
+<li>후속 요청으로 서버로 다시 보내야하는 데이터를 저장한다. 만료는 유형에 따라 다르며 만료 기간은 서버 측 또는 클라이언트 측 (일반적으로 서버 측)에서 설정할 수 있다.</li>
+<li>쿠키는 주로 서버 측에서 읽기(클라이언트 측에서 읽을 수도 있음) 위한 것이며, Local Storage 및 Session Storage는 클라이언트 측에서만 읽을 수 있다.</li>
+<li>크기는 4KB보다 작아야 한다.</li>
+<li>해당 쿠키에 대해 httpOnly 플래그를 true로 설정하여 쿠키를 안전하게 만들 수 있다. 이렇게하면 쿠키에 대한 클라이언트 측 액세스가 차단된다.</li>
+</ul>
+<p>각 저장소별로 데이터가 어떻게 저장되고 있는지를 보고 싶다면 디버깅모드(F12) > Application에서 확인 할 수 있다.
+<span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1200px;"
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/675054cbe4fe7acc0a81e683003daa94/9cea8/web-01.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 20%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAECAIAAAABPYjBAAAACXBIWXMAAAsSAAALEgHS3X78AAAAlklEQVQI14WMWQ6DMAxEc/8zNlDRhZDYjrOVUgjUgNTfjkbW82hs1d3ugTnnXEp2yM/ehJhyeRF5Yyx5JmKZgwML6BAFgHxIiWNScuycY+YQQj/ApemMRR+LBf8YwCILiOXvwefK0uBYlG5arTUAMEtKqYzjNC/r9v4s4mmuh3+w+8gX6aimvSJCyrs853XdTtVat3/6Atg/42pkKIieAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="01"
+        title="01"
+        src="/static/675054cbe4fe7acc0a81e683003daa94/c1b63/web-01.png"
+        srcset="/static/675054cbe4fe7acc0a81e683003daa94/5a46d/web-01.png 300w,
+/static/675054cbe4fe7acc0a81e683003daa94/0a47e/web-01.png 600w,
+/static/675054cbe4fe7acc0a81e683003daa94/c1b63/web-01.png 1200w,
+/static/675054cbe4fe7acc0a81e683003daa94/9cea8/web-01.png 1278w"
+        sizes="(max-width: 1200px) 100vw, 1200px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span></p>
+<h3 id="마치며" style="position:relative;"><a href="#%EB%A7%88%EC%B9%98%EB%A9%B0" aria-label="마치며 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>마치며...</h3>
+<p>WebStorage의 보안은 서로 다른 도메인의 데이터 침범을 막고는 있지만 클라이언트, 즉 사용자를 막고 있지는 않다. 클라이언트는 얼마든지 저장된 값을 임의로 수정이 가능하다. 이것은 쿠키와 동일한 개념이다. 그렇다고 쿠키에 비해 별다른 보안 취약점을 더 가진 것은 아니다. 따라서 개발자는 사용자에 의한 이러한 임의 변경에 항상 예의 주시하고 방어 코드의 작성을 잊지 말아야 한다.</p></section><hr/><div></div><footer class="post__PostFooter-z0x2sj-9 gDLYpk"><p>Published under <span><a class="post__FooterTagLink-z0x2sj-10 hKDtNq" href="/tag/web">Web</a></span> on <time dateTime="2021-04-11T00:00:00.000Z">11 April, 2021</time>.</p></footer></article></div><div class="post__LeftSidebar-z0x2sj-1 guoPGM"><div class="post__TocWrapper-z0x2sj-3 hyzxOc"><nav class="toc__StyledNav-dzz3d3-0 kAaKev toc"></nav></div></div><button role="button" aria-label="Toggle table of contents" class="post__ToggleTocButton-z0x2sj-14 ewrmMm"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M432 416H16a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zm0-128H16a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zm0-128H16a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zm0-128H16A16 16 0 0 0 0 48v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16z"></path></svg></button></div><section class="post__PostAddition-z0x2sj-11 dWgKtp"><div class="common__Container-sc-1wbwqlx-0 post__PostAdditionContent-z0x2sj-12 kWRivk"><div class="post__BioWrapper-z0x2sj-13 rrUdK"><section class="bio__StyledBio-j3ch0c-0 gmpFBk"><div class="avatar__StyledAvatar-sc-1papyes-0 cCbMYU gatsby-image-wrapper" style="position:relative;overflow:hidden;display:inline-block;width:70px;height:70px"><img aria-hidden="true" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsSAAALEgHS3X78AAAEfUlEQVQ4y1WUbWxTVRjHL4YPLL4wYtwYg9FtdKwY5EUjwwDb4lxAEA1kycxUTFA0mChiNFPDNMNgVEwQiEJA3GQbrBvrqFBwBUb3ytp1YwO2MbqXru3t69Z262b0y897i53thyf3nHPv+d3/ef7PcwSXU8QpOpCfbpczHPLYYbcT8I9jc4h03e7F3NVNIOAnGJjAFfV9ZH+EIUSDIiE67ExPT9He1s7LW18n69lcslZnsWf3+zTob+D3T4Q3u5z/AyNPIRrkcT/8ICgpOVtWwZqMNSQ9lsjiBUkoFylIS05BmZZJ6cHvmJkJ4ZH2RGAxQI/bFQ55MTQVRHvpKqqUTFTJaSieWsrShBSSn0wmMzWDjNRlJMQnsG/f57g9njA0AgwfWQZ5Pe6wQp/XjdVmZ/uWHbz2Yg5PK5aTnqhAuTCNdEmhYlEKqckKUhIXEzc3nl/LzjE1GQinKJI6IaJOljsj5a229iIvLF/Lm1u3s161lizValRJy1EmKlmVtgKVYhkrlZnME+LYVbSbUGgyDIykTYg+7sx0iGNHfmZnTi57CnfyxkubKVyfR3HhLo5/tJ8f9r7H0QMfUrL3bVRLUnlGuZJhiwWfzxMWFAOUJ8FggLqaajavX8emFav5/XApRm0FFn0dYze1DOir8Q83ovn1e3bk5ZC3cQO3WtvDJsqC5NTFAqUXt1oM5K5ag/rEjzj7m2lXn8GsLqP/Ug1N5ScxXa7CqK9iR042u98qZKCvj4kJX3h/GOjzemZNmZoMYuowUpCfj99mpP2PCs58WUKXupyh62ouHPqW06UlTFga+ezdIgq2vcpk0D9bJXIIMkwOeRKQCvbBwADHS4sJ2jpwm29iNVxhfKSTgPSDoRYddy+r+cth5Ng3+zn4RYnUAKFZdTFHliey2nEpwU11Zdi76/GZGxHbriH23sTRo8dh+hO38QaBwUbOHT3A/Z5OJiQRnqjmiClsuVO8Xi/WwW4c3Rq8XTrEVkmV7jxdmnKGr19gpLEeq1FN57UKyQjZWVdM2woRQ6Lbz+l0YbtrwNd7CUuzlnu6i9zR1vGgpR7bLQ2D7WpGLf3SqTwxF0u4U6JvmIdj6aYRRcSRfkaaKhky1HJPU4O5shJLiwZLUwV9HTpcbk/MTSMXd7iXI4sOuw27FLYxq1SPfnq7TXRfOY2np15yuIbBq2ps5npuN/zC0J2Wh8D/QNEhyAB54JX62O/3MR3y09Bwgy3biugzVDLSUkXb+ZPoTx3DrDvF/ebfGL7bisvlxm4bmwXJguQQJoPjUt5EOk2dVFdr+ODjr3l0YRaqdQXY7hnw3K7lztUzNJ/7iQetVZLDlzlx5DCGpjb++TuETYKOSaIicGHfJ6VszCsiKTWbR+LXIiRsZG5SNunPF9Bj7mR8yCgZUYe1VY3VpGZaqs9Piw+RmpGLVquTjBGl+vXNqhSEJ55jzoJ1xCVuYP6STcSn5/N4Wj7zkrPRXzcQCnpxDPfjGOhg1HQB72gPxV8dQZiTQdz8VeS/8g7lZ2sYHR1GFO38C4HH48JXOTvxAAAAAElFTkSuQmCC" alt="winuss" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:1;transition-delay:500ms"/><noscript><picture><source srcset="/static/f39bad8c29c07a4d4c5b9eb67697ccb3/75aa5/blogger.png 1x,
+/static/f39bad8c29c07a4d4c5b9eb67697ccb3/97b93/blogger.png 1.5x,
+/static/f39bad8c29c07a4d4c5b9eb67697ccb3/9adda/blogger.png 2x" /><img loading="lazy" width="70" height="70" srcset="/static/f39bad8c29c07a4d4c5b9eb67697ccb3/75aa5/blogger.png 1x,
+/static/f39bad8c29c07a4d4c5b9eb67697ccb3/97b93/blogger.png 1.5x,
+/static/f39bad8c29c07a4d4c5b9eb67697ccb3/9adda/blogger.png 2x" src="/static/f39bad8c29c07a4d4c5b9eb67697ccb3/75aa5/blogger.png" alt="winuss" style="position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center"/></picture></noscript></div><h3 class="bio__AuthorName-j3ch0c-2 kStElJ">winuss</h3><p class="bio__AuthorDescription-j3ch0c-1 frcJlw">Every end is a <strong>new beginning</strong>.
+            <a href="https://devtimes.com" rel="noopener" target="_blank">devtimes.com</a></p><ul class="social-channel-list__StyledSocialChannels-z1p8fq-0 cNysWr"><li class="social-channel-list__StyledSocialChannel-z1p8fq-1 htFYTF"><a href="https://github.com/winuss" target="_blank" rel="noopener" aria-label="github"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 496 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg></a></li></ul></section></div></div></section></main><footer class="style__StyledFooter-sc-1xdlo4d-0 hdhrBK"><div class="common__Container-sc-1wbwqlx-0 style__FooterContainer-sc-1xdlo4d-1 kcCrhV"><nav class="style__StyledNav-sc-1xdlo4d-4 cKJeHJ"><ul><li><a href="/rss.xml" rel="noopener noreferrer" class="style__FooterMenuItem-sc-1xdlo4d-5 evGsdC">RSS</a></li><li><a href="/sitemap.xml" rel="noopener noreferrer" class="style__FooterMenuItem-sc-1xdlo4d-5 evGsdC">Sitemap</a></li></ul></nav><div><p class="style__Copyright-sc-1xdlo4d-2 dkniVZ"><strong>DevTimes</strong> © <!-- -->2021</p><p class="style__DesignBy-sc-1xdlo4d-3 eysmNL">Theme by <a href="https://nehalist.io" target="_blank" rel="noopener">nehalist.io</a></p></div></div></footer></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script>
+  
+  
+  if(true) {
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  }
+  if (typeof ga === "function") {
+    ga('create', 'UA-168375315-1', 'auto', {});
+      
+      
+      
+      
+      
+      }</script><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/web-storage";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"app":["/app-a8b2574222d925c54afd.js"],"component---src-pages-404-tsx":["/component---src-pages-404-tsx-057dc180d56b15804385.js"],"component---src-pages-archive-tsx":["/component---src-pages-archive-tsx-fdf2cd80a3f85b7fc325.js"],"component---src-pages-tags-tsx":["/component---src-pages-tags-tsx-958d9cb016ae8b948b75.js"],"component---src-templates-page-tsx":["/component---src-templates-page-tsx-7ec48fbcec09fea3ec81.js"],"component---src-templates-post-tsx":["/component---src-templates-post-tsx-8a7ad919cf47b755089e.js"],"component---src-templates-posts-tsx":["/component---src-templates-posts-tsx-0e5d08b16e0a44a2a740.js"],"component---src-templates-tag-tsx":["/component---src-templates-tag-tsx-93f232bc138f470217e2.js"]};/*]]>*/</script><script src="/component---src-templates-post-tsx-8a7ad919cf47b755089e.js" async=""></script><script src="/6c18e55fdd71cb6af87612710cbe2c0cb61bdd56-92ca3db2def247415ce0.js" async=""></script><script src="/1bfc9850-693458f4bfc03c5b78c9.js" async=""></script><script src="/styles-85581d4dae49207538a9.js" async=""></script><script src="/app-a8b2574222d925c54afd.js" async=""></script><script src="/framework-737c3e16d462c41141c7.js" async=""></script><script src="/webpack-runtime-54fc4c4fe4b49e1e33de.js" async=""></script></body></html>
